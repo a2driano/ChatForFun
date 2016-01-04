@@ -14,9 +14,9 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "messagehistory")
-@NamedQueries({
-        @NamedQuery(name = "getUserMessagesByName", query = "SELECT a FROM MessageHistory a WHERE a.nickName= :nickName")
-})
+//@NamedQueries({
+//        @NamedQuery(name = "getUserMessagesByName", query = "SELECT a FROM MessageHistory a WHERE a.nickName= :nickName")
+//})
 public class MessageHistory implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)

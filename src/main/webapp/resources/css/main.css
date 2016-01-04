@@ -1,0 +1,103 @@
+.buttonStart {
+    display: inline-block;
+    position: relative;
+    margin: 60px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 320px;
+    height: 50px;
+    font-size: 14pt;
+    font-family: sans-serif;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+    border: 2px solid;
+    border-color: white;
+    border-radius: 10px;
+    background-color: rgb(50, 163, 37);
+
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+}
+
+.buttonStart:hover {
+    position: relative;
+    display: inline-block;
+    margin: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 320px;
+    height: 60px;
+    font-size: 14pt;
+    font-family: sans-serif;
+    color: rgb(50, 163, 37);
+    line-height: 60px;
+    text-align: center;
+    background-color: white;
+    border: 2px solid;
+    border-color: rgb(146, 255, 142);
+    border-radius: 10px;
+
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+}
+
+/*#registration {*/
+    /*/!*white-space: nowrap;*!/*/
+    /*position: relative;*/
+    /*display: inline-block;*/
+    /*margin: 35px;*/
+    /*margin-right: 10px;*/
+    /*margin-left: 10px;*/
+    /*display: inline-block;*/
+    /*width: 230px;*/
+    /*height: 50px;*/
+    /*font-size: 14pt;*/
+    /*font-family: sans-serif;*/
+    /*color: white;*/
+    /*line-height: 50px;*/
+    /*text-align: center;*/
+    /*border: 2px solid;*/
+    /*border-color: white;*/
+    /*border-radius: 10px;*/
+
+    /*-moz-transition: all 0.4s ease-out;*/
+    /*-o-transition: all 0.4s ease-out;*/
+    /*-webkit-transition: all 0.4s ease-out;*/
+/*}*/
+
+/*#registration:hover {*/
+    /*/!*white-space: nowrap;*!/*/
+    /*position: relative;*/
+    /*display: inline-block;*/
+    /*margin: 35px;*/
+    /*margin-right: 10px;*/
+    /*margin-left: 10px;*/
+    /*display: inline-block;*/
+    /*width: 230px;*/
+    /*height: 50px;*/
+    /*font-size: 14pt;*/
+    /*font-family: sans-serif;*/
+    /*color: rgb(50, 163, 37);*/
+    /*line-height: 50px;*/
+    /*text-align: center;*/
+    /*background-color: white;*/
+    /*border: 2px solid;*/
+    /*border-color: rgb(146, 255, 142);*/
+    /*border-radius: 10px;*/
+
+    /*-moz-transition: all 0.4s ease-out;*/
+    /*-o-transition: all 0.4s ease-out;*/
+    /*-webkit-transition: all 0.4s ease-out;*/
+/*}*/
+
+#copyright {
+    float: right;
+    font-size: 12pt;
+    font-family: sans-serif;
+    color: white;
+    line-height: 120px;
+    text-align: right;
+}

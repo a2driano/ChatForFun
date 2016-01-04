@@ -13,10 +13,10 @@ import java.util.List;
  */
 @Entity
 @Table(name = "users")
-@NamedQueries({
-        @NamedQuery(name = "getUserByName", query = "SELECT a FROM User a WHERE a.nickName= :nickName"),
-        @NamedQuery(name = "getUserByNameAndPassword", query = "SELECT a FROM User a WHERE a.nickName= :nickName AND a.passwordUser= :passwordUser")
-})
+//@NamedQueries({
+//        @NamedQuery(name = "getUserByName", query = "SELECT a FROM User a WHERE a.nickName= :nickName"),
+//        @NamedQuery(name = "getUserByNameAndPassword", query = "SELECT a FROM User a WHERE a.nickName= :nickName AND a.passwordUser= :passwordUser")
+//})
 public class User implements Serializable {
     @Id
     @GeneratedValue(generator = "increment")
