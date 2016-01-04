@@ -13,6 +13,10 @@ import java.util.List;
  */
 @Entity
 @Table(name = "users")
+@NamedQueries({
+        @NamedQuery(name = "getUserByName", query = "SELECT a FROM User a WHERE a.nickName= :nickName"),
+        @NamedQuery(name = "getUserByNameAndPassword", query = "SELECT a FROM User a WHERE a.nickName= :nickName AND a.passwordUser= :passwordUser")
+})
 public class User implements Serializable {
     @Id
     @GeneratedValue(generator = "increment")
@@ -20,7 +24,7 @@ public class User implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "nickname", nullable=false, length=100, unique=true)
+    @Column(name = "nickname", nullable = false, length = 100, unique = true)
     private String nickName;
 
     @Column(name = "passworduser")
@@ -29,7 +33,7 @@ public class User implements Serializable {
     @Column(name = "usingnickname")
     private Boolean usingnickname;
 
-    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<MessageHistory> message;
 
     public Integer getId() {
