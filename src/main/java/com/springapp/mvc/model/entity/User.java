@@ -3,6 +3,8 @@ package com.springapp.mvc.model.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author a2driano
@@ -11,14 +13,14 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "nickname")
+    @Column(name = "nickname", nullable=false, length=100, unique=true)
     private String nickName;
 
     @Column(name = "passworduser")
@@ -26,6 +28,9 @@ public class User {
 
     @Column(name = "usingnickname")
     private Boolean usingnickname;
+
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    private List<MessageHistory> message;
 
     public Integer getId() {
         return id;

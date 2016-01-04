@@ -1,10 +1,10 @@
 package com.springapp.mvc.model.entity;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,14 +12,21 @@ import java.util.Date;
  * @version 2.0
  * @since 02.01.2016
  */
-public class MessageHistory {
+@Entity
+@Table(name = "messagehistory")
+public class MessageHistory  implements Serializable {
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "nickname")
+    private User user;
+
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "message")
+    @Column(name = "message", length = 500)
     private String messageUser;
 
     @Column(name = "date")
