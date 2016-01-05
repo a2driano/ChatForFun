@@ -22,5 +22,5 @@ public interface UserRepository {
 
     void update(User user);
 
-    List<User> getByOnline(User user);
+    List<User> getByOnline();
 }
