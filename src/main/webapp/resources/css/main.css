@@ -16,6 +16,7 @@
     width: 700px;
     height: 100%;
     background-color: #6e6e6e;
+    box-shadow: 0 0 25px rgba(24, 24, 24, 0.78);
 }
 .logo{
     position: relative;
@@ -72,12 +73,76 @@
     -webkit-transition: all 0.4s ease-out;
 }
 
-
-#copyright {
-    float: right;
+/*FORM FOR AJAX DROP*/
+.cabinetFormText{
+    display: table;
+    width: 700px;
+    height: 250px;
     font-size: 12pt;
     font-family: sans-serif;
-    color: #771433;
-    line-height: 120px;
-    text-align: right;
 }
+.formText{
+    width: 290px;
+    height: 50px;
+    display: table;
+    margin: auto;
+    margin-top: 30px;
+    font-size: 12pt;
+    font-family: sans-serif;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 10px;
+    border-color: rgb(183, 184, 181);
+
+}
+.formText:hover{
+    border-color: rgb(163, 0, 91);
+
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+
+}
+.buttonForm{
+    display: block;
+    position: relative;
+    margin: auto;
+    margin-top: 30px;
+    width: 290px;
+    height: 50px;
+    font-size: 14pt;
+    font-family: sans-serif;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+    background-color: rgb(163, 0, 91);
+    border: 2px solid;
+    border-color: rgb(255, 123, 175);
+    border-radius: 10px;
+
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+}
+.buttonForm:hover{
+    display: block;
+    position: relative;
+    margin: auto;
+    margin-top: 25px;
+    width: 310px;
+    height: 60px;
+    font-size: 16pt;
+    font-family: sans-serif;
+    color: white;
+    line-height: 60px;
+    text-align: center;
+    background-color: orange;
+    border: 2px solid;
+    border-radius: 10px;
+
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+}
+
+
