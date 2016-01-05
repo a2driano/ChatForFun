@@ -21,9 +21,9 @@ public class HelloController {
 		return "index";
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public UserDTO
+//	@ResponseBody
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)
+//	public UserDTO
 
 
 
