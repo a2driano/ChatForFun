@@ -21,16 +21,16 @@
     <div id="central">
         <div id="centralContainer">
             <div class="logo"></div>
-            <#--<form class="cabinetFormText" action="/login" method="post">-->
-                <#--<input class="formText" id="j_username" name="username" type="text" maxlength="25" size="40" placeholder="ENTER YOUR LOGIN">-->
-                <#--<input class="formText" id="j_password" name="password" type="password" maxlength="25" size="40" placeholder="ENTER YOUR PASSWORD">-->
-                <#--<input class="buttonForm" type="submit" name="submit" value="Submit">-->
-            <#--</form>-->
             <div id="centralMenu">
                 <div class="buttonContainer"><div id="enterReg" class="buttonStart">Sign in</div></div>
                 <div class="buttonContainer"><div id="enter" class="buttonStart">Enter without registration</div></div>
                 <div class="buttonContainer"><div id="registration" class="buttonStart">Registration</div></div>
             </div>
+            <#--<form class="cabinetFormText" action="/login" method="post">-->
+                <#--<input class="formText" id="j_username" name="username" type="text" maxlength="25" size="40" placeholder="ENTER YOUR LOGIN">-->
+                <#--<input class="formText" id="j_password" name="password" type="password" maxlength="25" size="40" placeholder="ENTER YOUR PASSWORD">-->
+                <#--<input class="buttonForm" type="submit" name="submit" value="Submit">-->
+            <#--</form>-->
         </div>
     </div>
 </div>

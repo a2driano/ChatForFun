@@ -32,7 +32,7 @@ public class UserDTO implements Serializable {
     private String passwordUser;
 
     @JsonProperty
-    private Boolean usingnickname;
+    private Boolean online;
 
     public Integer getId() {
         return id;
@@ -59,10 +59,10 @@ public class UserDTO implements Serializable {
     }
 
     public Boolean getUsingnickname() {
-        return usingnickname;
+        return online;
     }
 
     public void setUsingnickname(Boolean usingnickname) {
-        this.usingnickname = usingnickname;
+        this.online = usingnickname;
     }
 }

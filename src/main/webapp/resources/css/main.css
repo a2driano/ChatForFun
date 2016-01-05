@@ -75,6 +75,8 @@
 
 /*FORM FOR AJAX DROP*/
 .cabinetFormText{
+    position: absolute;
+    top: 151px;
     display: table;
     width: 700px;
     height: 250px;

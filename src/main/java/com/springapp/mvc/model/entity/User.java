@@ -30,8 +30,8 @@ public class User implements Serializable {
     @Column(name = "passworduser")
     private String passwordUser;
 
-    @Column(name = "usingnickname")
-    private Boolean usingnickname;
+    @Column(name = "online")
+    private Boolean online;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<MessageHistory> message;
