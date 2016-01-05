@@ -1,27 +1,33 @@
 <#assign c=JspTaglibs["http://java.sun.com/jsp/jstl/core"]>
 <#assign s=JspTaglibs["http://www.springframework.org/tags"]>
 
-<!DOCTYPE html>
 <html>
 <head>
     <link href="<@c.url value="/resources/css/main.css" />" rel="stylesheet" media="screen"/>
-    <script type="text/javascript" src="<@c.url value="/resources/js/jquery-1.11.1.js"/>"></script>
-    <script type="text/javascript" src="<@c.url value="/resources/js/main.js"/>"></script>
+    <meta charset="UTF-8">
+    <title>ChatForFun</title>
+    <link href="/css/index.css" media="screen" rel="stylesheet">
+    <script type="text/javascript" src="/js/lib/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="/js/index_functions.js"></script>
+    <script type="text/javascript" src="/js/onstart.js"></script>
+    <script type="text/javascript" src="/js/index_addevents.js"></script>
     <script type="text/javascript">
-        var $applicationRoot = "<@s.url value="/" />";
+        var $applicationRoot = '/';
         var $host = document.location.protocol + '//' + document.location.host;
         var $hostRoot = document.location.protocol + '//' + document.location.host + $applicationRoot;
     </script>
 </head>
-
-<body id="mainbody">
-<div class="container">
-
+<body class="container">
+<div>
     <div id="central">
-        <div id="centralMenu">
-            <div id="enterReg" class="buttonStart">Sign in</div>
-            <div id="enter" class="buttonStart">Enter without registration</div>
-            <div id="registration" class="buttonStart">Registration</div>
+        <div id="centralContainer">
+            <div class="logo"></div>
+            <div id="centralMenu">
+                <div class="buttonContainer"><div id="enterReg" class="buttonStart">Sign in</div></div>
+                <div class="buttonContainer"><div id="enter" class="buttonStart">Enter without registration</div></div>
+                <div class="buttonContainer"><div id="registration" class="buttonStart">Registration</div></div>
+            </div>
         </div>
     </div>
 </div>
