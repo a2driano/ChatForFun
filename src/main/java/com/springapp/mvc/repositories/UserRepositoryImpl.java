@@ -14,6 +14,8 @@ import java.util.List;
  * @project: ChatForFun
  * @since 05.01.2016
  */
+
+//This class worked with User in DB
 @Repository
 @Transactional
 public class UserRepositoryImpl implements UserRepository {

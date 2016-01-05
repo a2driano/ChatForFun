@@ -1,6 +1,8 @@
 package com.springapp.mvc.repositories;
 
 import com.springapp.mvc.model.entity.MessageHistory;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,6 +14,9 @@ import java.util.List;
  * @project: ChatForFun
  * @since 05.01.2016
  */
+//This class worked with MessageHistory in DB
+@Repository
+@Transactional
 public class MessageHistoryRepositoryImpl implements MessageHistoryRepository {
 
     @PersistenceContext
