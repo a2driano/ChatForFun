@@ -53,31 +53,35 @@ public class User implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public User setId(Integer id) {
         this.id = id;
+        return this;
     }
 
     public String getNickName() {
         return nickName;
     }
 
-    public void setNickName(String nickName) {
+    public User setNickName(String nickName) {
         this.nickName = nickName;
+        return this;
     }
 
     public String getPasswordUser() {
         return passwordUser;
     }
 
-    public void setPasswordUser(String passwordUser) {
+    public User setPasswordUser(String passwordUser) {
         this.passwordUser = passwordUser;
+        return this;
     }
 
     public Boolean getOnline() {
         return online;
     }
 
-    public void setOnline(Boolean online) {
+    public User setOnline(Boolean online) {
         this.online = online;
+        return this;
     }
 }

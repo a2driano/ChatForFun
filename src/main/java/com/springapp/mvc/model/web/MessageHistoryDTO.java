@@ -37,31 +37,35 @@ public class MessageHistoryDTO {
         return messageId;
     }
 
-    public void setId(Integer id) {
+    public MessageHistoryDTO setId(Integer id) {
         this.messageId = id;
+        return this;
     }
 
     public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public MessageHistoryDTO setUser(User user) {
         this.user = user;
+        return this;
     }
 
     public String getMessageUser() {
         return messageUser;
     }
 
-    public void setMessageUser(String messageUser) {
+    public MessageHistoryDTO setMessageUser(String messageUser) {
         this.messageUser = messageUser;
+        return this;
     }
 
     public Date getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public MessageHistoryDTO setDate(Date date) {
         this.date = date;
+        return this;
     }
 }

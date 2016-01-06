@@ -16,7 +16,7 @@ public interface UserRepository {
 
     User getByName(String nickName);
 
-    List<User> getAll();
+    List getAll();
 
     void delete(User user);
 

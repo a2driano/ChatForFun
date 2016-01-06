@@ -32,7 +32,7 @@ import static org.hibernate.cfg.Environment.SHOW_SQL;
 @EnableJpaRepositories
 public class PersistenceConfig implements TransactionManagementConfigurer {
     private String dialect = "org.hibernate.dialect.PostgreSQLDialect";
-    private String hbm2ddlAuto = "create";
+    private String hbm2ddlAuto = "validate";
     private String packageToScan = "com.springapp.mvc";
 
     /**

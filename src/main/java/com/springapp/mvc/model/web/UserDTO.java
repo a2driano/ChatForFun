@@ -38,31 +38,36 @@ public class UserDTO implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public UserDTO setId(Integer id) {
         this.id = id;
+        return this;
     }
 
     public String getNickName() {
         return nickName;
     }
 
-    public void setNickName(String nickName) {
+    public UserDTO setNickName(String nickName) {
         this.nickName = nickName;
+        return this;
     }
 
     public String getPasswordUser() {
         return passwordUser;
     }
 
-    public void setPasswordUser(String passwordUser) {
+    public UserDTO setPasswordUser(String passwordUser) {
         this.passwordUser = passwordUser;
+        return this;
     }
 
-    public Boolean getUsingnickname() {
+    public Boolean getOnline() {
         return online;
     }
 
-    public void setUsingnickname(Boolean usingnickname) {
-        this.online = usingnickname;
+    public UserDTO setOnline(Boolean online) {
+        this.online = online;
+        return this;
     }
+
 }

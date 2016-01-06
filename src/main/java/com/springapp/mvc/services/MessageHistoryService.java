@@ -1,6 +1,7 @@
 package com.springapp.mvc.services;
 
 import com.springapp.mvc.model.entity.MessageHistory;
+import com.springapp.mvc.model.web.MessageHistoryDTO;
 
 import java.util.List;
 
@@ -12,6 +13,10 @@ import java.util.List;
  */
 public interface MessageHistoryService {
 
-//    List<MessageHistory> getUserMessagesById(Integer id);
+    List<MessageHistoryDTO> getUserMessagesById(Integer id);
+
+    List<MessageHistoryDTO> getAllUsersMessages();
+
+    MessageHistoryDTO addMessage();
 
 }
