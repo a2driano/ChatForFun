@@ -29,6 +29,11 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public User getByName(String nickName) {
+        return (User)entityManager.createNamedQuery("getUserByName").setParameter("nickName", nickName).getSingleResult();
+    }
+
+    @Override
     public List<User> getAll() {
         return entityManager.createNamedQuery("getAllUsers").getResultList();
     }

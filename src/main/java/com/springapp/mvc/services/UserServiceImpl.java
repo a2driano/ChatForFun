@@ -12,18 +12,18 @@ import java.util.List;
  */
 public class UserServiceImpl implements UserService {
 
-    @Override
-    public User getByUser(String nickName, String password) {
-        return null;
-    }
-
-    @Override
-    public List<User> getAll() {
-        return null;
-    }
-
-    @Override
-    public List<User> getByOnline() {
-        return null;
-    }
+//    @Override
+//    public User getByUser(String nickName, String password) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List<User> getAll() {
+//        return null;
+//    }
+//
+//    @Override
+//    public List<User> getByOnline() {
+//        return null;
+//    }
 }

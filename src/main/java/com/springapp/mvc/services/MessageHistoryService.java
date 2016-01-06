@@ -12,6 +12,6 @@ import java.util.List;
  */
 public interface MessageHistoryService {
 
-    List<MessageHistory> getMessagesByName(String nickName);
+//    List<MessageHistory> getUserMessagesById(Integer id);
 
 }

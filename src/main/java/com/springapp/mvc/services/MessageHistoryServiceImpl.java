@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class MessageHistoryServiceImpl implements MessageHistoryService {
 
-    @Override
-    public List<MessageHistory> getMessagesByName(String nickName) {
-        return null;
-    }
+//    @Override
+//    public List<MessageHistory> getUserMessagesById(Integer id) {
+//        return null;
+//    }
 }

@@ -15,19 +15,28 @@ import java.util.Date;
 @Entity
 @Table(name = "messagehistory")
 @NamedQueries({
-        @NamedQuery(name = "getUserMessagesByName", query = "SELECT a FROM MessageHistory a WHERE a.nickName= :nickName")
+        @NamedQuery(name = "getUserMessagesById", query = "SELECT a FROM MessageHistory a WHERE a.user.id= :id"),
+        @NamedQuery(name = "getAllUsersMessages", query = "SELECT a FROM MessageHistory a")
 })
 public class MessageHistory implements Serializable {
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "nickname")
+    @ManyToOne
+    @JoinColumn(name = "id")
     private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "message_id")
+    private Integer messageId;
 
     @Column(name = "message", length = 500)
     private String messageUser;
@@ -35,13 +44,14 @@ public class MessageHistory implements Serializable {
     @Column(name = "date")
     private Date date;
 
-    public Integer getId() {
-        return id;
+    public Integer getMessageId() {
+        return messageId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setMessageId(Integer messageId) {
+        this.messageId = messageId;
     }
+
 
     public String getMessageUser() {
         return messageUser;

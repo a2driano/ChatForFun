@@ -22,7 +22,7 @@ import java.util.Date;
 public class MessageHistoryDTO {
 
     @JsonProperty
-    private Integer id;
+    private Integer messageId;
 
     @JsonProperty
     private User user;
@@ -34,11 +34,11 @@ public class MessageHistoryDTO {
     private Date date;
 
     public Integer getId() {
-        return id;
+        return messageId;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.messageId = id;
     }
 
     public User getUser() {

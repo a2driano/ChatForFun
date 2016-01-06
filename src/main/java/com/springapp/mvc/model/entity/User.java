@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,11 +21,24 @@ import java.util.List;
         @NamedQuery(name = "getUserByNameAndPassword", query = "SELECT a FROM User a WHERE a.nickName= :nickName AND a.passwordUser= :passwordUser")
 })
 public class User implements Serializable {
+
+    @OneToMany(mappedBy = "user")
+    private List<MessageHistory> messageHistoryList;
+
+    public List<MessageHistory> getMessageHistoryList() {
+        return messageHistoryList;
+    }
+
+    public void setMessageHistoryList(List<MessageHistory> messageHistoryList) {
+        this.messageHistoryList = messageHistoryList;
+    }
+
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "id")
     private Integer id;
+
 
     @Column(name = "nickname", nullable = false, length = 100, unique = true)
     private String nickName;
@@ -34,9 +48,6 @@ public class User implements Serializable {
 
     @Column(name = "online")
     private Boolean online;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<MessageHistory> message;
 
     public Integer getId() {
         return id;
@@ -60,5 +71,13 @@ public class User implements Serializable {
 
     public void setPasswordUser(String passwordUser) {
         this.passwordUser = passwordUser;
+    }
+
+    public Boolean getOnline() {
+        return online;
+    }
+
+    public void setOnline(Boolean online) {
+        this.online = online;
     }
 }

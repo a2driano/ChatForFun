@@ -11,10 +11,10 @@ import java.util.List;
  * @since 05.01.2016
  */
 public interface UserService {
-
-    User getByUser(String nickName, String password);
-
-    List<User> getAll();
-
-    List<User> getByOnline();
+//
+//    User getByUser(String nickName, String password);
+//
+//    List<User> getAll();
+//
+//    List<User> getByOnline();
 }

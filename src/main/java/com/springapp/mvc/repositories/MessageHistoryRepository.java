@@ -13,7 +13,9 @@ import java.util.List;
  */
 public interface MessageHistoryRepository {
 
-    List<MessageHistory> getMessagesByName(String nickName);
+    List<MessageHistory> getUserMessagesById(Integer Id);
+
+    List<MessageHistory> getAllUsersMessages();
 
     void add(MessageHistory messageHistory);
 

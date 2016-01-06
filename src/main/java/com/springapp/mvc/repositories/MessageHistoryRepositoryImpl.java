@@ -23,8 +23,13 @@ public class MessageHistoryRepositoryImpl implements MessageHistoryRepository {
     private EntityManager entityManager;
 
     @Override
-    public List<MessageHistory> getMessagesByName(String nickName) {
-        return entityManager.createNamedQuery("getUserMessagesByName").setParameter("nickName", nickName).getResultList();
+    public List<MessageHistory> getUserMessagesById(Integer Id) {
+        return entityManager.createNamedQuery("getUserMessagesById").setParameter("id", Id).getResultList();
+    }
+
+    @Override
+    public List<MessageHistory> getAllUsersMessages() {
+        return entityManager.createNamedQuery("getAllUsersMessages").getResultList();
     }
 
     @Override
