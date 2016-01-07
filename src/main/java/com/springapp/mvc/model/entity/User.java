@@ -22,7 +22,7 @@ import java.util.List;
 })
 public class User implements Serializable {
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<MessageHistory> messageHistoryList;
 
     public List<MessageHistory> getMessageHistoryList() {

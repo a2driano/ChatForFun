@@ -17,6 +17,6 @@ public interface MessageHistoryService {
 
     List<MessageHistoryDTO> getAllUsersMessages();
 
-    MessageHistoryDTO addMessage();
+    MessageHistoryDTO addMessage(MessageHistoryDTO messageHistoryDTO);
 
 }

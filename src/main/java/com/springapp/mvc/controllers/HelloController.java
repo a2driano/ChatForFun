@@ -38,6 +38,12 @@ public class HelloController {
 		return userService.getByUser(nickName, password);
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/login2", method = RequestMethod.POST)
+	public UserDTO addUser(UserDTO userDTO){
+		return userService.addUser(userDTO);
+	}
+
 
 //	@ResponseBody
 //	@RequestMapping(value = "/get/dishes/bytype", method = RequestMethod.GET)
