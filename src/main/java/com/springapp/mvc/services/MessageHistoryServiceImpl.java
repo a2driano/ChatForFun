@@ -31,7 +31,21 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
     @Override
     public List<MessageHistoryDTO> getUserMessagesById(Integer id)
     {
-        return null;
+        List<MessageHistoryDTO> messageHistoryDTOList=new ArrayList<MessageHistoryDTO>();
+        try{
+            List<MessageHistory> messageHistoryList=messageHistoryRepository.getUserMessagesById(id);
+            for(MessageHistory messageHistory: messageHistoryList){
+                messageHistoryDTOList.add(new MessageHistoryDTO()
+                        .setMessageUser(messageHistory.getMessageUser())
+                        .setId(messageHistory.getMessageId())
+                        .setDate(messageHistory.getDate())
+                        .setUser(messageHistory.getUser()));
+            }
+
+        }catch (Exception e){
+            LOGGER.error("{}",e.toString(),e);
+        }
+        return messageHistoryDTOList;
     }
 
     @Override

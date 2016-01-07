@@ -13,10 +13,24 @@ import java.util.List;
  */
 public interface MessageHistoryService {
 
+    /**
+     * This methods return all messages of user by his id
+     * @param id
+     * @return
+     */
     List<MessageHistoryDTO> getUserMessagesById(Integer id);
 
+    /**
+     * This methods return all messages all users
+     * @return
+     */
     List<MessageHistoryDTO> getAllUsersMessages();
 
+    /**
+     * This methods add amessage of user
+     * @param messageHistoryDTO
+     * @return
+     */
     MessageHistoryDTO addMessage(MessageHistoryDTO messageHistoryDTO);
 
 }
