@@ -39,7 +39,13 @@ public class HelloController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/login2", method = RequestMethod.POST)
+	@RequestMapping(value = "/enter", method = RequestMethod.POST)
+	public UserDTO getByUserNickName(@RequestParam String nickName){
+		return userService.getByUserNickName(nickName);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public UserDTO addUser(@RequestParam String nickName, @RequestParam String password){
 		return userService.addUser(nickName, password);
 	}

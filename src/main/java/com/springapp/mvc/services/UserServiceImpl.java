@@ -35,12 +35,34 @@ public class UserServiceImpl implements UserService {
         if(nickName==null){
             return null;
         }
-        User user=userRepository.getByName(nickName);
-        UserDTO userDTO = new UserDTO()
-                .setId(user.getId())
-                .setNickName(user.getNickName())
-                .setOnline(user.getOnline());
-        return userDTO;
+        User user=new User();
+        try {
+            user = userRepository.getByName(nickName);
+            if (user.getNickName() != null && user.getPasswordUser() != null) {
+                return null;
+            } else if (user.getNickName() != null && user.getPasswordUser() == null) {
+                user.setOnline(true);
+                userRepository.update(user);
+            }
+            user = userRepository.getByName(nickName);
+            UserDTO userDTO = new UserDTO()
+                    .setId(user.getId())
+                    .setNickName(user.getNickName())
+                    .setOnline(user.getOnline());
+            return userDTO;
+        } catch (Exception e) {
+            LOGGER.error("{}", e.toString(), e);
+            user.setNickName(nickName);
+            user.setPasswordUser(null);
+            user.setOnline(true);
+            userRepository.add(user);
+            user = userRepository.getByName(nickName);
+            UserDTO userDTO = new UserDTO()
+                    .setId(user.getId())
+                    .setNickName(user.getNickName())
+                    .setOnline(user.getOnline());
+            return userDTO;
+        }
     }
 
     @Override
@@ -103,6 +125,7 @@ public class UserServiceImpl implements UserService {
             user.setNickName(nickName);
             user.setPasswordUser(password);
             user.setOnline(true);
+//            user.setId(userDTO.getId());
             userRepository.add(user);
         }catch (Exception e){
             LOGGER.error("{}",e.toString(),e);
