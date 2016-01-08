@@ -42,10 +42,10 @@ public interface UserService {
 
     /**
      * This methods add user into DB
-     * @param userDTO
+     * @param  nickName, password
      * @return
      */
-    UserDTO addUser(UserDTO userDTO);
+    UserDTO addUser(String nickName, String password);
 
     /**
      * This methods delete user into DB

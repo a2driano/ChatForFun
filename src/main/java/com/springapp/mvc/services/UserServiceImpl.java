@@ -7,6 +7,7 @@ import com.springapp.mvc.repositories.UserRepository;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class UserServiceImpl implements UserService {
         if(nickName==null&&password==null){
             return null;
         }
-        User user=userRepository.getByName(nickName);
+        User user=userRepository.getByUser(nickName, password);
         UserDTO userDTO = new UserDTO()
                 .setId(user.getId())
                 .setNickName(user.getNickName())
@@ -96,11 +97,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO addUser(UserDTO userDTO) {
+    public UserDTO addUser(String nickName, String password) {
         try{
             User user=new User();
-            user.setNickName(userDTO.getNickName());
-            user.setPasswordUser(userDTO.getPasswordUser());
+            user.setNickName(nickName);
+            user.setPasswordUser(password);
             user.setOnline(true);
             userRepository.add(user);
         }catch (Exception e){

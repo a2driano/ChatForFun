@@ -40,8 +40,8 @@ public class HelloController {
 
 	@ResponseBody
 	@RequestMapping(value = "/login2", method = RequestMethod.POST)
-	public UserDTO addUser(UserDTO userDTO){
-		return userService.addUser(userDTO);
+	public UserDTO addUser(@RequestParam String nickName, @RequestParam String password){
+		return userService.addUser(nickName, password);
 	}
 
 
