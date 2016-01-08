@@ -18,6 +18,8 @@ public interface UserRepository {
 
     List getAll();
 
+    User getById (Integer id);
+
     void delete(User user);
 
     void add(User user);

@@ -134,13 +134,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO deleteUser(UserDTO userDTO) {
+    public UserDTO deleteUser(Integer id) {
         try{
-            User user=new User();
-            user.setId(userDTO.getId());
-            user.setNickName(userDTO.getNickName());
-            user.setPasswordUser(userDTO.getPasswordUser());
-            user.setOnline(true);
+            User user=new User().setId(id);
             userRepository.delete(user);
         }catch (Exception e){
             LOGGER.error("{}",e.toString(),e);

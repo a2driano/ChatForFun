@@ -49,10 +49,10 @@ public interface UserService {
 
     /**
      * This methods delete user into DB
-     * @param userDTO
+     * @param  id
      * @return
      */
-    UserDTO deleteUser(UserDTO userDTO);
+    UserDTO deleteUser(Integer id);
 
     /**
      * This methods update user in DB

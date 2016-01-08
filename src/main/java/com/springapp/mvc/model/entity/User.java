@@ -18,6 +18,7 @@ import java.util.List;
         @NamedQuery(name = "getAllUsers", query = "SELECT a FROM User a"),
         @NamedQuery(name = "getUserByName", query = "SELECT a FROM User a WHERE a.nickName= :nickName"),
         @NamedQuery(name = "getByOnline", query = "SELECT a FROM User a WHERE a.online=true"),
+        @NamedQuery(name = "getById", query = "SELECT a FROM User a WHERE a.id= :id"),
         @NamedQuery(name = "getUserByNameAndPassword", query = "SELECT a FROM User a WHERE a.nickName= :nickName AND a.passwordUser= :passwordUser")
 })
 public class User implements Serializable {

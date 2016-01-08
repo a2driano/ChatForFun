@@ -50,6 +50,12 @@ public class HelloController {
 		return userService.addUser(nickName, password);
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/del", method = RequestMethod.GET)
+	public UserDTO deleteUser(@RequestParam int id){
+		return userService.deleteUser(id);
+	}
+
 
 //	@ResponseBody
 //	@RequestMapping(value = "/get/dishes/bytype", method = RequestMethod.GET)
@@ -58,5 +64,4 @@ public class HelloController {
 //		return dishService.getDishesByType(typesOfDishes,kladr);
 //	}
 
-//	getByName, getByName,
 }
