@@ -20,6 +20,8 @@ public interface UserRepository {
 
     User getById (Integer id);
 
+    Boolean isPresent(String nickName);
+
     void delete(User user);
 
     void add(User user);

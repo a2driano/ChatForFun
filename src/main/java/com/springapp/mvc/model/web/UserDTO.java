@@ -22,16 +22,16 @@ import java.util.List;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class UserDTO implements Serializable {
 
-    @JsonProperty
+    public UserDTO(){}
+
     private Integer id;
 
-    @JsonProperty
+    @JsonProperty("name")
     private String nickName;
 
-    @JsonIgnore
+    @JsonProperty("password")
     private String passwordUser;
 
-    @JsonProperty
     private Boolean online;
 
     public Integer getId() {

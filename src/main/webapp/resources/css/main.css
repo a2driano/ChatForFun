@@ -7,9 +7,11 @@
 #central{
     width: 100%;
     height: 100%;
-    background-color: #424242;
     padding: 0%;
     margin: 0px;
+    background-image: url(../img/background-300x300.jpg);
+    background-repeat: repeat;
+    background-color: #424242;
 }
 #centralContainer{
     margin: auto;

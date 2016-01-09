@@ -47,6 +47,11 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public Boolean isPresent(String nickName) {
+        return (Boolean)entityManager.createNamedQuery("getUserByName").setParameter("nickName", nickName).getSingleResult();
+    }
+
+    @Override
     public void delete(User user) {
         entityManager.remove(getById(user.getId()));
     }

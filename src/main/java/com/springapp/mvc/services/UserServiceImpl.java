@@ -2,6 +2,8 @@ package com.springapp.mvc.services;
 
 import com.springapp.mvc.model.entity.User;
 import com.springapp.mvc.model.web.UserDTO;
+import com.springapp.mvc.model.web.UserResponce;
+import com.springapp.mvc.model.web.UserResponceStatus;
 import com.springapp.mvc.repositories.MessageHistoryRepository;
 import com.springapp.mvc.repositories.UserRepository;
 import org.slf4j.LoggerFactory;
@@ -119,18 +121,64 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO addUser(String nickName, String password) {
+    public UserResponce addUser(UserDTO userDTO) {
+        UserResponce userResponce=new UserResponce();
+        User user=new User();
+        try{
+//            user=userRepository.getByUser(userDTO.getNickName(),userDTO.getPasswordUser());
+            if(userRepository.isPresent(userDTO.getNickName())){
+                return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
+            }else {
+                userRepository.add(user);
+                System.err.println("WHAT IS HAPPINES THIS DB");
+            }
+        }catch (Exception e){
+            LOGGER.error("{}", e.toString(), e);
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("suka");
+        }
+        try{
+            user=userRepository.getByUser(user.getNickName(),user.getPasswordUser());
+            userDTO = new UserDTO()
+                    .setId(user.getId())
+                    .setNickName(user.getNickName())
+                    .setOnline(user.getOnline())
+                    .setPasswordUser(user.getPasswordUser());
+            return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
+                    .setUserDTO(userDTO)
+                    .setMessage("SUCCESS");
+        }
+        catch (Exception e){
+            LOGGER.error("{}", e.toString(), e);
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("DB DON`T GIVE A OBJECT");
+        }
+    }
+
+    @Override
+    public UserResponce addUser2(String nickName, String password) {
+        UserResponce userResponce=new UserResponce();
         try{
             User user=new User();
             user.setNickName(nickName);
             user.setPasswordUser(password);
             user.setOnline(true);
-//            user.setId(userDTO.getId());
             userRepository.add(user);
+
+            user=userRepository.getByUser(user.getNickName(), user.getPasswordUser());
+            UserDTO userDTO = new UserDTO()
+                    .setId(user.getId())
+                    .setNickName(user.getNickName())
+                    .setOnline(user.getOnline())
+                    .setPasswordUser(user.getPasswordUser());
+
+            return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
+                    .setUserDTO(userDTO)
+                    .setMessage("SUCCESS");
+
         }catch (Exception e){
-            LOGGER.error("{}",e.toString(),e);
+            LOGGER.error("{}", e.toString(), e);
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage(nickName + " --- " + password);
         }
-        return null;
+
     }
 
     @Override

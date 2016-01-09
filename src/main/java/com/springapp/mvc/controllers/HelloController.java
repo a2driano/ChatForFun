@@ -1,15 +1,13 @@
 package com.springapp.mvc.controllers;
 
 import com.springapp.mvc.model.web.UserDTO;
+import com.springapp.mvc.model.web.UserResponce;
 import com.springapp.mvc.services.MessageHistoryService;
 import com.springapp.mvc.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,10 +42,16 @@ public class HelloController {
 		return userService.getByUserNickName(nickName);
 	}
 
+//	@ResponseBody
+//	@RequestMapping(value = "/add", method = RequestMethod.POST)
+//	public UserResponce addUser(@RequestBody UserDTO userDTO){
+//		return userService.addUser(userDTO);
+//	}
+
 	@ResponseBody
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public UserDTO addUser(@RequestParam String nickName, @RequestParam String password){
-		return userService.addUser(nickName, password);
+	@RequestMapping(value = "/add2", method = RequestMethod.POST)
+	public UserResponce addUser2(@RequestParam String nickName, @RequestParam String password){
+		return userService.addUser2(nickName, password);
 	}
 
 	@ResponseBody

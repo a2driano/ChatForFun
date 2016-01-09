@@ -24,13 +24,10 @@ public class MessageHistoryDTO {
     @JsonProperty
     private Integer messageId;
 
-    @JsonProperty
     private User user;
 
-    @JsonProperty
     private String messageUser;
 
-    @JsonProperty
     private Date date;
 
     public Integer getId() {

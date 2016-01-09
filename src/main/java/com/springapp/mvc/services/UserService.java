@@ -2,6 +2,7 @@ package com.springapp.mvc.services;
 
 import com.springapp.mvc.model.entity.User;
 import com.springapp.mvc.model.web.UserDTO;
+import com.springapp.mvc.model.web.UserResponce;
 
 import java.util.List;
 
@@ -42,10 +43,11 @@ public interface UserService {
 
     /**
      * This methods add user into DB
-     * @param  nickName, password
+     * @param  userDTO
      * @return
      */
-    UserDTO addUser(String nickName, String password);
+    UserResponce addUser(UserDTO userDTO);
+    UserResponce addUser2(String nickName, String password);
 
     /**
      * This methods delete user into DB
