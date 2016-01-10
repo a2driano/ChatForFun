@@ -124,6 +124,9 @@ public class UserServiceImpl implements UserService {
     public UserResponce addUser(UserDTO userDTO) {
         UserResponce userResponce=new UserResponce();
         User user=new User();
+        if((userDTO.getNickName())==""||(userDTO.getPasswordUser())==""){
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить все поля! Повторите пожалуйста!");
+        }
         try{
             if(userRepository.isPresent(userDTO.getNickName())){
                 return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");

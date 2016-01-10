@@ -55,6 +55,7 @@
 }
 
 .buttonStart:hover {
+    cursor: pointer;
     position: relative;
     margin: auto;
     margin-top: 45px;
@@ -107,7 +108,7 @@
     -webkit-transition: all 0.4s ease-out;
 
 }
-.buttonForm{
+#submit{
     display: block;
     position: relative;
     margin: auto;
@@ -128,7 +129,8 @@
     -o-transition: all 0.4s ease-out;
     -webkit-transition: all 0.4s ease-out;
 }
-.buttonForm:hover{
+#submit:hover{
+    cursor: pointer;
     display: block;
     position: relative;
     margin: auto;
