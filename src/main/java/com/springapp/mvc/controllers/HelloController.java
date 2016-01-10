@@ -30,29 +30,17 @@ public class HelloController {
 		return "index";
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public UserDTO getByUser(@RequestParam String nickName, @RequestParam String password){
-		return userService.getByUser(nickName, password);
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "/enter", method = RequestMethod.POST)
-	public UserDTO getByUserNickName(@RequestParam String nickName){
-		return userService.getByUserNickName(nickName);
-	}
-
 //	@ResponseBody
-//	@RequestMapping(value = "/add", method = RequestMethod.POST)
-//	public UserResponce addUser(@RequestBody UserDTO userDTO){
-//		return userService.addUser(userDTO);
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)
+//	public UserDTO getByUser(@RequestParam String nickName, @RequestParam String password){
+//		return userService.getByUser(nickName, password);
 //	}
 
-	@ResponseBody
-	@RequestMapping(value = "/add2", method = RequestMethod.POST)
-	public UserResponce addUser2(@RequestParam String nickName, @RequestParam String password){
-		return userService.addUser2(nickName, password);
-	}
+//	@ResponseBody
+//	@RequestMapping(value = "/enter", method = RequestMethod.POST)
+//	public UserDTO getByUserNickName(@RequestParam String nickName){
+//		return userService.getByUserNickName(nickName);
+//	}
 
 	@ResponseBody
 	@RequestMapping(value = "/del", method = RequestMethod.GET)
@@ -61,11 +49,5 @@ public class HelloController {
 	}
 
 
-//	@ResponseBody
-//	@RequestMapping(value = "/get/dishes/bytype", method = RequestMethod.GET)
-//	public List<DishDto> getDishesByType(@RequestParam("type") String type, @RequestParam String kladr) {
-//		TypesOfDishes typesOfDishes = TypesOfDishes.valueOf(type.toUpperCase());
-//		return dishService.getDishesByType(typesOfDishes,kladr);
-//	}
 
 }

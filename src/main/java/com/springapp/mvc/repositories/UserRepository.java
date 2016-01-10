@@ -22,6 +22,8 @@ public interface UserRepository {
 
     Boolean isPresent(String nickName);
 
+    Boolean isPresentConfirm(String nickName, String passwordUser);
+
     void delete(User user);
 
     void add(User user);

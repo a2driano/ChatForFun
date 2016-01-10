@@ -50,6 +50,10 @@ public class UserRepositoryImpl implements UserRepository {
     public Boolean isPresent(String nickName) {
         return (Long)entityManager.createNamedQuery("userNameIsPresent").setParameter("nickName", nickName).getSingleResult()>0;
     }
+    @Override
+    public Boolean isPresentConfirm(String nickName, String passwordUser) {
+        return (Long)entityManager.createNamedQuery("userNameAndPasswordIsPresent").setParameter("nickName", nickName).setParameter("passwordUser", passwordUser).getSingleResult()>0;
+    }
 
     @Override
     public void delete(User user) {

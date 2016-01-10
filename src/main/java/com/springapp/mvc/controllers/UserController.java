@@ -29,4 +29,15 @@ public class UserController {
     public UserResponce addUser(@RequestBody UserDTO userDTO) {
         return userService.addUser(userDTO);
     }
+    @RequestMapping(value = "/confirmUser", method = RequestMethod.POST)
+    @ResponseBody
+    public UserResponce confirmUser(@RequestBody UserDTO userDTO) {
+        return userService.confirmUser(userDTO);
+    }
+
+    @RequestMapping(value = "/enterUser", method = RequestMethod.POST)
+    @ResponseBody
+    public UserResponce enterUser(@RequestBody UserDTO userDTO) {
+        return userService.enterUser(userDTO);
+    }
 }

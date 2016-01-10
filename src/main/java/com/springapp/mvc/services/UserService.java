@@ -16,18 +16,17 @@ public interface UserService {
 
     /**
      * This methods returns a user by nickname
-     * @param nickName
+     * @param userDTO
      * @return
      */
-    UserDTO getByUserNickName(String nickName);
+    UserResponce enterUser(UserDTO userDTO);
 
     /**
      * This methods returns a user by nickname and password
-     * @param nickName
-     * @param password
+     * @param userDTO
      * @return
      */
-    UserDTO getByUser(String nickName, String password);
+    UserResponce confirmUser(UserDTO userDTO);
 
     /**
      * This methods returns all users in DB
@@ -40,14 +39,12 @@ public interface UserService {
      * @return
      */
     List<UserDTO> getByOnline();
-
     /**
      * This methods add user into DB
      * @param  userDTO
      * @return
      */
     UserResponce addUser(UserDTO userDTO);
-    UserResponce addUser2(String nickName, String password);
 
     /**
      * This methods delete user into DB

@@ -19,6 +19,7 @@ import java.util.List;
         @NamedQuery(name = "getUserByName", query = "SELECT a FROM User a WHERE a.nickName= :nickName"),
         @NamedQuery(name = "getByOnline", query = "SELECT a FROM User a WHERE a.online=true"),
         @NamedQuery(name = "userNameIsPresent", query = "SELECT COUNT(a) from User a WHERE a.nickName= :nickName"),
+        @NamedQuery(name = "userNameAndPasswordIsPresent", query = "SELECT COUNT(a) from User a WHERE a.nickName= :nickName AND a.passwordUser= :passwordUser"),
         @NamedQuery(name = "getById", query = "SELECT a FROM User a WHERE a.id= :id"),
         @NamedQuery(name = "getUserByNameAndPassword", query = "SELECT a FROM User a WHERE a.nickName= :nickName AND a.passwordUser= :passwordUser")
 })

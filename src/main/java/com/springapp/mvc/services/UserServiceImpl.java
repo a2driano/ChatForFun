@@ -33,56 +33,6 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public UserDTO getByUserNickName(String nickName) {
-        if(nickName==null){
-            return null;
-        }
-        User user=new User();
-        try {
-            user = userRepository.getByName(nickName);
-            if (user.getNickName() != null && user.getPasswordUser() != null) {
-                return null;
-            } else if (user.getNickName() != null && user.getPasswordUser() == null) {
-                user.setOnline(true);
-                userRepository.update(user);
-            }
-            user = userRepository.getByName(nickName);
-            UserDTO userDTO = new UserDTO()
-                    .setId(user.getId())
-                    .setNickName(user.getNickName())
-                    .setOnline(user.getOnline());
-            return userDTO;
-        } catch (Exception e) {
-            LOGGER.error("{}", e.toString(), e);
-            user.setNickName(nickName);
-            user.setPasswordUser(null);
-            user.setOnline(true);
-            userRepository.add(user);
-            user = userRepository.getByName(nickName);
-            UserDTO userDTO = new UserDTO()
-                    .setId(user.getId())
-                    .setNickName(user.getNickName())
-                    .setOnline(user.getOnline());
-            return userDTO;
-        }
-    }
-
-    @Override
-    public UserDTO getByUser(String nickName, String password) {
-        if(nickName==null&&password==null){
-            return null;
-        }
-        User user=userRepository.getByUser(nickName, password);
-        UserDTO userDTO = new UserDTO()
-                .setId(user.getId())
-                .setNickName(user.getNickName())
-                .setOnline(user.getOnline())
-                .setPasswordUser(user.getPasswordUser());
-
-        return userDTO;
-    }
-
-    @Override
     public List<UserDTO> getAll() {
         List<UserDTO> userDTOList = new ArrayList<UserDTO>();
         try {
@@ -121,9 +71,50 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserResponce confirmUser(UserDTO userDTO) {
+        UserResponce userResponce=new UserResponce();
+        User user=new User();
+        //name and password must be not null
+        if((userDTO.getNickName())==""||(userDTO.getPasswordUser())==""){
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить все поля! Повторите пожалуйста!");
+        }
+        try{
+            if(userRepository.isPresentConfirm(userDTO.getNickName(), userDTO.getPasswordUser())){
+                return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS).setUserDTO(userDTO).setMessage(userDTO.getNickName()+", Вы вошли в свой аккаунт");
+            }else {
+                return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Неверный логин или пароль");
+            }
+        }catch (Exception e){
+            LOGGER.error("{}", e.toString(), e);
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
+        }
+    }
+    @Override
+    public UserResponce enterUser(UserDTO userDTO) {
+        UserResponce userResponce=new UserResponce();
+        User user=new User();
+        //name and password must be not null
+        if((userDTO.getNickName())==""){
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить поле!");
+        }
+        try{
+            if(userRepository.isPresent(userDTO.getNickName())){
+                return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
+            }else {
+                userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
+                return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS).setUserDTO(userDTO).setMessage("Вы вошли под ником: "+userDTO.getNickName());
+            }
+        }catch (Exception e){
+            LOGGER.error("{}", e.toString(), e);
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
+        }
+    }
+
+    @Override
     public UserResponce addUser(UserDTO userDTO) {
         UserResponce userResponce=new UserResponce();
         User user=new User();
+        //name and password must be not null
         if((userDTO.getNickName())==""||(userDTO.getPasswordUser())==""){
             return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить все поля! Повторите пожалуйста!");
         }
@@ -132,54 +123,14 @@ public class UserServiceImpl implements UserService {
                 return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
             }else {
                 userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
+                return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
+                        .setUserDTO(userDTO)
+                        .setMessage("Регистрация прошла успешно! Вы вошли под ником: "+userDTO.getNickName());
             }
         }catch (Exception e){
             LOGGER.error("{}", e.toString(), e);
             return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
         }
-        try{
-            user=userRepository.getByUser(userDTO.getNickName(),userDTO.getPasswordUser());
-            userDTO = new UserDTO()
-                    .setId(user.getId())
-                    .setNickName(user.getNickName())
-                    .setOnline(user.getOnline())
-                    .setPasswordUser(user.getPasswordUser());
-            return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
-                    .setUserDTO(userDTO)
-                    .setMessage("Регистрация прошла успешно!");
-        }
-        catch (Exception e){
-            LOGGER.error("{}", e.toString(), e);
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("User зарегистрирован, соединения с базой данных оборвалось...");
-        }
-    }
-
-    @Override
-    public UserResponce addUser2(String nickName, String password) {
-        UserResponce userResponce=new UserResponce();
-        try{
-            User user=new User();
-            user.setNickName(nickName);
-            user.setPasswordUser(password);
-            user.setOnline(true);
-            userRepository.add(user);
-
-            user=userRepository.getByUser(user.getNickName(), user.getPasswordUser());
-            UserDTO userDTO = new UserDTO()
-                    .setId(user.getId())
-                    .setNickName(user.getNickName())
-                    .setOnline(user.getOnline())
-                    .setPasswordUser(user.getPasswordUser());
-
-            return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
-                    .setUserDTO(userDTO)
-                    .setMessage("SUCCESS");
-
-        }catch (Exception e){
-            LOGGER.error("{}", e.toString(), e);
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage(nickName + " --- " + password);
-        }
-
     }
 
     @Override

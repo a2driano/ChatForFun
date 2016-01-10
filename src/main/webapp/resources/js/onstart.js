@@ -16,26 +16,23 @@ var safeNull = function (value) {
 
 var onStart=function(){
 
-    $('#enterReg').on('click', function(){
+    $('#enterConfirm').on('click', function(){
         $('#centralMenu').fadeOut(500);
-        setTimeout(function () {
-            $('#centralContainer').append('<form class="cabinetFormText" action="/login" method="post">'+
-                '<input class="formText" name="nickName" type="text" maxlength="25" size="40" required placeholder="ENTER YOUR LOGIN / NAME">'+
-                '<input class="formText" name="password" type="password" maxlength="25" size="40" required placeholder="ENTER YOUR PASSWORD">'+
-                '<input class="buttonForm" type="submit" name="submit" value="Submit"></form>');
-            $('.cabinetFormText').hide();
-            $('.cabinetFormText').fadeIn(400);
-        }, 200);
+        $('#centralContainer').append('<form class="cabinetFormText">'+
+            '<input class="formText" id="name" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">'+
+            '<input class="formText" id="password" type="password" maxlength="25" size="40" required placeholder="ВВЕДИТЕ ПАРОЛЬ">'+
+            '<div class="buttonForm" id="submit" onclick="addEventsConfirm()">Войти</div></form>');
+        $('.cabinetFormText').hide();
+        $('.cabinetFormText').fadeIn(400);
 
     });
 
     $('#registration').on('click', function(){
         $('#centralMenu').fadeOut(500);
-
             $('#centralContainer').append('<form class="cabinetFormText">'+
-                '<input class="formText" id="name" type="text" maxlength="25" size="40" required placeholder="ENTER YOUR LOGIN / NAME">'+
-                '<input class="formText" id="password" type="password" maxlength="25" size="40" required placeholder="ENTER YOUR PASSWORD">'+
-                '<div class="buttonForm" id="submit" onclick="addEvents()">Submit</div></form>');
+                '<input class="formText" id="name" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">'+
+                '<input class="formText" id="password" type="password" maxlength="25" size="40" required placeholder="ВВЕДИТЕ ПАРОЛЬ">'+
+                '<div class="buttonForm" id="submit" onclick="addEventsRegistration()">Войти</div></form>');
             $('.cabinetFormText').hide();
             $('.cabinetFormText').fadeIn(400);
     });
@@ -44,13 +41,11 @@ var onStart=function(){
 
     $('#enter').on('click', function(){
         $('#centralMenu').fadeOut(500);
-        setTimeout(function () {
-            $('#centralContainer').append('<form class="cabinetFormText" action="/enter" method="post">'+
-                '<input class="formText" name="nickName" type="text" maxlength="25" size="40" required placeholder="ENTER YOUR LOGIN / NAME">'+
-                '<input class="buttonForm" type="submit" name="submit" value="Submit"></form>');
-            $('.cabinetFormText').hide();
-            $('.cabinetFormText').fadeIn(400);
-        }, 200);
+        $('#centralContainer').append('<form class="cabinetFormText">'+
+            '<input class="formText" id="name" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">'+
+            '<div class="buttonForm" id="submit" onclick="addEventsEnter()">Войти</div></form>');
+        $('.cabinetFormText').hide();
+        $('.cabinetFormText').fadeIn(400);
     });
 };
 
