@@ -125,19 +125,17 @@ public class UserServiceImpl implements UserService {
         UserResponce userResponce=new UserResponce();
         User user=new User();
         try{
-//            user=userRepository.getByUser(userDTO.getNickName(),userDTO.getPasswordUser());
             if(userRepository.isPresent(userDTO.getNickName())){
                 return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
             }else {
-                userRepository.add(user);
-                System.err.println("WHAT IS HAPPINES THIS DB");
+                userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
             }
         }catch (Exception e){
             LOGGER.error("{}", e.toString(), e);
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("suka");
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
         }
         try{
-            user=userRepository.getByUser(user.getNickName(),user.getPasswordUser());
+            user=userRepository.getByUser(userDTO.getNickName(),userDTO.getPasswordUser());
             userDTO = new UserDTO()
                     .setId(user.getId())
                     .setNickName(user.getNickName())
@@ -145,11 +143,11 @@ public class UserServiceImpl implements UserService {
                     .setPasswordUser(user.getPasswordUser());
             return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
                     .setUserDTO(userDTO)
-                    .setMessage("SUCCESS");
+                    .setMessage("Регистрация прошла успешно!");
         }
         catch (Exception e){
             LOGGER.error("{}", e.toString(), e);
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("DB DON`T GIVE A OBJECT");
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("User зарегистрирован, соединения с базой данных оборвалось...");
         }
     }
 

@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <link href="<@c.url value="/resources/css/main.css" />" rel="stylesheet" media="screen"/>
+    <link href="<@c.url value="/resources/css/main.css"/>" rel="stylesheet" media="screen"/>
     <meta charset="UTF-8">
     <title>ChatForFun</title>
     <script type="text/javascript" src="/js/lib/jquery-2.1.4.min.js"></script>

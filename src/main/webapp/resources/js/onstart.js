@@ -32,10 +32,10 @@ var onStart=function(){
     $('#registration').on('click', function(){
         $('#centralMenu').fadeOut(500);
 
-            $('#centralContainer').append('<div class="cabinetFormText">'+
+            $('#centralContainer').append('<form class="cabinetFormText">'+
                 '<input class="formText" id="name" type="text" maxlength="25" size="40" required placeholder="ENTER YOUR LOGIN / NAME">'+
                 '<input class="formText" id="password" type="password" maxlength="25" size="40" required placeholder="ENTER YOUR PASSWORD">'+
-                '<div class="buttonForm" id="submit" onclick="addEvents()">Submit</div></div>');
+                '<div class="buttonForm" id="submit" onclick="addEvents()">Submit</div></form>');
             $('.cabinetFormText').hide();
             $('.cabinetFormText').fadeIn(400);
     });

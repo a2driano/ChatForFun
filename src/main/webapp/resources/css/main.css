@@ -148,5 +148,25 @@
     -o-transition: all 0.4s ease-out;
     -webkit-transition: all 0.4s ease-out;
 }
+.responce{
+    display: block;
+    position: relative;
+    margin: auto;
+    margin-top: 15px;
+    font-size: 12pt;
+    font-family: sans-serif;
+    color: limegreen;
+    text-align: center;
+}
+.responceFail{
+    display: block;
+    position: relative;
+    margin: auto;
+    margin-top: 15px;
+    font-size: 12pt;
+    font-family: sans-serif;
+    color: red;
+    text-align: center;
+}
 
 
