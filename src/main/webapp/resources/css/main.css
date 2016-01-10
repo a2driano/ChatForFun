@@ -18,8 +18,9 @@
     width: 700px;
     height: 100%;
     background-color: #6e6e6e;
-    box-shadow: 0 0 25px rgba(24, 24, 24, 0.78);
+    box-shadow: 0 0 40px rgba(20, 20, 20, 0.83);
 }
+
 .logo{
     position: relative;
     margin: auto;
@@ -34,6 +35,7 @@
 }
 
 .buttonStart {
+    z-index: 500;
     position: relative;
     margin: auto;
     margin-top: 50px;
@@ -169,6 +171,17 @@
     font-family: sans-serif;
     color: red;
     text-align: center;
+}
+.bottomImage{
+    z-index: 3;
+    display: inline;
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 0px;
+    width: 700px;
+    height: 30%;
+    background-image: url(../img/background-300x300.jpg);
+    background-color: #6e6e6e;
 }
 
 
