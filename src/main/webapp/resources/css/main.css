@@ -9,7 +9,7 @@
     height: 100%;
     padding: 0%;
     margin: 0px;
-    background-image: url(../img/background-300x300.jpg);
+    background-image: url(../img/background-300x300__blue.jpg);
     background-repeat: repeat;
     background-color: #424242;
 }
@@ -17,8 +17,12 @@
     margin: auto;
     width: 700px;
     height: 100%;
-    background-color: #6e6e6e;
-    box-shadow: 0 0 40px rgba(20, 20, 20, 0.83);
+    /*background-color: #b7b8a7;*/
+    background-color: #8b91b8;
+    background-image: url(../img/back_noise.png);
+    background-repeat: repeat;
+    /*background-color: #6e6e6e;*/
+    box-shadow: 0 40px 0 rgba(20, 20, 20, 0.83);
 }
 
 .logo{
@@ -26,12 +30,50 @@
     margin: auto;
     width: 700px;
     height: 150px;
-    background-color: #242424;
+    background-image: url(../img/back_noise.png);
+    background-repeat: repeat;
+    background-color: #404040;
+    box-shadow: 0 0 40px rgba(34, 34, 34, 0.88);
+}
+.logoinside{
+    position: relative;
+    margin: auto;
+    width: 700px;
+    height: 150px;
+    background-image: url(../img/Logo.gif);
+    background-repeat: no-repeat;
+}
+.bottomImage{
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 0px;
+    width: 700px;
+    height: 60%;
+    background-image: url(../img/Background---friends.png);
+    background-repeat: no-repeat;
+    /*background-color: #6e6e6e;*/
+    background-size: auto 100%;
+    background-position: bottom;
 }
 .buttonContainer{
     display: inline-block;
     width: 700px;
     height: 150px;
+}
+#enterConfirm{
+    border-color: rgba(255, 170, 194, 0.76);
+    border-radius: 10px;
+    background-color: rgb(198, 59, 113);
+}
+#enter{
+    border-color: rgba(255, 170, 194, 0.76);
+    border-radius: 10px;
+    background-color: rgb(163, 27, 122);
+}
+#registration{
+    border-color: rgba(255, 170, 194, 0.76);
+    border-radius: 10px;
+    background-color: rgb(128, 18, 163);
 }
 
 .buttonStart {
@@ -56,7 +98,7 @@
     -webkit-transition: all 0.4s ease-out;
 }
 
-.buttonStart:hover {
+.buttonStart:hover, #enterConfirm:hover, #enter:hover, #registration:hover {
     cursor: pointer;
     position: relative;
     margin: auto;
@@ -65,12 +107,12 @@
     height: 70px;
     font-size: 19pt;
     font-family: sans-serif;
-    color: rgb(50, 163, 37);
+    color: white;
     line-height: 70px;
     text-align: center;
-    background-color: white;
+    background-color: orange;
     border: 2px solid;
-    border-color: rgb(146, 255, 142);
+    border-color: white;
     border-radius: 10px;
 
     -moz-transition: all 0.4s ease-out;
@@ -89,6 +131,7 @@
     font-family: sans-serif;
 }
 .formText{
+    z-index: 700;
     width: 290px;
     height: 50px;
     display: table;
@@ -103,6 +146,7 @@
 
 }
 .formText:hover{
+    z-index: 700;
     border-color: rgb(163, 0, 91);
 
     -moz-transition: all 0.4s ease-out;
@@ -111,6 +155,7 @@
 
 }
 #submit{
+    z-index: 500;
     display: block;
     position: relative;
     margin: auto;
@@ -132,6 +177,7 @@
     -webkit-transition: all 0.4s ease-out;
 }
 #submit:hover{
+    z-index: 500;
     cursor: pointer;
     display: block;
     position: relative;
@@ -172,16 +218,6 @@
     color: red;
     text-align: center;
 }
-.bottomImage{
-    z-index: 3;
-    display: inline;
-    position: absolute;
-    bottom: 0px;
-    margin-bottom: 0px;
-    width: 700px;
-    height: 30%;
-    background-image: url(../img/background-300x300.jpg);
-    background-color: #6e6e6e;
-}
+
 
 
