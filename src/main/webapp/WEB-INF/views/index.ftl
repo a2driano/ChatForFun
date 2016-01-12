@@ -21,7 +21,15 @@
 <div>
     <div id="central">
         <div id="centralContainer">
-            <div class="logo"><div class="logoInside"></div></div>
+            <div class="logo">
+                <div class="logoTypesImage" id="image_1"></div>
+                <div class="logoTypesImage" id="image_2"></div>
+                <div class="logoTypesImage" id="image_3"></div>
+                <div class="logoTypesImage" id="image_4"></div>
+                <div class="logoTypesImage" id="image_5"></div>
+                <div class="logoTypesImage" id="image_6"></div>
+                <#--<div class="logoInside"></div>-->
+            </div>
             <div id="centralMenu">
                 <div class="buttonContainer"><div id="enterConfirm" class="buttonStart">Войти</div></div>
                 <div class="buttonContainer"><div id="enter" class="buttonStart">Войти без регистрации</div></div>
