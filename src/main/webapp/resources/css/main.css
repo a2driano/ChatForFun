@@ -38,9 +38,9 @@
 .logoinside{
     position: relative;
     margin: auto;
-    width: 700px;
-    height: 150px;
-    background-image: url(../img/Logo.gif);
+    width: 512px;
+    height: 112px;
+    background-image: url(../img/Logo-mod.png);
     background-repeat: no-repeat;
 }
 .bottomImage{
