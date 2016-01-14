@@ -4,7 +4,5 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/springapp/mvc/controllers/HelloController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/springapp/mvc/services/UserServiceImpl.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/img/Logo-mod.png" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/img/logo-mod.gif" charset="windows-1251" />
   </component>
 </project>
