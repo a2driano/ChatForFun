@@ -8,6 +8,7 @@ import com.springapp.mvc.repositories.MessageHistoryRepository;
 import com.springapp.mvc.repositories.UserRepository;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -79,16 +80,43 @@ public class UserServiceImpl implements UserService {
             return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить все поля! Повторите пожалуйста!");
         }
         try{
-            if(userRepository.isPresentConfirm(userDTO.getNickName(), userDTO.getPasswordUser())){
-                return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS).setUserDTO(userDTO).setMessage(userDTO.getNickName()+", Вы вошли в свой аккаунт");
-            }else {
-                return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Неверный логин или пароль");
-            }
-        }catch (Exception e){
+            user=userRepository.getByUser(userDTO.getNickName(),userDTO.getPasswordUser());
+            return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
+                    .setUserDTO(userDTO)
+                    .setMessage(user.getNickName()+", Вы вошли в свой аккаунт");
+        }catch (EmptyResultDataAccessException e){
+            LOGGER.error("{}", e.toString(), e);
+
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Неверный логин или пароль");
+        } catch (Exception e) {
             LOGGER.error("{}", e.toString(), e);
             return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
         }
     }
+
+
+//    @Override
+//    public UserResponce confirmUser(UserDTO userDTO) {
+//        UserResponce userResponce=new UserResponce();
+//        User user=new User();
+//        //name and password must be not null
+//        if((userDTO.getNickName())==""||(userDTO.getPasswordUser())==""){
+//            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить все поля! Повторите пожалуйста!");
+//        }
+//        try{
+//            if(userRepository.isPresentConfirm(userDTO.getNickName(), userDTO.getPasswordUser())){
+//                return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS).setUserDTO(userDTO).setMessage(userDTO.getNickName()+", Вы вошли в свой аккаунт");
+//            }else {
+//                return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Неверный логин или пароль");
+//            }
+//        }catch (Exception e){
+//            LOGGER.error("{}", e.toString(), e);
+//            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
+//        }
+//    }
+
+
+    //update this class
     @Override
     public UserResponce enterUser(UserDTO userDTO) {
         UserResponce userResponce=new UserResponce();
@@ -98,20 +126,43 @@ public class UserServiceImpl implements UserService {
             return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить поле!");
         }
         try{
-            if(userRepository.isPresent(userDTO.getNickName())){
-                return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
-            }else {
-                userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
-                return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS).setUserDTO(userDTO).setMessage("Вы вошли под ником: "+userDTO.getNickName());
-            }
-        }catch (Exception e){
+            userRepository.getByName(userDTO.getNickName());
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
+        }catch (EmptyResultDataAccessException e){
+            LOGGER.error("{}", e.toString(), e);
+            userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
+            return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
+                    .setUserDTO(userDTO)
+                    .setMessage("Вы вошли под ником: " + userDTO.getNickName());
+        } catch (Exception e) {
             LOGGER.error("{}", e.toString(), e);
             return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
         }
     }
 
+//    @Override
+//    public UserResponce enterUser(UserDTO userDTO) {
+//        UserResponce userResponce=new UserResponce();
+//        User user=new User();
+//        //name and password must be not null
+//        if((userDTO.getNickName())==""){
+//            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить поле!");
+//        }
+//        try{
+//            if(userRepository.isPresent(userDTO.getNickName())){
+//                return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
+//            }else {
+//                userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
+//                return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS).setUserDTO(userDTO).setMessage("Вы вошли под ником: "+userDTO.getNickName());
+//            }
+//        }catch (Exception e){
+//            LOGGER.error("{}", e.toString(), e);
+//            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
+//        }
+//    }
+
     @Override
-    public UserResponce addUser(UserDTO userDTO) {
+    public UserResponce addUser(UserDTO userDTO){
         UserResponce userResponce=new UserResponce();
         User user=new User();
         //name and password must be not null
@@ -119,19 +170,42 @@ public class UserServiceImpl implements UserService {
             return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить все поля! Повторите пожалуйста!");
         }
         try{
-            if(userRepository.isPresent(userDTO.getNickName())){
-                return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
-            }else {
-                userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
-                return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
-                        .setUserDTO(userDTO)
-                        .setMessage("Регистрация прошла успешно! Вы вошли под ником: "+userDTO.getNickName());
-            }
-        }catch (Exception e){
+            user=userRepository.getByUser(userDTO.getNickName(),userDTO.getPasswordUser());
+            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
+        }catch (EmptyResultDataAccessException e){
+            LOGGER.error("{}", e.toString(), e);
+            userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
+            return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
+                    .setUserDTO(userDTO)
+                    .setMessage("Регистрация прошла успешно! Вы вошли под ником: " + userDTO.getNickName());
+        } catch (Exception e) {
             LOGGER.error("{}", e.toString(), e);
             return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
         }
     }
+
+//    @Override
+//    public UserResponce addUser(UserDTO userDTO) {
+//        UserResponce userResponce=new UserResponce();
+//        User user=new User();
+//        //name and password must be not null
+//        if((userDTO.getNickName())==""||(userDTO.getPasswordUser())==""){
+//            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить все поля! Повторите пожалуйста!");
+//        }
+//        try{
+//            if(userRepository.isPresent(userDTO.getNickName())){
+//                return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
+//            }else {
+//                userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
+//                return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
+//                        .setUserDTO(userDTO)
+//                        .setMessage("Регистрация прошла успешно! Вы вошли под ником: "+userDTO.getNickName());
+//            }
+//        }catch (Exception e){
+//            LOGGER.error("{}", e.toString(), e);
+//            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
+//        }
+//    }
 
     @Override
     public UserDTO deleteUser(Integer id) {
