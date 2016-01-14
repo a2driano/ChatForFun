@@ -28,15 +28,8 @@
                 <div class="logoTypesImage" id="image_4"></div>
                 <div class="logoTypesImage" id="image_5"></div>
                 <div class="logoTypesImage" id="image_6"></div>
-                <#--<div class="logoInside"></div>-->
             </div>
-            <div id="centralMenu">
-                <div class="buttonContainer"><div id="enterConfirm" class="buttonStart">Войти</div></div>
-                <div class="buttonContainer"><div id="enter" class="buttonStart">Войти без регистрации</div></div>
-                <div class="buttonContainer"><div id="registration" class="buttonStart">Зарегистрироваться</div></div>
-            </div>
-            <div class="bottomImage">
-            </div>
+
         </div>
     </div>
 </div>
