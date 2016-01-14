@@ -21,6 +21,7 @@ function addEventsRegistration(){
             //console.log(userstatus);
             if (userResponce.status == "SUCCESS") {
 
+
                 var address =$hostRoot+userResponce.message;
                 console.log(address);
                 document.location.href = address;
