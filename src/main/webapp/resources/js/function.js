@@ -15,11 +15,11 @@ function addEventsRegistration(){
         dataType: 'json',
         contentType: 'application/json',
         data: JSON.stringify(data),
-        success: function (userResponce) {
+        success: function (modelAndView) {
 
             //var userstatus="${status}";
             //console.log(userstatus);
-            if (userResponce.status == "SUCCESS") {
+            if (modelAndView.status == "SUCCESS") {
 
 
                 var address =$hostRoot+userResponce.message;
