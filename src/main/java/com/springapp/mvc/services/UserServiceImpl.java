@@ -177,7 +177,8 @@ public class UserServiceImpl implements UserService {
             userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
             return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
                     .setUserDTO(userDTO)
-                    .setMessage("Регистрация прошла успешно! Вы вошли под ником: " + userDTO.getNickName());
+                    .setMessage("chat.ftl");
+//                    .setMessage("Регистрация прошла успешно! Вы вошли под ником: " + userDTO.getNickName());
         } catch (Exception e) {
             LOGGER.error("{}", e.toString(), e);
             return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");

@@ -17,13 +17,18 @@ function addEventsRegistration(){
         data: JSON.stringify(data),
         success: function (userResponce) {
 
-            var userstatus="${status}";
-            console.log(userstatus);
-            if (userstatus == "SUCCESS") {
-                $('.cabinetFormText').append('<div class="responce">'+ userResponce.message +'</div>');
-                setTimeout(function () {
-                    $('.responce').html("");
-                }, 5000);
+            //var userstatus="${status}";
+            //console.log(userstatus);
+            if (userResponce.status == "SUCCESS") {
+
+                var address =$hostRoot+userResponce.message;
+                console.log(address);
+                document.location.href = address;
+
+                //$('.cabinetFormText').append('<div class="responce">'+ userResponce.message +'</div>');
+                //setTimeout(function () {
+                //    $('.responce').html("");
+                //}, 5000);
             } else {
                 $('.cabinetFormText').append('<div class="responceFail">'+ userResponce.message +'</div>');
                 setTimeout(function () {
