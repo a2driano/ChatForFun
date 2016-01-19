@@ -30,13 +30,12 @@
                 <div class="logoTypesImage" id="image_6"></div>
                 <#--<div class="logoInside"></div>-->
             </div>
-            <div id="centralMenu">
-                <div class="buttonContainer"><div id="enterConfirm" class="buttonStart">Войти</div></div>
-                <#--<div class="buttonContainer"><div id="enter" class="buttonStart">Войти без регистрации</div></div>-->
-                <div class="buttonContainer"><div id="registration" class="buttonStart">Зарегистрироваться</div></div>
-            </div>
-            <div class="bottomImage">
-            </div>
+            <h1>work</h1>
+            <#--<form class="cabinetFormText" action="chat">-->
+            <#--<input class="formText" id="name" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">-->
+            <#--<input class="formText" id="password" type="password" maxlength="25" size="40" required placeholder="ВВЕДИТЕ ПАРОЛЬ">-->
+            <#--<div class="buttonForm" id="submit" onclick="addEventsRegistration()">Войти</div></form>-->
+
         </div>
     </div>
 </div>

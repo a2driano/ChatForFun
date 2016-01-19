@@ -29,6 +29,10 @@ public class HelloController {
 	public String index() {
 		return "index";
 	}
+	@RequestMapping(value = "/login")
+	public String login() {
+		return "login";
+	}
 
 //	@ResponseBody
 //	@RequestMapping(value = "/login", method = RequestMethod.POST)

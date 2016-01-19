@@ -32,7 +32,7 @@
             </div>
             <div id="centralMenu">
                 <div class="buttonContainer"><div id="enterConfirm" class="buttonStart">Войти</div></div>
-                <#--<div class="buttonContainer"><div id="enter" class="buttonStart">Войти без регистрации</div></div>-->
+                <div class="buttonContainer"><div id="enter" class="buttonStart">Войти без регистрации</div></div>
                 <div class="buttonContainer"><div id="registration" class="buttonStart">Зарегистрироваться</div></div>
             </div>
             <div class="bottomImage">
