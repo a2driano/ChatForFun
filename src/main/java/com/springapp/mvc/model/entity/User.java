@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author a2driano
@@ -34,6 +35,18 @@ public class User implements Serializable {
 
     public void setMessageHistoryList(List<MessageHistory> messageHistoryList) {
         this.messageHistoryList = messageHistoryList;
+    }
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<UserRole> userRoles;
+
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public User setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
+        return this;
     }
 
     @Id
