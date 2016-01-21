@@ -2,6 +2,8 @@ package com.springapp.mvc.model.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import javax.persistence.CollectionTable;
+
 /**
  * @version 1.0
  * @autor a2driano
@@ -10,6 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
  */
 public enum UserRole implements GrantedAuthority {
 
+    @CollectionTable(name = "user_roles")
     ANONYMOUS("ROLE_ANONYMOUS"),
     USER("ROLE_USER"),
     ADMIN("ROLE_ADMIN");
