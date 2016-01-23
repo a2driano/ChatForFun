@@ -20,6 +20,7 @@
 <div>
     <div id="central">
         <div id="centralContainer">
+            <a href="/">
             <div class="logo">
                 <div class="logoTypesImage" id="image_1"></div>
                 <div class="logoTypesImage" id="image_2"></div>
@@ -28,6 +29,7 @@
                 <div class="logoTypesImage" id="image_5"></div>
                 <div class="logoTypesImage" id="image_6"></div>
             </div>
+            </a>
             <div id="centralMenu">
                 <div class="buttonContainer">
                     <a class=ref href="chat">

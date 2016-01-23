@@ -37,17 +37,29 @@ public class User implements Serializable {
         this.messageHistoryList = messageHistoryList;
     }
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Set<UserRole> userRoles;
+    @Column(name = "role", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
 
-    public Set<UserRole> getUserRoles() {
-        return userRoles;
+    public UserRole getUserRole() {
+        return userRole;
     }
 
-    public User setUserRoles(Set<UserRole> userRoles) {
-        this.userRoles = userRoles;
-        return this;
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
+
+//    @ElementCollection(fetch = FetchType.EAGER)
+//    private Set<UserRole> userRoles;
+//
+//    public Set<UserRole> getUserRoles() {
+//        return userRoles;
+//    }
+//
+//    public User setUserRoles(Set<UserRole> userRoles) {
+//        this.userRoles = userRoles;
+//        return this;
+//    }
 
     @Id
     @GeneratedValue(generator = "increment")

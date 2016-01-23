@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @version 1.0
@@ -32,6 +34,11 @@ public class HelloController {
 		return "index";
 	}
 
+//	@RequestMapping(value = "/login", method = RequestMethod.GET)
+//	public ModelAndView getLoginPage(@RequestParam Optional<String> error) {
+//		return new ModelAndView("login", "error", request.getSession().getAttribute("SPRING_SECURITY_LAST_EXCEPTION").toString());
+//	}
+
 	@RequestMapping(value = "/login")
 	public String login(Model model){
 		return "login";
@@ -48,10 +55,6 @@ public class HelloController {
 //		Principal principal = request.getUserPrincipal();
 //		return userService.getUserByName(principal.getName());
 //	}
-
-
-
-
 
 //	@ResponseBody
 //	@RequestMapping(value = "/login", method = RequestMethod.POST)

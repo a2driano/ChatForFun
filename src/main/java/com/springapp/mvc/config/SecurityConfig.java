@@ -26,38 +26,40 @@ import java.security.AuthProvider;
 @ComponentScan
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    AuthenticationProvider authenticationProvider;
+    @Autowired
+    AuthenticationProvider authenticationProvider;
 //    @Autowired
 //    private UserDetailsServiceImpl userDetailsService;
 
 
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring()
-//                .antMatchers("/img/**")
-//                .antMatchers("/css/**")
-//                .antMatchers("/js/**") ;
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication().withUser("user").password("1").roles("USER");
+//        auth.inMemoryAuthentication().withUser("admin").password("1").roles("ADMIN");
 //    }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider);
     }
 
-
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+                .antMatchers("/img/**")
+                .antMatchers("/css/**")
+                .antMatchers("/js/**") ;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/login");
         http
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/resources/**").access("permitAll")
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/chat").access("hasRole('ROLE_USER')")
+                .antMatchers("/chat").access("hasRole('USER')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login")
@@ -70,28 +72,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);
+//        .and().exceptionHandling().accessDeniedPage("/login");
     }
 
-
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/").permitAll()
-//                .antMatchers("/chat").hasRole("USER")
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin().loginPage("/login")
-//                .loginProcessingUrl("/j_spring_security_check")
-//                .usernameParameter("j_username")
-//                .passwordParameter("j_password").permitAll().and();
-//        http.logout()
-//                .permitAll()
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/")
-//                .invalidateHttpSession(true);
-//    }
 
 //    @Autowired
 //    public void registerGlobalAuthentication(AuthenticationManagerBuilder auth) throws Exception {

@@ -21,21 +21,29 @@
 <div>
     <div id="central">
         <div id="centralContainer">
-            <div class="logo">
-                <div class="logoTypesImage" id="image_1"></div>
-                <div class="logoTypesImage" id="image_2"></div>
-                <div class="logoTypesImage" id="image_3"></div>
-                <div class="logoTypesImage" id="image_4"></div>
-                <div class="logoTypesImage" id="image_5"></div>
-                <div class="logoTypesImage" id="image_6"></div>
+            <a href="/">
+                <div class="logo">
+                    <div class="logoTypesImage" id="image_1"></div>
+                    <div class="logoTypesImage" id="image_2"></div>
+                    <div class="logoTypesImage" id="image_3"></div>
+                    <div class="logoTypesImage" id="image_4"></div>
+                    <div class="logoTypesImage" id="image_5"></div>
+                    <div class="logoTypesImage" id="image_6"></div>
                 <#--<div class="logoInside"></div>-->
-            </div>
+                </div>
+            </a>
+
             <form class="cabinetFormText" action="/j_spring_security_check" method="post">
-            <input class="formText" name="j_username" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">
-            <input class="formText" name="j_password" type="password" maxlength="25" size="40" required placeholder="ВВЕДИТЕ ПАРОЛЬ">
-            <input id="remember_me" name="_spring_security_remember_me" type="checkbox" value="Запомнить меня"/>
-            <input type="submit" class="buttonForm" id="submit">
+                <input class="formText" name="j_username" type="text" maxlength="25" size="40" required
+                       placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">
+                <input class="formText" name="j_password" type="password" maxlength="25" size="40" required
+                       placeholder="ВВЕДИТЕ ПАРОЛЬ">
+            <#--<input id="remember_me" name="_spring_security_remember_me" type="checkbox" value="Запомнить меня"/>-->
+                <input type="submit" class="buttonForm" id="submit">
             </form>
+        <#--<#if error.isPresent()>-->
+            <#--<p>The email or password you have entered is invalid, try again.</p>-->
+        <#--</#if>-->
 
         </div>
     </div>

@@ -8,6 +8,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Component;
 
 /**
@@ -34,7 +35,7 @@ public class AuthProvider implements AuthenticationProvider {
         if (!password.equals(password)){
             throw new BadCredentialsException("Pass not match");
         }
-        return new UsernamePasswordAuthenticationToken(name,password,user.getUserRoles());
+        return new UsernamePasswordAuthenticationToken(name,password, AuthorityUtils.createAuthorityList(user.getUserRole().toString()));
     }
 
     @Override
