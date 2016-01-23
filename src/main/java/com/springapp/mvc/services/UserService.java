@@ -14,6 +14,8 @@ import java.util.List;
  */
 public interface UserService {
 
+    UserDTO getUserByName(String nickname);
+
     /**
      * This methods returns a user by nickname
      * @param userDTO

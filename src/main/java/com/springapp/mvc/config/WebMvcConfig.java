@@ -1,12 +1,16 @@
 package com.springapp.mvc.config;
 
+import com.springapp.mvc.services.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
@@ -21,6 +25,19 @@ import java.util.List;
 @EnableWebMvc
 @Configuration
 class WebMvcConfig extends WebMvcConfigurerAdapter {
+
+    @Bean
+    public UserDetailsService getUserDetailsService(){
+        return new UserDetailsServiceImpl();
+    }
+
+//    @Bean
+//    public ViewResolver getViewResolver(){
+//        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+//        viewResolver.setPrefix("/WEB-INF/jsp/");
+//        viewResolver.setSuffix(".jsp");
+//        return viewResolver;
+//    }
 
     @Bean
     public FreeMarkerViewResolver viewResolver() {

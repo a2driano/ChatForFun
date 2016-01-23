@@ -34,6 +34,14 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
+    public UserDTO getUserByName(String nickname){
+        UserDTO userDTO=new UserDTO();
+        User user=userRepository.getByName(nickname);
+        userDTO.setNickName(user.getNickName()).setId(user.getId());
+        return userDTO;
+    }
+
+    @Override
     public List<UserDTO> getAll() {
         List<UserDTO> userDTOList = new ArrayList<UserDTO>();
         try {

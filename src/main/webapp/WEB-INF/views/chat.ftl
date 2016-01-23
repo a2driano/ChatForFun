@@ -29,6 +29,9 @@
                 <div class="logoTypesImage" id="image_5"></div>
                 <div class="logoTypesImage" id="image_6"></div>
             </div>
+            <a class=ref href="/logout">
+                <button type="submit" id="enterConfirm" class="buttonStart">Выйти из чата</button>
+            </a>
 
         </div>
     </div>

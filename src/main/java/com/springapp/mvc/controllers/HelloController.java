@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -29,10 +31,27 @@ public class HelloController {
 	public String index() {
 		return "index";
 	}
+
 	@RequestMapping(value = "/login")
-	public String login() {
+	public String login(Model model){
 		return "login";
 	}
+
+	@RequestMapping(value = "/chat")
+	public String chat() {
+		return "chat";
+	}
+
+//	@RequestMapping(value = "/chatuser")
+//	@ResponseBody
+//	public UserDTO personalCabinet(HttpServletRequest request){
+//		Principal principal = request.getUserPrincipal();
+//		return userService.getUserByName(principal.getName());
+//	}
+
+
+
+
 
 //	@ResponseBody
 //	@RequestMapping(value = "/login", method = RequestMethod.POST)

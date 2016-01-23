@@ -42,31 +42,23 @@ setInterval (
 
 
 var onStart=function(){
-    $('#enterConfirm').on('click', function(){
-        $('#centralMenu').fadeOut(500);
-        $('#centralContainer').append('<form class="cabinetFormText" action="login" method="post">'+
-            '<input class="formText" id="j_username" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">'+
-            '<input class="formText" id="j_password" type="password" maxlength="25" size="40" required placeholder="ВВЕДИТЕ ПАРОЛЬ">'+
-            '<input type="submit" class="buttonForm" id="submit"></form>');
-        $('.cabinetFormText').hide();
-        $('.cabinetFormText').fadeIn(400);
-    });
-    $('#registration').on('click', function(){
-        $('#centralMenu').fadeOut(500);
-            $('#centralContainer').append('<form class="cabinetFormText" action="login" method="post">'+
-                '<input class="formText" id="j_username" name="username" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">'+
-                '<input class="formText" id="j_password" name="password" type="password" maxlength="25" size="40" required placeholder="ВВЕДИТЕ ПАРОЛЬ">'+
-                '<input type="submit" class="buttonForm" id="submit"></form>');
-            $('.cabinetFormText').hide();
-            $('.cabinetFormText').fadeIn(400);
-    });
-    //$('#enter').on('click', function(){
+    //$('#enterConfirm').on('click', function(){
     //    $('#centralMenu').fadeOut(500);
-    //    $('#centralContainer').append('<form class="cabinetFormText">'+
-    //        '<input class="formText" id="name" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">'+
-    //        '<div class="buttonForm" id="submit" onclick="addEventsEnter()">Войти</div></form>');
+    //    $('#centralContainer').append('<form class="cabinetFormText" action="login" method="post">'+
+    //        '<input class="formText" id="j_username" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">'+
+    //        '<input class="formText" id="j_password" type="password" maxlength="25" size="40" required placeholder="ВВЕДИТЕ ПАРОЛЬ">'+
+    //        '<input type="submit" class="buttonForm" id="submit"></form>');
     //    $('.cabinetFormText').hide();
     //    $('.cabinetFormText').fadeIn(400);
+    //});
+    //$('#registration').on('click', function(){
+    //    $('#centralMenu').fadeOut(500);
+    //        $('#centralContainer').append('<form class="cabinetFormText" action="login" method="post">'+
+    //            '<input class="formText" id="j_username" name="username" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">'+
+    //            '<input class="formText" id="j_password" name="password" type="password" maxlength="25" size="40" required placeholder="ВВЕДИТЕ ПАРОЛЬ">'+
+    //            '<input type="submit" class="buttonForm" id="submit"></form>');
+    //        $('.cabinetFormText').hide();
+    //        $('.cabinetFormText').fadeIn(400);
     //});
 };
 

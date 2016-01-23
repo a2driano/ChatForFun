@@ -121,6 +121,9 @@
     border-radius: 10px;
     background-color: rgb(128, 18, 163);
 }
+.ref{
+    text-decoration: none;
+}
 
 .buttonStart {
     z-index: 500;

@@ -9,7 +9,7 @@
     <script type="text/javascript" src="/js/lib/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="/js/lib/jquery.countdown.min.js"></script>
     <script type="text/javascript" src="/js/onstart.js"></script>
-    <script type="text/javascript" src="/js/function.js"></script>
+    <#--<script type="text/javascript" src="/js/function.js"></script>-->
     <#--<link rel="shortcut icon" href="/img/favicon.png" type="image/png">-->
     <script type="text/javascript">
         var $applicationRoot = '/';
@@ -30,11 +30,12 @@
                 <div class="logoTypesImage" id="image_6"></div>
                 <#--<div class="logoInside"></div>-->
             </div>
-            <h1>work</h1>
-            <#--<form class="cabinetFormText" action="chat">-->
-            <#--<input class="formText" id="name" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">-->
-            <#--<input class="formText" id="password" type="password" maxlength="25" size="40" required placeholder="ВВЕДИТЕ ПАРОЛЬ">-->
-            <#--<div class="buttonForm" id="submit" onclick="addEventsRegistration()">Войти</div></form>-->
+            <form class="cabinetFormText" action="/j_spring_security_check" method="post">
+            <input class="formText" name="j_username" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">
+            <input class="formText" name="j_password" type="password" maxlength="25" size="40" required placeholder="ВВЕДИТЕ ПАРОЛЬ">
+            <input id="remember_me" name="_spring_security_remember_me" type="checkbox" value="Запомнить меня"/>
+            <input type="submit" class="buttonForm" id="submit">
+            </form>
 
         </div>
     </div>
