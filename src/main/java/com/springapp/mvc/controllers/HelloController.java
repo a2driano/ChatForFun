@@ -44,6 +44,17 @@ public class HelloController {
 		return "login";
 	}
 
+//	@RequestMapping(value = "/login", method = RequestMethod.GET)
+//	public ModelAndView login(
+//			@RequestParam(value = "error", required = false) String error) {
+//		ModelAndView model = new ModelAndView();
+//		if (error != null) {
+//			model.addObject("error", "Invalid username and password!");
+//		}
+//		model.setViewName("login");
+//		return model;
+//	}
+
 	@RequestMapping(value = "/chat")
 	public String chat() {
 		return "chat";

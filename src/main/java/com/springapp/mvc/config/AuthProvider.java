@@ -28,7 +28,8 @@ public class AuthProvider implements AuthenticationProvider {
         String name = authentication.getName();
         String password = (String)authentication.getCredentials();
 
-        User user = userRepository.getByName(name);
+//        User user = userRepository.getByName(name);
+        User user = userRepository.getByUser(name, password);
         if (user == null){
             throw new BadCredentialsException("User not found");
         }
