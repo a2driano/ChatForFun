@@ -11,7 +11,6 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @since 23.01.2016
  */
 public class UserCreateForm {
-
     @NotEmpty
     private String name = "";
 
@@ -20,5 +19,29 @@ public class UserCreateForm {
 
     @NotNull
     private UserRole userRole = UserRole.USER;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
 
 }

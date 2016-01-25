@@ -59,6 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/resources/**").access("permitAll")
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/registration").permitAll()
+                .antMatchers("/save").permitAll()
                 .antMatchers("/chat").access("hasRole('USER')")
                 .anyRequest().authenticated()
                 .and()
@@ -84,6 +86,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
 
 //    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.authenticationProvider(authenticationProvider)
+//                        .inMemoryAuthentication()
+//                .withUser("user").password("password").roles("USER").and()
+//                .withUser("admin").password("password").roles("USER", "ADMIN");
+//    }
+// @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.authenticationProvider(authenticationProvider)
 //                        .inMemoryAuthentication()

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.springapp.mvc.model.entity.MessageHistory;
+import com.springapp.mvc.model.entity.UserRole;
 
 import javax.persistence.Column;
 import javax.persistence.FetchType;
@@ -31,6 +32,16 @@ public class UserDTO implements Serializable {
 
     @JsonProperty("password")
     private String passwordUser;
+
+    private UserRole userRole = UserRole.USER;
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
 
     private Boolean online;
 

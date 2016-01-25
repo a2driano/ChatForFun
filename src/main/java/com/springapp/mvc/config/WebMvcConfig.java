@@ -45,6 +45,8 @@ class WebMvcConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("");
         viewResolver.setSuffix(".ftl");
         viewResolver.setContentType("text/html;charset=UTF-8");
+        viewResolver.setExposeRequestAttributes(true);
+        viewResolver.setExposeSessionAttributes(true);
         return viewResolver;
     }
 

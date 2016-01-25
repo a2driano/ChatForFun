@@ -1,5 +1,6 @@
 package com.springapp.mvc.services;
 
+import com.springapp.mvc.model.UserCreateForm;
 import com.springapp.mvc.model.entity.User;
 import com.springapp.mvc.model.web.UserDTO;
 import com.springapp.mvc.model.web.UserResponce;
@@ -61,4 +62,6 @@ public interface UserService {
      * @return
      */
     UserDTO updateUser(UserDTO userDTO);
+
+    void create(UserDTO userDTO);
 }

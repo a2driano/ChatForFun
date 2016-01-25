@@ -1,6 +1,8 @@
 package com.springapp.mvc.services;
 
+import com.springapp.mvc.model.UserCreateForm;
 import com.springapp.mvc.model.entity.User;
+import com.springapp.mvc.model.entity.UserRole;
 import com.springapp.mvc.model.web.UserDTO;
 import com.springapp.mvc.model.web.UserResponce;
 import com.springapp.mvc.model.web.UserResponceStatus;
@@ -40,6 +42,25 @@ public class UserServiceImpl implements UserService {
         userDTO.setNickName(user.getNickName()).setId(user.getId());
         return userDTO;
     }
+
+    @Override
+    public void create(UserDTO userDTO) {
+        User user = new User();
+        user.setNickName(userDTO.getNickName());
+        user.setPasswordUser(userDTO.getPasswordUser());
+        user.setUserRole(UserRole.USER);
+        userRepository.save(user);
+    }
+
+//    @Override
+//    public User create(UserDTO userDTO) {
+//        User user = new User();
+//        user.setNickName(userDTO.getNickName());
+//        user.setPasswordUser(userDTO.getPasswordUser());
+//        user.setUserRole(UserRole.USER);
+//        return userRepository.save(user);
+//    }
+
 
     @Override
     public List<UserDTO> getAll() {

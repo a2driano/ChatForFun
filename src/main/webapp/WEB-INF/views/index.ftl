@@ -37,7 +37,9 @@
                     </a>
                 </div>
                 <div class="buttonContainer">
+                    <a class=ref href="registration">
                     <div id="registration" class="buttonStart">Зарегистрироваться</div>
+                    </a>
                 </div>
             </div>
             <div class="bottomImage">

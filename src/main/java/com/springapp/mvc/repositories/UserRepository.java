@@ -1,6 +1,7 @@
 package com.springapp.mvc.repositories;
 
 import com.springapp.mvc.model.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * @project: ChatForFun
  * @since 05.01.2016
  */
-public interface UserRepository {
+public interface UserRepository{
 
     User getByUser(String nickName, String password);
 
@@ -27,6 +28,8 @@ public interface UserRepository {
     void delete(User user);
 
     void add(User user);
+
+    User save(User user);
 
     void update(User user);
 

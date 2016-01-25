@@ -28,16 +28,28 @@ public class AuthProvider implements AuthenticationProvider {
         String name = authentication.getName();
         String password = (String)authentication.getCredentials();
 
-//        User user = userRepository.getByName(name);
-        User user = userRepository.getByUser(name, password);
-        if (user == null){
-            throw new BadCredentialsException("User not found");
+        try{
+            User user = userRepository.getByUser(name, password);
+            return new UsernamePasswordAuthenticationToken(name,password, AuthorityUtils.createAuthorityList(user.getUserRole().toString()));
+        }catch (Exception e){
+            throw new BadCredentialsException("Name or password is not correct");
         }
-        if (!password.equals(password)){
-            throw new BadCredentialsException("Pass not match");
-        }
-        return new UsernamePasswordAuthenticationToken(name,password, AuthorityUtils.createAuthorityList(user.getUserRole().toString()));
     }
+
+//    @Override
+//    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+//        String name = authentication.getName();
+//        String password = (String)authentication.getCredentials();
+//
+//        User user = userRepository.getByUser(name, password);
+//        if (user == null){
+//            throw new BadCredentialsException("User not found");
+//        }
+//        if (!password.equals(password)){
+//            throw new BadCredentialsException("Pass not match");
+//        }
+//        return new UsernamePasswordAuthenticationToken(name,password, AuthorityUtils.createAuthorityList(user.getUserRole().toString()));
+//    }
 
     @Override
     public boolean supports(Class<?> authentication) {

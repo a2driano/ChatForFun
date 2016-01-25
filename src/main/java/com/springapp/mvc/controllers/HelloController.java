@@ -1,16 +1,20 @@
 package com.springapp.mvc.controllers;
 
+import com.springapp.mvc.model.UserCreateForm;
 import com.springapp.mvc.model.web.UserDTO;
 import com.springapp.mvc.model.web.UserResponce;
 import com.springapp.mvc.services.MessageHistoryService;
 import com.springapp.mvc.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +36,10 @@ public class HelloController {
 	@RequestMapping(value = "/")
 	public String index() {
 		return "index";
+	}
+	@RequestMapping(value = "/registration")
+	public String registration() {
+		return "registration";
 	}
 
 //	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -84,6 +92,27 @@ public class HelloController {
 	public UserDTO deleteUser(@RequestParam int id){
 		return userService.deleteUser(id);
 	}
+
+	@ResponseBody
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ModelAndView handleUserCreateForm(HttpServletRequest request) {
+		ModelAndView modelAndView=new ModelAndView("redirect:/registration");
+		UserDTO userDTO=new UserDTO();
+		userDTO.setNickName(request.getParameter("name")).setPasswordUser(request.getParameter("password"));
+		userService.create(userDTO);
+		modelAndView.addObject("Message", "Contact created");
+		return modelAndView;
+	}
+
+//	//	@ResponseBody
+//	@RequestMapping(value = "/save", method = RequestMethod.POST)
+//	public String handleUserCreateForm(HttpServletRequest request) {
+//		UserDTO userDTO=new UserDTO();
+//		userDTO.setNickName(request.getParameter("name")).setPasswordUser(request.getParameter("password"));
+//		userService.create(userDTO);
+////		return "redirect:/";
+//		return "/registration";
+//	}
 
 
 

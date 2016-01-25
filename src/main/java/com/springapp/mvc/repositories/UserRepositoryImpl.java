@@ -66,6 +66,12 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public User save(User user) {
+        entityManager.persist(user);
+        return (User)entityManager.createNamedQuery("getUserByName").setParameter("nickName", user.getNickName()).getSingleResult();
+    }
+
+    @Override
     public void update(User user) {
         entityManager.merge(user);
     }

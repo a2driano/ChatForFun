@@ -4,6 +4,7 @@ import com.springapp.mvc.model.entity.User;
 import com.springapp.mvc.model.web.UserDTO;
 import com.springapp.mvc.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,13 +29,22 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+        UserDetails userDetails;
+        try{
+            User user=userRepository.getByName(name);
+            Set<GrantedAuthority> roles=new HashSet<>();
+            userDetails=new org.springframework.security.core.userdetails.User(user.getNickName(),user.getPasswordUser(), roles);
+            return userDetails;
+        }catch (EmptyResultDataAccessException e){
+            return userDetails=null;
+        }
 
-        User user=userRepository.getByName(name);
-        Set<GrantedAuthority> roles=new HashSet<>();
-
-        UserDetails userDetails=new org.springframework.security.core.userdetails.User(user.getNickName(),
-                user.getPasswordUser(), roles);
-
-        return userDetails;
+//        User user=userRepository.getByName(name);
+//        Set<GrantedAuthority> roles=new HashSet<>();
+//
+//        UserDetails userDetails=new org.springframework.security.core.userdetails.User(user.getNickName(),
+//                user.getPasswordUser(), roles);
+//
+//        return userDetails;
     }
 }
