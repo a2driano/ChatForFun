@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
+import javax.validation.ConstraintViolationException;
+import java.sql.BatchUpdateException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -44,12 +46,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void create(UserDTO userDTO) {
+    public String create(UserDTO userDTO) {
         User user = new User();
         user.setNickName(userDTO.getNickName());
         user.setPasswordUser(userDTO.getPasswordUser());
         user.setUserRole(UserRole.USER);
-        userRepository.save(user);
+        try{
+            userRepository.add(user);
+            return "Регистрация прошла успешно";
+        }catch (ConstraintViolationException e){
+            LOGGER.error("{}",e.toString(),e);
+            return "Данное имя уже используется";
+        }catch (Exception e){
+            LOGGER.error("{}",e.toString(),e);
+            return "Нет соединения с базой данных";
+        }
     }
 
 //    @Override

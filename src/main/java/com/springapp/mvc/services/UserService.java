@@ -63,5 +63,5 @@ public interface UserService {
      */
     UserDTO updateUser(UserDTO userDTO);
 
-    void create(UserDTO userDTO);
+    String create(UserDTO userDTO);
 }

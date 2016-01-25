@@ -93,14 +93,15 @@ public class HelloController {
 		return userService.deleteUser(id);
 	}
 
-	@ResponseBody
+//	@ResponseBody
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView handleUserCreateForm(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView("redirect:/registration");
 		UserDTO userDTO=new UserDTO();
 		userDTO.setNickName(request.getParameter("name")).setPasswordUser(request.getParameter("password"));
-		userService.create(userDTO);
-		modelAndView.addObject("Message", "Contact created");
+		String str=userService.create(userDTO);
+
+		modelAndView.addObject("Message", str);
 		return modelAndView;
 	}
 
