@@ -93,7 +93,7 @@ public class HelloController {
 		return userService.deleteUser(id);
 	}
 
-//	@ResponseBody
+	@ResponseBody
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView handleUserCreateForm(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView("redirect:/registration");
