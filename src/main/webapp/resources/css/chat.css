@@ -1,0 +1,188 @@
+.container{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0%;
+}
+#central{
+    width: 100%;
+    height: 100%;
+    padding: 0%;
+    margin: 0px;
+    background-image: url(../img/background-300x300__blue.jpg);
+    background-repeat: repeat;
+    background-color: #424242;
+}
+#centralContainer{
+    margin: auto;
+    width: 42%;
+    height: 100%;
+    /*background-color: #b7b8a7;*/
+    background-color: #8b91b8;
+    background-image: url(../img/back_noise.png);
+    background-repeat: repeat;
+    /*background-color: #6e6e6e;*/
+    box-shadow: 0 40px 0 rgba(20, 20, 20, 0.83);
+}
+
+.logo{
+    position: relative;
+    margin: auto;
+    width: 100%;
+    height: 15%;
+    background-image: url(../img/back_noise.png);
+    background-repeat: repeat;
+    background-color: #404040;
+    box-shadow: 0 0 40px rgba(34, 34, 34, 0.88);
+}
+.logoTypesImage{
+    margin: auto;
+    position: absolute;
+    /*position: relative;*/
+    display: inline-block;
+    top: 0%;
+    left: 10%;
+    right: 10%;
+    width: 80%;
+    height: 100%;
+    align-content: center;
+}
+
+#image_1{
+    z-index: 1000;
+    background-image: url(../img/Logo_pink.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+}
+#image_2{
+    z-index: 1000;
+    background-image: url(../img/Logo_pink.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+}
+#image_3{
+    z-index: 1000;
+    background-image: url(../img/Logo_pink.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+}
+#image_4{
+    z-index: 1000;
+    background-image: url(../img/Logo_pink.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+}
+#image_5{
+    z-index: 1000;
+    background-image: url(../img/Logo_grey.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+}
+#image_6{
+    z-index: 1000;
+    background-image: url(../img/Logo_pink.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+}
+
+
+.buttonContainer{
+    display: inline-block;
+    width: 100%;
+    height: 15%;
+}
+#enterConfirm{
+    border-color: rgba(255, 170, 194, 0.76);
+    border-radius: 10px;
+    background-color: rgb(198, 59, 113);
+}
+#enter{
+    border-color: rgba(255, 170, 194, 0.76);
+    border-radius: 10px;
+    background-color: rgb(163, 27, 122);
+}
+#registration{
+    border-color: rgba(255, 170, 194, 0.76);
+    border-radius: 10px;
+    background-color: rgb(128, 18, 163);
+}
+.ref{
+    text-decoration: none;
+}
+
+.buttonStart {
+    z-index: 500;
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    width: 240px;
+    height: 50px;
+    font-size: 17pt;
+    font-family: sans-serif;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+    border: 2px solid;
+    border-color: white;
+    border-radius: 10px;
+    background-color: rgb(50, 163, 37);
+
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+}
+
+.buttonStart:hover, #enterConfirm:hover, #enter:hover, #registration:hover {
+    cursor: pointer;
+    position: relative;
+    margin: auto;
+    margin-top: 45px;
+    width: 260px;
+    height: 60px;
+    font-size: 19pt;
+    font-family: sans-serif;
+    color: white;
+    line-height: 60px;
+    text-align: center;
+    background-color: orange;
+    border: 2px solid;
+    border-color: white;
+    border-radius: 10px;
+
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+}
+
+/*CHAT*/
+.chat{
+    overflow-y: auto;
+    margin: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 90%;
+    height: 50%;
+    background-color: white;
+    border-radius: 1%;
+}
+.textWindow{
+    margin-left: 5%;
+    width: 90%;
+    height: 10%;
+
+}
+.textForm{
+    border-radius: 1%;
+    background-color: #e1e1e1;
+    resize: horizontal;
+}
+
+
+
+
