@@ -271,6 +271,17 @@
     color: red;
     text-align: center;
 }
+#basementText{
+    position: absolute;
+    bottom: 0%;
+    text-align: center;
+    display: inline-block;
+    /*left: 5%;*/
+    /*padding: 1%;*/
+    font-size: 70%;
+    font-family: sans-serif;
+    color: #7423ff;
+}
 
 
 
