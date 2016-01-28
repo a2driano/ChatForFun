@@ -8,9 +8,12 @@ import com.springapp.mvc.repositories.MessageHistoryRepository;
 import com.springapp.mvc.repositories.UserRepository;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -68,16 +71,38 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
 
     @Override
     public MessageHistoryDTO addMessage(MessageHistoryDTO messageHistoryDTO) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        Date date= messageHistoryDTO.getDate();
+        String mes=messageHistoryDTO.getMessageUser();
+
         try{
             MessageHistory messageHistory=new MessageHistory();
-            messageHistory.setMessageId(messageHistoryDTO.getId());
+            messageHistory.setUser(userRepository.getByName(name));
+//            messageHistory.setMessageId(messageHistoryDTO.getId());
             messageHistory.setMessageUser(messageHistoryDTO.getMessageUser());
             messageHistory.setDate(messageHistoryDTO.getDate());
-            messageHistory.setUser(messageHistoryDTO.getUser());
+            messageHistoryRepository.add(messageHistory);
         }catch (Exception e){
             LOGGER.error("{}",e.toString(),e);
         }
 
         return null;
     }
+
+//    @Override
+//    public MessageHistoryDTO addMessage(MessageHistoryDTO messageHistoryDTO) {
+//        try{
+//            MessageHistory messageHistory=new MessageHistory();
+//            messageHistory.setMessageId(messageHistoryDTO.getId());
+//            messageHistory.setMessageUser(messageHistoryDTO.getMessageUser());
+//            messageHistory.setDate(messageHistoryDTO.getDate());
+//            messageHistory.setUser(messageHistoryDTO.getUser());
+//        }catch (Exception e){
+//            LOGGER.error("{}",e.toString(),e);
+//        }
+//
+//        return null;
+//    }
 }

@@ -42,10 +42,10 @@ setInterval (
 
 
 function AjaxFormRequest(){
-
     var data={
-        textForm: $(".textForm").val()
-        //password: $("#password").val()
+        //name: "",
+        textForm: $(".textForm").val(),
+        datatime: new Date()
     };
     $.ajax({
         url: $hostRoot + "messageadd",

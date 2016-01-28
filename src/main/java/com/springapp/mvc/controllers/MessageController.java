@@ -4,13 +4,17 @@ import com.springapp.mvc.model.web.MessageHistoryDTO;
 import com.springapp.mvc.services.MessageHistoryService;
 import com.springapp.mvc.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.xml.crypto.Data;
 import java.security.Principal;
+import java.util.Date;
 
 /**
  * @version 1.0
@@ -28,9 +32,15 @@ public class MessageController {
     @RequestMapping(value = "/messageadd", method = RequestMethod.POST)
     @ResponseBody
     public MessageHistoryDTO addMessage(@RequestBody MessageHistoryDTO messageHistoryDTO){
-//        String name= this.Principal.toS;
+
+        messageHistoryService.addMessage(messageHistoryDTO);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+
+
+        Date date= messageHistoryDTO.getDate();
         String mes=messageHistoryDTO.getMessageUser();
-        System.err.println(mes);
+        System.err.println(mes+" ------ "+name+" ------ "+date.toString());
         return null;
     }
 }
