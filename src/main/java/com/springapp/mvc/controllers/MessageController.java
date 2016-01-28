@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.xml.crypto.Data;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @version 1.0
@@ -33,14 +35,16 @@ public class MessageController {
     @ResponseBody
     public MessageHistoryDTO addMessage(@RequestBody MessageHistoryDTO messageHistoryDTO){
 
-        messageHistoryService.addMessage(messageHistoryDTO);
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
+        MessageHistoryDTO messageHistoryDTOReturn;
+        messageHistoryDTOReturn=messageHistoryService.addMessage(messageHistoryDTO);
+        return messageHistoryDTOReturn;
+    }
 
-
-        Date date= messageHistoryDTO.getDate();
-        String mes=messageHistoryDTO.getMessageUser();
-        System.err.println(mes+" ------ "+name+" ------ "+date.toString());
-        return null;
+    @RequestMapping(value = "/getallmessages", method = RequestMethod.GET)
+    @ResponseBody
+    public List<MessageHistoryDTO> list(){
+        List<MessageHistoryDTO> list=new ArrayList<MessageHistoryDTO>();
+        list=messageHistoryService.getAllUsersMessages();
+        return list;
     }
 }

@@ -59,9 +59,9 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
             for(MessageHistory messageHistory: messageHistoryList){
                 messageHistoryDTOList.add(new MessageHistoryDTO()
                 .setMessageUser(messageHistory.getMessageUser())
-                .setId(messageHistory.getMessageId())
-                .setDate(messageHistory.getDate())
-                .setUser(messageHistory.getUser()));
+//                .setId(messageHistory.getMessageId())
+                .setDate(messageHistory.getDate()));
+//                .setUser(messageHistory.getUser()));
             }
         }catch (Exception e){
             LOGGER.error("{}",e.toString(),e);
@@ -74,21 +74,20 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
-        Date date= messageHistoryDTO.getDate();
-        String mes=messageHistoryDTO.getMessageUser();
+        MessageHistory messageHistory = new MessageHistory();
+        messageHistory.setUser(userRepository.getByName(name));
+        messageHistory.setMessageUser(messageHistoryDTO.getMessageUser());
+        messageHistory.setDate(messageHistoryDTO.getDate());
 
         try{
-            MessageHistory messageHistory=new MessageHistory();
-            messageHistory.setUser(userRepository.getByName(name));
-//            messageHistory.setMessageId(messageHistoryDTO.getId());
-            messageHistory.setMessageUser(messageHistoryDTO.getMessageUser());
-            messageHistory.setDate(messageHistoryDTO.getDate());
             messageHistoryRepository.add(messageHistory);
         }catch (Exception e){
             LOGGER.error("{}",e.toString(),e);
+            return null;
         }
-
-        return null;
+        MessageHistoryDTO messageHistoryDTOReturn = new MessageHistoryDTO();
+        messageHistoryDTOReturn.setDate(messageHistory.getDate()).setMessageUser(messageHistory.getMessageUser()).setName(name);
+        return messageHistoryDTOReturn;
     }
 
 //    @Override

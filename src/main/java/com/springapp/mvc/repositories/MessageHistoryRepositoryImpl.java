@@ -18,6 +18,10 @@ import java.util.List;
 @Repository
 @Transactional
 public class MessageHistoryRepositoryImpl implements MessageHistoryRepository {
+    @Override
+    public MessageHistory getMessageById(Integer Id) {
+        return (MessageHistory)entityManager.createNamedQuery("getMessageById").setParameter("id", Id).getSingleResult();
+    }
 
     @PersistenceContext
     private EntityManager entityManager;

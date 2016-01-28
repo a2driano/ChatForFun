@@ -16,6 +16,7 @@ import java.util.Date;
 @Table(name = "messagehistory")
 @NamedQueries({
         @NamedQuery(name = "getUserMessagesById", query = "SELECT a FROM MessageHistory a WHERE a.user.id= :id"),
+        @NamedQuery(name = "getMessageById", query = "SELECT a FROM MessageHistory a WHERE a.id= :id"),
         @NamedQuery(name = "getAllUsersMessages", query = "SELECT a FROM MessageHistory a")
 })
 public class MessageHistory implements Serializable {

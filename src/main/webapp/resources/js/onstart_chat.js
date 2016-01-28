@@ -41,10 +41,41 @@ setInterval (
 );
 
 
+var onStart=function(){
+
+    $.ajax({
+        url: $hostRoot + "getallmessages",
+        type: 'get',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                var name=data[i].name;
+                var datatime=new Date(data[i].datatime);
+
+                var time=datatime.getFullYear() + '/' + (datatime.getMonth() + 1) + '/' + datatime.getDate()+ ' ' + datatime.getHours() + ':' + datatime.getMinutes() + ':' + datatime.getSeconds();
+                var textForm=data[i].textForm;
+                $('.chat').append('<div class="messageBlock"><span class="messageName">'+name+
+                                  '</span><span class="messageDate">'+time+
+                                  '</span><br><span class="messageText">'+textForm+'</span></div>');
+            }
+        },
+        error: function (error) {
+            console.log(error)
+        }
+
+    });
+
+
+};
+
+
 function AjaxFormRequest(){
+    //var time=new Date(Date.UTC());
     var data={
         //name: "",
         textForm: $(".textForm").val(),
+        //datatime: new Date().getTime()
         datatime: new Date()
     };
     $.ajax({
@@ -87,25 +118,6 @@ function AjaxFormRequest(){
 
 
 
-var onStart=function(){
-    //$('#enterConfirm').on('click', function(){
-    //    $('#centralMenu').fadeOut(500);
-    //    $('#centralContainer').append('<form class="cabinetFormText" action="login" method="post">'+
-    //        '<input class="formText" id="j_username" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">'+
-    //        '<input class="formText" id="j_password" type="password" maxlength="25" size="40" required placeholder="ВВЕДИТЕ ПАРОЛЬ">'+
-    //        '<input type="submit" class="buttonForm" id="submit"></form>');
-    //    $('.cabinetFormText').hide();
-    //    $('.cabinetFormText').fadeIn(400);
-    //});
-    //$('#registration').on('click', function(){
-    //    $('#centralMenu').fadeOut(500);
-    //        $('#centralContainer').append('<form class="cabinetFormText" action="login" method="post">'+
-    //            '<input class="formText" id="j_username" name="username" type="text" maxlength="25" size="40" required placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">'+
-    //            '<input class="formText" id="j_password" name="password" type="password" maxlength="25" size="40" required placeholder="ВВЕДИТЕ ПАРОЛЬ">'+
-    //            '<input type="submit" class="buttonForm" id="submit"></form>');
-    //        $('.cabinetFormText').hide();
-    //        $('.cabinetFormText').fadeIn(400);
-    //});
-};
+
 
 

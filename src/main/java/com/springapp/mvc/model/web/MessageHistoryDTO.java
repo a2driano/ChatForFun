@@ -27,6 +27,24 @@ public class MessageHistoryDTO {
 //    @JsonProperty("name")
     private User user;
 
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(Integer messageId) {
+        this.messageId = messageId;
+    }
+
     @JsonProperty("textForm")
     private String messageUser;
 

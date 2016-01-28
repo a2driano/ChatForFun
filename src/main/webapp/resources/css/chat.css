@@ -240,6 +240,38 @@
     color: white;
 }
 
+/*CHAT-WINDOW*/
+.messageBlock{
+    padding: 1%;
+    position: relative;
+    margin: 2.5%;
+    width: auto;
+    height: auto;
+    background-color: rgba(218, 222, 255, 0.79);
+    border-radius: 10px;
+}
+.messageName{
+    font-size: 12pt;
+    font-family: sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    color: #7101ff;
+}
+.messageDate{
+    position: absolute;
+    right: 2%;
+    font-size: 10pt;
+    font-family: sans-serif;
+    font-style: italic;
+    color: #6c6c6c;
+}
+.messageText{
+    /*position: absolute;*/
+    /*top: 50%;*/
+    font-size: 11pt;
+    font-family: sans-serif;
+}
+
 
 
 
