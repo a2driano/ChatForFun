@@ -8,7 +8,7 @@
     <title>ChatForFun</title>
     <script type="text/javascript" src="/js/lib/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="/js/lib/jquery.countdown.min.js"></script>
-    <script type="text/javascript" src="/js/onstart.js"></script>
+    <script type="text/javascript" src="/js/onstart_chat.js"></script>
     <script type="text/javascript" src="/js/function.js"></script>
 <#--<link rel="shortcut icon" href="/img/favicon.png" type="image/png">-->
     <script type="text/javascript">
@@ -31,9 +31,10 @@
                     <div class="logoTypesImage" id="image_6"></div>
                 </div>
             </a>
+
             <div class="chat"></div>
             <div id="answerZone">
-                <form class="textWindow" action="" method="post">
+                <form class="textWindow">
                     <textarea class="textForm" name="textForm" cols="30" rows="7" maxlength="350"></textarea>
                     <input type="submit" id="dropMessage" value="Отправить" onclick="AjaxFormRequest()">
                 </form>

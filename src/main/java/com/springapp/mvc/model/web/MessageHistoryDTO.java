@@ -21,11 +21,12 @@ import java.util.Date;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class MessageHistoryDTO {
 
-    @JsonProperty
+//    @JsonProperty
     private Integer messageId;
 
     private User user;
 
+    @JsonProperty("textForm")
     private String messageUser;
 
     private Date date;
