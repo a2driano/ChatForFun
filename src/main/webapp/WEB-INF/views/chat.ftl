@@ -45,7 +45,7 @@
             <div id="answerZone">
                 <form class="textWindow">
                     <textarea class="textForm" name="textForm" cols="30" rows="7" maxlength="350"></textarea>
-                    <input type="submit" id="dropMessage" value="Отправить" onclick="AjaxFormRequest()">
+                    <input type="button" id="dropMessage" value="Отправить" onclick="AjaxFormRequest()">
                 </form>
                 <div id="basement">
                     <p id="basementText">Copyright a2driano ©, 2016.</p>
