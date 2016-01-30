@@ -17,7 +17,7 @@ public interface MessageHistoryRepository {
 
     List<MessageHistory> getAllUsersMessages();
 
-    MessageHistory getMessageById(Integer Id);
+//    MessageHistory getMessageById(Integer Id);
 
     void add(MessageHistory messageHistory);
 

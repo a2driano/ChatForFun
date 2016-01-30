@@ -22,7 +22,8 @@ import java.util.Set;
         @NamedQuery(name = "userNameIsPresent", query = "SELECT COUNT(a) from User a WHERE a.nickName= :nickName"),
         @NamedQuery(name = "userNameAndPasswordIsPresent", query = "SELECT COUNT(a) from User a WHERE a.nickName= :nickName AND a.passwordUser= :passwordUser"),
         @NamedQuery(name = "getById", query = "SELECT a FROM User a WHERE a.id= :id"),
-        @NamedQuery(name = "getUserByNameAndPassword", query = "SELECT a FROM User a WHERE a.nickName= :nickName AND a.passwordUser= :passwordUser")
+        @NamedQuery(name = "getUserByNameAndPassword", query = "SELECT a FROM User a WHERE a.nickName= :nickName AND a.passwordUser= :passwordUser"),
+        @NamedQuery(name = "getNameUserById", query = "SELECT a.nickName FROM User a WHERE a.id= :id")
 })
 public class User implements Serializable {
 
@@ -41,26 +42,6 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
-    public UserRole getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(UserRole userRole) {
-        this.userRole = userRole;
-    }
-
-//    @ElementCollection(fetch = FetchType.EAGER)
-//    private Set<UserRole> userRoles;
-//
-//    public Set<UserRole> getUserRoles() {
-//        return userRoles;
-//    }
-//
-//    public User setUserRoles(Set<UserRole> userRoles) {
-//        this.userRoles = userRoles;
-//        return this;
-//    }
-
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
@@ -71,11 +52,20 @@ public class User implements Serializable {
     @Column(name = "nickname", length = 100, unique = true)
     private String nickName;
 
+
     @Column(name = "passworduser")
     private String passwordUser;
 
     @Column(name = "online")
     private Boolean online;
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
 
     public Integer getId() {
         return id;

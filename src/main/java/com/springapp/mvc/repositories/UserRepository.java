@@ -13,6 +13,8 @@ import java.util.List;
  */
 public interface UserRepository{
 
+    Object getNameUserById(Integer id);
+
     User getByUser(String nickName, String password);
 
     User getByName(String nickName);

@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+
     @Override
     public UserDTO getUserByName(String nickname){
         UserDTO userDTO=new UserDTO();

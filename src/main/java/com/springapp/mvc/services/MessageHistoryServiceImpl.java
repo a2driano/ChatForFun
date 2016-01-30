@@ -58,10 +58,11 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
             List<MessageHistory> messageHistoryList=messageHistoryRepository.getAllUsersMessages();
             for(MessageHistory messageHistory: messageHistoryList){
                 messageHistoryDTOList.add(new MessageHistoryDTO()
-                .setMessageUser(messageHistory.getMessageUser())
+                        .setMessageUser(messageHistory.getMessageUser())
+                        .setName(messageHistory.getUser().getNickName())
 //                .setId(messageHistory.getMessageId())
-                .setDate(messageHistory.getDate()));
-//                .setUser(messageHistory.getUser()));
+                        .setDate(messageHistory.getDate()));
+//                .setName(name));
             }
         }catch (Exception e){
             LOGGER.error("{}",e.toString(),e);

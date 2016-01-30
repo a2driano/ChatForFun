@@ -27,15 +27,15 @@ public class MessageHistoryDTO {
 //    @JsonProperty("name")
     private User user;
 
+    private Integer id;
+
     private String name;
 
-    public String getName() {
-        return name;
-    }
+    @JsonProperty("textForm")
+    private String messageUser;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @JsonProperty("datatime")
+    private Date date;
 
     public Integer getMessageId() {
         return messageId;
@@ -45,11 +45,14 @@ public class MessageHistoryDTO {
         this.messageId = messageId;
     }
 
-    @JsonProperty("textForm")
-    private String messageUser;
+    public String getName() {
+        return name;
+    }
 
-    @JsonProperty("datatime")
-    private Date date;
+    public MessageHistoryDTO setName(String name) {
+        this.name = name;
+        return this;
+    }
 
     public Integer getId() {
         return messageId;
