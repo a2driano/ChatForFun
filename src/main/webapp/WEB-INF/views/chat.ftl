@@ -32,7 +32,7 @@
                 </div>
             </a>
 
-            <div class="chat">
+            <div class="chat" id="chatScroll">
                 <#--<div class="messageBlock"><span class="messageName"></span><span class="messageDate"></span><br><span class="messageText"></span></div>-->
 
                 <#--<div class="messageBlock">-->
@@ -43,10 +43,10 @@
                 <#--</div>-->
             </div>
             <div id="answerZone">
-                <form class="textWindow">
-                    <textarea class="textForm" name="textForm" cols="30" rows="7" maxlength="350"></textarea>
-                    <input type="button" id="dropMessage" value="Отправить" onclick="AjaxFormRequest()">
-                </form>
+                <div class="textWindow">
+                    <textarea id="cform" class="textForm" name="textForm" cols="30" rows="7" maxlength="350"></textarea>
+                    <button type="button" id="dropMessage" onclick="AjaxFormRequest()">Отправить</button>
+                </div>
                 <div id="basement">
                     <p id="basementText">Copyright a2driano ©, 2016.</p>
                     <a class=ref href="/logout">

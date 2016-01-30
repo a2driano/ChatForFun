@@ -35,8 +35,7 @@ public class MessageController {
     @ResponseBody
     public MessageHistoryDTO addMessage(@RequestBody MessageHistoryDTO messageHistoryDTO){
 
-        MessageHistoryDTO messageHistoryDTOReturn;
-        messageHistoryDTOReturn=messageHistoryService.addMessage(messageHistoryDTO);
+        MessageHistoryDTO messageHistoryDTOReturn=messageHistoryService.addMessage(messageHistoryDTO);
         return messageHistoryDTOReturn;
     }
 
