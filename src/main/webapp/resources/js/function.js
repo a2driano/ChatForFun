@@ -2,46 +2,55 @@
  * Created by Администратор on 09.01.2016.
  */
 
-function addEventsRegistration(){
-    $('.responce').html("");
-    $('.responceFail').html("");
+function registration_func(){
+    //$('.responce').html("");
+    //$('.responceFail').html("");
+    var name=$("#name").val();
+    var password=$("#password").val();
     var data={
         name: $("#name").val(),
         password: $("#password").val()
     };
     $.ajax({
-        url: $hostRoot + "addUser",
+        url: $hostRoot + "save",
         type: 'post',
         dataType: 'json',
         contentType: 'application/json',
         data: JSON.stringify(data),
-        success: function (modelAndView) {
-
-            //var userstatus="${status}";
-            //console.log(userstatus);
-            if (modelAndView.status == "SUCCESS") {
-
-
-                var address =$hostRoot+userResponce.message;
-                console.log(address);
-                document.location.href = address;
-
-                //$('.cabinetFormText').append('<div class="responce">'+ userResponce.message +'</div>');
-                //setTimeout(function () {
-                //    $('.responce').html("");
-                //}, 5000);
-            } else {
-                $('.cabinetFormText').append('<div class="responceFail">'+ userResponce.message +'</div>');
-                setTimeout(function () {
-                    $('.responceFail').html("");
-                }, 5000);
+        success: function (data) {
+            console.log(data.message);
+            if(data.message=="Регистрация прошла успешно"){
+                $("#name").val(name);
+                $("#password").val(password);
+                document.getElementById('userDTO').submit();
+                top.location.href="/chat";
             }
+
+            ////var userstatus="${status}";
+            ////console.log(userstatus);
+            //if (modelAndView.status == "SUCCESS") {
+            //
+            //
+            //    var address =$hostRoot+userResponce.message;
+            //    console.log(address);
+            //    document.location.href = address;
+            //
+            //    //$('.cabinetFormText').append('<div class="responce">'+ userResponce.message +'</div>');
+            //    //setTimeout(function () {
+            //    //    $('.responce').html("");
+            //    //}, 5000);
+            //} else {
+            //    $('.cabinetFormText').append('<div class="responceFail">'+ userResponce.message +'</div>');
+            //    setTimeout(function () {
+            //        $('.responceFail').html("");
+            //    }, 5000);
+            //}
         },
         error: function (error) {
-            $('.cabinetFormText').append('<div class="responceFail">'+ userResponce.message +'</div>');
-            setTimeout(function () {
-                $('.responceFail').html("");
-            }, 5000);
+            //$('.cabinetFormText').append('<div class="responceFail">'+ userResponce.message +'</div>');
+            //setTimeout(function () {
+            //    $('.responceFail').html("");
+            //}, 5000);
         }
     });
 };

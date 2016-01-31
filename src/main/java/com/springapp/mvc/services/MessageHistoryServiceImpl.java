@@ -12,9 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import javax.management.ObjectName;
+import java.util.*;
 
 /**
  * @version 1.0
@@ -62,8 +61,13 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
                         .setName(messageHistory.getUser().getNickName())
 //                .setId(messageHistory.getMessageId())
                         .setDate(messageHistory.getDate()));
-//                .setName(name));
             }
+            //sort collection by date
+            Collections.sort(messageHistoryDTOList, new Comparator<MessageHistoryDTO>() {
+                public int compare(MessageHistoryDTO o1, MessageHistoryDTO o2) {
+                    return o1.getDate().toString().compareTo(o2.getDate().toString());
+                }
+            });
         }catch (Exception e){
             LOGGER.error("{}",e.toString(),e);
         }

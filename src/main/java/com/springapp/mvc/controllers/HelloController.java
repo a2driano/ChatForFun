@@ -1,6 +1,7 @@
 package com.springapp.mvc.controllers;
 
 import com.springapp.mvc.model.UserCreateForm;
+import com.springapp.mvc.model.web.MessageHistoryDTO;
 import com.springapp.mvc.model.web.UserDTO;
 import com.springapp.mvc.model.web.UserResponce;
 import com.springapp.mvc.services.MessageHistoryService;
@@ -37,6 +38,7 @@ public class HelloController {
 	public String index() {
 		return "index";
 	}
+
 	@RequestMapping(value = "/registration")
 	public String registration() {
 		return "registration";
@@ -93,17 +95,41 @@ public class HelloController {
 		return userService.deleteUser(id);
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView handleUserCreateForm(HttpServletRequest request) {
-		ModelAndView modelAndView=new ModelAndView("redirect:/registration");
-		UserDTO userDTO=new UserDTO();
-		userDTO.setNickName(request.getParameter("name")).setPasswordUser(request.getParameter("password"));
-		String str=userService.create(userDTO);
 
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView handleUserCreateForm(@RequestBody UserDTO userDTO) {
+		ModelAndView modelAndView=new ModelAndView("/registration");
+		userDTO.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser());
+		String str=userService.create(userDTO);
 		modelAndView.addObject("Message", str);
 		return modelAndView;
 	}
+
+
+//	@ResponseBody
+//	@RequestMapping(value = "/save", method = RequestMethod.POST)
+//	public ModelAndView handleUserCreateForm(HttpServletRequest request) {
+//		ModelAndView modelAndView=new ModelAndView("redirect:/registration");
+//		UserDTO userDTO=new UserDTO();
+//		userDTO.setNickName(request.getParameter("name")).setPasswordUser(request.getParameter("password"));
+//		String str=userService.create(userDTO);
+//
+//		modelAndView.addObject("Message", str);
+//		return modelAndView;
+//	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 //	//	@ResponseBody
 //	@RequestMapping(value = "/save", method = RequestMethod.POST)

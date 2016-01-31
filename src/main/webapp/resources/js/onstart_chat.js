@@ -56,25 +56,37 @@ var onStart = function () {
                 var todaydd = today.getDate();
                 var todaymm = today.getMonth() + 1;
                 var todayyyyy = today.getFullYear();
-                if (todaydd < 10) {todaydd = '0' + todaydd}
-                if (todaymm < 10) {todaymm = '0' + todaymm}
+                if (todaydd < 10) {
+                    todaydd = '0' + todaydd
+                }
+                if (todaymm < 10) {
+                    todaymm = '0' + todaymm
+                }
 
                 var datatime = new Date(data[i].datatime);
                 var dd = datatime.getDate();
                 var mm = datatime.getMonth() + 1;
                 var yyyy = datatime.getFullYear();
-                var hh=datatime.getHours();
-                var min=datatime.getMinutes();
-                if (dd < 10) {dd = '0' + dd}
-                if (mm < 10) {mm = '0' + mm}
-                if (hh < 10) {hh = '0' + mm}
-                if (min < 10) {min = '0' + mm}
+                var hh = datatime.getHours();
+                var min = datatime.getMinutes();
+                if (dd < 10) {
+                    dd = '0' + dd
+                }
+                if (mm < 10) {
+                    mm = '0' + mm
+                }
+                if (hh < 10) {
+                    hh = '0' + mm
+                }
+                if (min < 10) {
+                    min = '0' + mm
+                }
 
                 //If the message not today: user see just year/mm/day, if today: see time of message
-                if((todaydd+todaymm+todayyyyy)==(dd+mm+yyyy)) {
-                    var time=hh+':'+min;
-                }else{
-                    var time=mm+'/'+dd+'/'+yyyy;
+                if ((todaydd + todaymm + todayyyyy) == (dd + mm + yyyy)) {
+                    var time = hh + ':' + min;
+                } else {
+                    var time = mm + '/' + dd + '/' + yyyy;
                 }
 
                 var textForm = data[i].textForm;
@@ -82,18 +94,15 @@ var onStart = function () {
                     '</span><span class="messageDate">' + time +
                     '</span><br><span class="messageText">' + textForm + '</span></div>');
 
-                //scroll chat window in bottom
-                var objDiv = document.getElementById("chatScroll");
-                objDiv.scrollTop  = objDiv.scrollHeight;
             }
+            //scroll chat window in bottom
+            var objDiv = document.getElementById("chatScroll");
+            objDiv.scrollTop = objDiv.scrollHeight;
         },
         error: function (error) {
             console.log(error)
         }
-
     });
-
-
 };
 
 
@@ -116,24 +125,36 @@ function AjaxFormRequest() {
                 var todaydd = today.getDate();
                 var todaymm = today.getMonth() + 1;
                 var todayyyyy = today.getFullYear();
-                if (todaydd < 10) {todaydd = '0' + todaydd}
-                if (todaymm < 10) {todaymm = '0' + todaymm}
+                if (todaydd < 10) {
+                    todaydd = '0' + todaydd
+                }
+                if (todaymm < 10) {
+                    todaymm = '0' + todaymm
+                }
 
                 var datatime = new Date(messageHistoryDTO.datatime);
                 var dd = datatime.getDate();
                 var mm = datatime.getMonth() + 1;
                 var yyyy = datatime.getFullYear();
-                var hh=datatime.getHours();
-                var min=datatime.getMinutes();
-                if (dd < 10) {dd = '0' + dd}
-                if (mm < 10) {mm = '0' + mm}
-                if (hh < 10) {hh = '0' + mm}
-                if (min < 10) {min = '0' + mm}
+                var hh = datatime.getHours();
+                var min = datatime.getMinutes();
+                if (dd < 10) {
+                    dd = '0' + dd
+                }
+                if (mm < 10) {
+                    mm = '0' + mm
+                }
+                if (hh < 10) {
+                    hh = '0' + mm
+                }
+                if (min < 10) {
+                    min = '0' + mm
+                }
 
-                if((todaydd+todaymm+todayyyyy)==(dd+mm+yyyy)) {
-                    var time=hh+':'+min;
-                }else{
-                    var time=mm+'/'+dd+'/'+yyyy;
+                if ((todaydd + todaymm + todayyyyy) == (dd + mm + yyyy)) {
+                    var time = hh + ':' + min;
+                } else {
+                    var time = mm + '/' + dd + '/' + yyyy;
                 }
                 var name = messageHistoryDTO.name;
                 var textForm = messageHistoryDTO.textForm;
@@ -143,16 +164,13 @@ function AjaxFormRequest() {
 
                 //scroll chat window in bottom
                 var objDiv = document.getElementById("chatScroll");
-                objDiv.scrollTop  = objDiv.scrollHeight;
+                objDiv.scrollTop = objDiv.scrollHeight;
             } else {
-                console.log("empty");
+                console.log("EMPTY DATA");
             }
         },
         error: function (error) {
-            $('.cabinetFormText').append('<div class="responceFail">' + userResponce.message + '</div>');
-            setTimeout(function () {
-                $('.responceFail').html("");
-            }, 5000);
+            console.log("ERROR");
         }
     });
 };
