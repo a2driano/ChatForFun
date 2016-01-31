@@ -57,10 +57,10 @@ var onStart = function () {
                 var todaymm = today.getMonth() + 1;
                 var todayyyyy = today.getFullYear();
                 if (todaydd < 10) {
-                    todaydd = '0' + todaydd
+                    todaydd = '0' + todaydd;
                 }
                 if (todaymm < 10) {
-                    todaymm = '0' + todaymm
+                    todaymm = '0' + todaymm;
                 }
 
                 var datatime = new Date(data[i].datatime);
@@ -70,16 +70,16 @@ var onStart = function () {
                 var hh = datatime.getHours();
                 var min = datatime.getMinutes();
                 if (dd < 10) {
-                    dd = '0' + dd
+                    dd = '0' + dd;
                 }
                 if (mm < 10) {
-                    mm = '0' + mm
+                    mm = '0' + mm;
                 }
                 if (hh < 10) {
-                    hh = '0' + mm
+                    hh = '0' + hh;
                 }
                 if (min < 10) {
-                    min = '0' + mm
+                    min = '0' + min;
                 }
 
                 //If the message not today: user see just year/mm/day, if today: see time of message
@@ -139,16 +139,16 @@ function AjaxFormRequest() {
                 var hh = datatime.getHours();
                 var min = datatime.getMinutes();
                 if (dd < 10) {
-                    dd = '0' + dd
+                    dd = '0' + dd;
                 }
                 if (mm < 10) {
-                    mm = '0' + mm
+                    mm = '0' + mm;
                 }
                 if (hh < 10) {
-                    hh = '0' + mm
+                    hh = '0' + hh;
                 }
                 if (min < 10) {
-                    min = '0' + mm
+                    min = '0' + min;
                 }
 
                 if ((todaydd + todaymm + todayyyyy) == (dd + mm + yyyy)) {
