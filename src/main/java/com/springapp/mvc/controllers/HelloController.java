@@ -1,13 +1,25 @@
 package com.springapp.mvc.controllers;
 
 import com.springapp.mvc.model.UserCreateForm;
+import com.springapp.mvc.model.entity.User;
 import com.springapp.mvc.model.web.MessageHistoryDTO;
 import com.springapp.mvc.model.web.UserDTO;
 import com.springapp.mvc.model.web.UserResponce;
 import com.springapp.mvc.services.MessageHistoryService;
+import com.springapp.mvc.services.UserDetailsServiceImpl;
 import com.springapp.mvc.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
+import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,10 +27,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
+import org.springframework.security.web.savedrequest.SavedRequest;
 
 /**
  * @version 1.0
@@ -29,46 +44,44 @@ import java.util.Optional;
 
 @Controller
 public class HelloController {
-	@Autowired
-	private UserService userService;
-	@Autowired
-	private MessageHistoryService messageHistoryService;
 
-	@RequestMapping(value = "/")
-	public String index() {
-		return "index";
-	}
+//	@Autowired
+//	private AuthenticationManager authMgr;
 
-	@RequestMapping(value = "/registration")
-	public String registration() {
-		return "registration";
-	}
+//	@Autowired
+//	private UserDetailsServiceImpl UserDetailsServiceImpl;
+
+
+    @Autowired
+    private UserService userService;
+//	@Autowired
+//	private MessageHistoryService messageHistoryService;
+
+    @RequestMapping(value = "/")
+    public String index() {
+        return "index";
+    }
+
+    @RequestMapping(value = "/registration")
+    public String registration() {
+        return "registration";
+    }
 
 //	@RequestMapping(value = "/login", method = RequestMethod.GET)
 //	public ModelAndView getLoginPage(@RequestParam Optional<String> error) {
 //		return new ModelAndView("login", "error", request.getSession().getAttribute("SPRING_SECURITY_LAST_EXCEPTION").toString());
 //	}
 
-	@RequestMapping(value = "/login")
-	public String login(Model model){
-		return "login";
-	}
+    @RequestMapping(value = "/login")
+    public String login(Model model) {
+        return "login";
+    }
 
-//	@RequestMapping(value = "/login", method = RequestMethod.GET)
-//	public ModelAndView login(
-//			@RequestParam(value = "error", required = false) String error) {
-//		ModelAndView model = new ModelAndView();
-//		if (error != null) {
-//			model.addObject("error", "Invalid username and password!");
-//		}
-//		model.setViewName("login");
-//		return model;
-//	}
 
-	@RequestMapping(value = "/chat")
-	public String chat() {
-		return "chat";
-	}
+    @RequestMapping(value = "/chat")
+    public String chat() {
+        return "chat";
+    }
 
 //	@RequestMapping(value = "/chatuser")
 //	@ResponseBody
@@ -89,58 +102,40 @@ public class HelloController {
 //		return userService.getByUserNickName(nickName);
 //	}
 
-	@ResponseBody
-	@RequestMapping(value = "/del", method = RequestMethod.GET)
-	public UserDTO deleteUser(@RequestParam int id){
-		return userService.deleteUser(id);
-	}
+    @ResponseBody
+    @RequestMapping(value = "/del", method = RequestMethod.GET)
+    public UserDTO deleteUser(@RequestParam int id) {
+        return userService.deleteUser(id);
+    }
 
 
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView handleUserCreateForm(@RequestBody UserDTO userDTO) {
-		ModelAndView modelAndView=new ModelAndView("/registration");
-		userDTO.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser());
-		String str=userService.create(userDTO);
-		modelAndView.addObject("Message", str);
-		return modelAndView;
-	}
+    @ResponseBody
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public ModelAndView handleUserCreateForm(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/chat");
+        UserDTO userDTO = new UserDTO();
+        userDTO.setNickName(request.getParameter("name")).setPasswordUser(request.getParameter("password"));
+        User user = userService.create(userDTO);
 
+        List<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
+        auth.add(new GrantedAuthority() {
+            @Override
+            public String getAuthority() {
+                return "USER";
+            }
+        });
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getNickName(), user.getPasswordUser(), auth);
+        SecurityContextHolder.getContext().setAuthentication(token);
 
-//	@ResponseBody
-//	@RequestMapping(value = "/save", method = RequestMethod.POST)
-//	public ModelAndView handleUserCreateForm(HttpServletRequest request) {
-//		ModelAndView modelAndView=new ModelAndView("redirect:/registration");
-//		UserDTO userDTO=new UserDTO();
-//		userDTO.setNickName(request.getParameter("name")).setPasswordUser(request.getParameter("password"));
-//		String str=userService.create(userDTO);
-//
+        Authentication auth2 = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth2.getName();
+        System.err.println(name);
+        System.err.println(name);
+        System.err.println(name);
+        System.err.println(name);
+
 //		modelAndView.addObject("Message", str);
-//		return modelAndView;
-//	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-//	//	@ResponseBody
-//	@RequestMapping(value = "/save", method = RequestMethod.POST)
-//	public String handleUserCreateForm(HttpServletRequest request) {
-//		UserDTO userDTO=new UserDTO();
-//		userDTO.setNickName(request.getParameter("name")).setPasswordUser(request.getParameter("password"));
-//		userService.create(userDTO);
-////		return "redirect:/";
-//		return "/registration";
-//	}
-
-
+        return modelAndView;
+    }
 
 }

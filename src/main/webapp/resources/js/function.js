@@ -18,13 +18,14 @@ function registration_func(){
         contentType: 'application/json',
         data: JSON.stringify(data),
         success: function (data) {
-            console.log(data.message);
-            if(data.message=="Регистрация прошла успешно"){
-                $("#name").val(name);
-                $("#password").val(password);
-                document.getElementById('userDTO').submit();
-                top.location.href="/chat";
-            }
+            //top.location.href="/chat";
+            //console.log(data);
+            //if(data.message=="Регистрация прошла успешно"){
+            //    $("#name").val(name);
+            //    $("#password").val(password);
+            //    document.getElementById('userDTO').submit();
+            //    top.location.href="/chat";
+            //}
 
             ////var userstatus="${status}";
             ////console.log(userstatus);

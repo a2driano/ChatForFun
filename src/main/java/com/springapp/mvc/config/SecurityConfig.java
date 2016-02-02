@@ -3,8 +3,10 @@ package com.springapp.mvc.config;
 
 import com.springapp.mvc.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,6 +27,12 @@ import java.security.AuthProvider;
 @EnableWebMvcSecurity
 @ComponentScan
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Bean(name="myAuthenticationManager")
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
     @Autowired
     AuthenticationProvider authenticationProvider;
@@ -60,6 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
+//                .antMatchers("/registration/**").access("hasRole('ANONYMOUS')")
                 .antMatchers("/save").permitAll()
                 .antMatchers("/chat").access("hasRole('USER')")
                 .anyRequest().authenticated()

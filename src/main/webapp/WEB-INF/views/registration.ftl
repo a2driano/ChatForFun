@@ -34,22 +34,22 @@
                     <div class="logoTypesImage" id="image_6"></div>
                 </div>
             </a>
-            <form class="cabinetFormText" id="userDTO">
-                <input class="formText" id="name" name="name" type="text" maxlength="25" size="40" required
-                       placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">
-                <input class="formText" id="password" name="password" type="password" maxlength="25" size="40" required
-                       placeholder="ВВЕДИТЕ ПАРОЛЬ">
-                <input type="submit" class="buttonForm" id="submit" onclick="registration_func()">
-            </form>
-
-            <#--<form class="cabinetFormText" id="userDTO" action="save" method="post">-->
-                <#--<input class="formText" name="name" type="text" maxlength="25" size="40" required-->
+            <#--<form class="cabinetFormText" id="userDTO">-->
+                <#--<input class="formText" id="name" name="name" type="text" maxlength="25" size="40" required-->
                        <#--placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">-->
-                <#--<input class="formText" name="password" type="password" maxlength="25" size="40" required-->
+                <#--<input class="formText" id="password" name="password" type="password" maxlength="25" size="40" required-->
                        <#--placeholder="ВВЕДИТЕ ПАРОЛЬ">-->
-            <#--&lt;#&ndash;<input id="remember_me" name="_spring_security_remember_me" type="checkbox" value="Запомнить меня"/>&ndash;&gt;-->
-                <#--<input type="submit" class="buttonForm" id="submit">-->
+                <#--<input type="submit" class="buttonForm" id="submit" onclick="registration_func()">-->
             <#--</form>-->
+
+            <form class="cabinetFormText" id="userDTO" action="save" method="post">
+                <input class="formText" name="name" type="text" maxlength="25" size="40" required
+                       placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">
+                <input class="formText" name="password" type="password" maxlength="25" size="40" required
+                       placeholder="ВВЕДИТЕ ПАРОЛЬ">
+            <#--<input id="remember_me" name="_spring_security_remember_me" type="checkbox" value="Запомнить меня"/>-->
+                <input type="submit" class="buttonForm" id="submit">
+            </form>
         </div>
     </div>
 </div>

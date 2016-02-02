@@ -86,7 +86,7 @@ var onStart = function () {
                 if ((todaydd + todaymm + todayyyyy) == (dd + mm + yyyy)) {
                     var time = hh + ':' + min;
                 } else {
-                    var time = mm + '/' + dd + '/' + yyyy;
+                    var time = dd + '/' + mm + '/' + yyyy;
                 }
 
                 var textForm = data[i].textForm;
@@ -154,7 +154,7 @@ function AjaxFormRequest() {
                 if ((todaydd + todaymm + todayyyyy) == (dd + mm + yyyy)) {
                     var time = hh + ':' + min;
                 } else {
-                    var time = mm + '/' + dd + '/' + yyyy;
+                    var time = dd + '/' + mm + '/' + yyyy;
                 }
                 var name = messageHistoryDTO.name;
                 var textForm = messageHistoryDTO.textForm;

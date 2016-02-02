@@ -15,7 +15,7 @@ import java.util.Collection;
 public enum UserRole {
 
 //    @CollectionTable(name = "user_roles")
-//    ANONYMOUS("ROLE_ANONYMOUS"),
+    ANONYMOUS(),
     USER(),
     ADMIN();
 

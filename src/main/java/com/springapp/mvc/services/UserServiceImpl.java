@@ -48,21 +48,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String create(UserDTO userDTO) {
+    public User create(UserDTO userDTO) {
         User user = new User();
         user.setNickName(userDTO.getNickName());
         user.setPasswordUser(userDTO.getPasswordUser());
         user.setUserRole(UserRole.USER);
         try{
             userRepository.add(user);
-            return "Регистрация прошла успешно";
+//            return "Регистрация прошла успешно";
+            return user;
         }catch (ConstraintViolationException e){
             LOGGER.error("{}",e.toString(),e);
-            return "Данное имя уже используется";
+//            return "Данное имя уже используется";
         }catch (Exception e){
             LOGGER.error("{}",e.toString(),e);
-            return "Нет соединения с базой данных";
+//            return "Нет соединения с базой данных";
         }
+        return null;
     }
 
 //    @Override
