@@ -12,8 +12,8 @@
     <script type="text/javascript" src="/js/lib/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="/js/lib/jquery.countdown.min.js"></script>
     <script type="text/javascript" src="/js/onstart.js"></script>
-    <#--<script type="text/javascript" src="/js/function.js"></script>-->
-    <#--<link rel="shortcut icon" href="/img/favicon.png" type="image/png">-->
+<#--<script type="text/javascript" src="/js/function.js"></script>-->
+<#--<link rel="shortcut icon" href="/img/favicon.png" type="image/png">-->
     <script type="text/javascript">
         var $applicationRoot = '/';
         var $host = document.location.protocol + '//' + document.location.host;
@@ -32,26 +32,16 @@
                     <div class="logoTypesImage" id="image_4"></div>
                     <div class="logoTypesImage" id="image_5"></div>
                     <div class="logoTypesImage" id="image_6"></div>
-                <#--<div class="logoInside"></div>-->
                 </div>
             </a>
-            <#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>
-                <div class="responceFail">Неправильный логин или пароль</div>
-            </#if>
+            <div class="responceFail">Неправильный логин или пароль</div>
             <form class="cabinetFormText" id="formRegistr" action="/j_spring_security_check" method="post">
                 <input class="formText" name="j_username" type="text" maxlength="25" size="40" required
                        placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">
                 <input class="formText" name="j_password" type="password" maxlength="25" size="40" required
                        placeholder="ВВЕДИТЕ ПАРОЛЬ">
-            <#--<input id="remember_me" name="_spring_security_remember_me" type="checkbox" value="Запомнить меня"/>-->
                 <input type="submit" class="buttonForm" id="submit">
-                <form>
-
-                <#--<#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>-->
-                    <#--<@spring.message "login.bad.credentials"/>-->
-                    <#--<p>The email or password you have entered is invalid, try again.</p>-->
-                <#--</#if>-->
-                    <#--<span class="error">not a well-formed email address</span>-->
+            </form>
         </div>
     </div>
 </div>
