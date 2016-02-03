@@ -271,6 +271,16 @@
     font-size: 11pt;
     font-family: sans-serif;
 }
+.responceFail{
+    display: block;
+    position: relative;
+    margin: auto;
+    margin-top: 15px;
+    font-size: 12pt;
+    font-family: sans-serif;
+    color: red;
+    text-align: center;
+}
 
 
 

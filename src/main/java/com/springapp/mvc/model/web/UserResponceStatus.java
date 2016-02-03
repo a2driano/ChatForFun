@@ -7,5 +7,5 @@ package com.springapp.mvc.model.web;
  * @since 09.01.2016
  */
 public enum UserResponceStatus {
-    SUCCESS, FAIL
+    SUCCESS, FAIL, ERRORDB
 }

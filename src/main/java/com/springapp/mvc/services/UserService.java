@@ -1,7 +1,5 @@
 package com.springapp.mvc.services;
 
-import com.springapp.mvc.model.UserCreateForm;
-import com.springapp.mvc.model.entity.User;
 import com.springapp.mvc.model.web.UserDTO;
 import com.springapp.mvc.model.web.UserResponce;
 
@@ -20,6 +18,7 @@ public interface UserService {
 
     /**
      * This methods returns a user by nickname
+     *
      * @param userDTO
      * @return
      */
@@ -27,6 +26,7 @@ public interface UserService {
 
     /**
      * This methods returns a user by nickname and password
+     *
      * @param userDTO
      * @return
      */
@@ -34,36 +34,43 @@ public interface UserService {
 
     /**
      * This methods returns all users in DB
+     *
      * @return
      */
     List<UserDTO> getAll();
 
     /**
      * This methods returns all users who is online
+     *
      * @return
      */
     List<UserDTO> getByOnline();
+
     /**
      * This methods add user into DB
-     * @param  userDTO
+     *
+     * @param userDTO
      * @return
      */
     UserResponce addUser(UserDTO userDTO);
 
     /**
      * This methods delete user into DB
-     * @param  id
+     *
+     * @param id
      * @return
      */
     UserDTO deleteUser(Integer id);
 
     /**
      * This methods update user in DB
+     *
      * @param userDTO
      * @return
      */
     UserDTO updateUser(UserDTO userDTO);
 
-//    String create(UserDTO userDTO);
-    User create(UserDTO userDTO);
+    //    String create(UserDTO userDTO);
+//    User create(UserDTO userDTO);
+    UserResponce create(UserDTO userDTO);
 }

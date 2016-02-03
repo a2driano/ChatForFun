@@ -68,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
-//                .antMatchers("/registration/**").access("hasRole('ANONYMOUS')")
+                .antMatchers("/registrationerr").permitAll()
                 .antMatchers("/save").permitAll()
                 .antMatchers("/chat").access("hasRole('USER')")
                 .anyRequest().authenticated()
