@@ -13,7 +13,7 @@
     <script type="text/javascript" src="/js/lib/jquery.countdown.min.js"></script>
     <script type="text/javascript" src="/js/onstart.js"></script>
     <script type="text/javascript" src="/js/function.js"></script>
-    <#--<link rel="shortcut icon" href="/img/favicon.png" type="image/png">-->
+<#--<link rel="shortcut icon" href="/img/favicon.png" type="image/png">-->
     <script type="text/javascript">
         var $applicationRoot = '/';
         var $host = document.location.protocol + '//' + document.location.host;
@@ -34,20 +34,22 @@
                     <div class="logoTypesImage" id="image_6"></div>
                 </div>
             </a>
-            <#--<form class="cabinetFormText" id="userDTO">-->
-                <#--<input class="formText" id="name" name="name" type="text" maxlength="25" size="40" required-->
-                       <#--placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">-->
-                <#--<input class="formText" id="password" name="password" type="password" maxlength="25" size="40" required-->
-                       <#--placeholder="ВВЕДИТЕ ПАРОЛЬ">-->
-                <#--<input type="submit" class="buttonForm" id="submit" onclick="registration_func()">-->
-            <#--</form>-->
+        <#--<form class="cabinetFormText" id="userDTO">-->
+        <#--<input class="formText" id="name" name="name" type="text" maxlength="25" size="40" required-->
+        <#--placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">-->
+        <#--<input class="formText" id="password" name="password" type="password" maxlength="25" size="40" required-->
+        <#--placeholder="ВВЕДИТЕ ПАРОЛЬ">-->
+        <#--<input type="submit" class="buttonForm" id="submit" onclick="registration_func()">-->
+        <#--</form>-->
 
+        <#--<#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>-->
+            <#--<div class="responceFail">Этот логин уже занят, выберите другой</div>-->
+        <#--</#if>-->
             <form class="cabinetFormText" id="userDTO" action="save" method="post">
                 <input class="formText" name="name" type="text" maxlength="25" size="40" required
                        placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">
                 <input class="formText" name="password" type="password" maxlength="25" size="40" required
                        placeholder="ВВЕДИТЕ ПАРОЛЬ">
-            <#--<input id="remember_me" name="_spring_security_remember_me" type="checkbox" value="Запомнить меня"/>-->
                 <input type="submit" class="buttonForm" id="submit">
             </form>
         </div>

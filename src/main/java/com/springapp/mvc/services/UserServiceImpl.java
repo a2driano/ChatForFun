@@ -9,6 +9,8 @@ import com.springapp.mvc.repositories.UserRepository;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -32,6 +34,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDTO getUserByName(String nickname){
@@ -46,7 +50,7 @@ public class UserServiceImpl implements UserService {
         UserResponce userResponce=new UserResponce();
         User user = new User();
         user.setNickName(userDTO.getNickName());
-        user.setPasswordUser(userDTO.getPasswordUser());
+        user.setPasswordUser(new BCryptPasswordEncoder(12).encode(userDTO.getPasswordUser()));
         user.setUserRole(UserRole.USER);
         try{
             userRepository.add(user);

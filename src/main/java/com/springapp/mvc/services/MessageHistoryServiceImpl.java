@@ -43,7 +43,6 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
                         .setDate(messageHistory.getDate())
                         .setUser(messageHistory.getUser()));
             }
-
         }catch (Exception e){
             LOGGER.error("{}",e.toString(),e);
         }

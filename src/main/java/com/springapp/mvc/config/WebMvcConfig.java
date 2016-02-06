@@ -31,13 +31,6 @@ class WebMvcConfig extends WebMvcConfigurerAdapter {
         return new UserDetailsServiceImpl();
     }
 
-//    @Bean
-//    public ViewResolver getViewResolver(){
-//        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-//        viewResolver.setPrefix("/WEB-INF/jsp/");
-//        viewResolver.setSuffix(".jsp");
-//        return viewResolver;
-//    }
 
     @Bean
     public FreeMarkerViewResolver viewResolver() {
