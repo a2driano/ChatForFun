@@ -14,20 +14,9 @@ import java.util.Collection;
 //public enum UserRole implements GrantedAuthority {
 public enum UserRole {
 
-//    @CollectionTable(name = "user_roles")
     ANONYMOUS(),
     USER(),
     ADMIN();
 
-//    private String authority;
-//
-//    UserRole(String authority){
-//        this.authority=authority;
-//    }
-//
-//    @Override
-//    public String getAuthority() {
-//        return this.authority;
-//    }
-
+    UserRole(){}
 }

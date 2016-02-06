@@ -44,9 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 //    @Autowired
 //    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication().withUser("user").password("1").roles("USER");
-//        auth.inMemoryAuthentication().withUser("admin").password("1").roles("ADMIN");
+//        auth.inMemoryAuthentication().withUser("3").password("1").roles("ADMIN");
 //    }
+
+
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -58,19 +59,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.authenticationProvider(authenticationProvider);
-//    }
-
-//    @Bean
-//    public DaoAuthenticationProvider authProvider() {
-//        final DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-//        authProvider.setUserDetailsService(userDetailsService);
-//        authProvider.setPasswordEncoder(encoder());
-//        return authProvider;
-//    }
-//
-//    @Bean
-//    public PasswordEncoder encoder() {
-//        return new BCryptPasswordEncoder(11);
 //    }
 
     @Override
@@ -92,13 +80,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/loginerror").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/registrationerr").permitAll()
-                .antMatchers("/service_page").permitAll()
                 .antMatchers("/save").permitAll()
-                .antMatchers("/chat").access("hasRole('USER')")
+                .antMatchers("/chat").access("hasRole('USER') or hasRole('ADMIN')")
+                .antMatchers("/service_page").access("hasRole('ADMIN')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login")
-//                .failureUrl("/loginerror")
                 .loginProcessingUrl("/j_spring_security_check")
                 .usernameParameter("j_username")
                 .passwordParameter("j_password")
@@ -108,7 +95,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);
-//        .and().exceptionHandling().accessDeniedPage("/login");
     }
 
 

@@ -35,7 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         try {
             User user = userRepository.getByName(name);
             Set<GrantedAuthority> roles = new HashSet<>();
-            roles.add(new SimpleGrantedAuthority(UserRole.USER.name()));
+            roles.add(new SimpleGrantedAuthority(user.getUserRole().name()));
             userDetails = new org.springframework.security.core.userdetails.User(user.getNickName(), user.getPasswordUser(), roles);
             return userDetails;
         } catch (EmptyResultDataAccessException e) {
