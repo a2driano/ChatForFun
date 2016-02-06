@@ -99,10 +99,8 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
         try {
             MessageHistory messageHistory=new MessageHistory();
             messageHistory.setMessageId(id);
-            System.err.println("WWWWWWWWWWWWWWWWWWWWWWWWW-------------------------------------  " + messageHistory.getMessageId());
             messageHistoryRepository.delete(messageHistory);
         }catch (Exception e){
-            System.err.println("EEEEEEEEEEEERRRRRRRRRRRRRRRRRRRROOOOOOOOOOOOORRRRRRRRRRR-------------------------------------  "+id);
             return null;
         }
         return messageHistoryDTO.setId(id);

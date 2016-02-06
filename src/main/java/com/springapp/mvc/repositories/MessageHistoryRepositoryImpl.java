@@ -43,7 +43,6 @@ public class MessageHistoryRepositoryImpl implements MessageHistoryRepository {
 
     @Override
     public void delete(MessageHistory messageHistory) {
-        System.err.println("-------------------------------------  "+messageHistory.getMessageId());
         entityManager.remove(getMessageById(messageHistory.getMessageId()));
     }
 
