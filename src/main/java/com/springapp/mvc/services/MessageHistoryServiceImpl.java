@@ -31,34 +31,33 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
     private UserRepository userRepository;
 
     @Override
-    public List<MessageHistoryDTO> getUserMessagesById(Integer id)
-    {
-        List<MessageHistoryDTO> messageHistoryDTOList=new ArrayList<MessageHistoryDTO>();
-        try{
-            List<MessageHistory> messageHistoryList=messageHistoryRepository.getUserMessagesById(id);
-            for(MessageHistory messageHistory: messageHistoryList){
+    public List<MessageHistoryDTO> getUserMessagesById(Integer id) {
+        List<MessageHistoryDTO> messageHistoryDTOList = new ArrayList<MessageHistoryDTO>();
+        try {
+            List<MessageHistory> messageHistoryList = messageHistoryRepository.getUserMessagesById(id);
+            for (MessageHistory messageHistory : messageHistoryList) {
                 messageHistoryDTOList.add(new MessageHistoryDTO()
                         .setMessageUser(messageHistory.getMessageUser())
                         .setId(messageHistory.getMessageId())
                         .setDate(messageHistory.getDate())
                         .setUser(messageHistory.getUser()));
             }
-        }catch (Exception e){
-            LOGGER.error("{}",e.toString(),e);
+        } catch (Exception e) {
+            LOGGER.error("{}", e.toString(), e);
         }
         return messageHistoryDTOList;
     }
 
     @Override
     public List<MessageHistoryDTO> getAllUsersMessages() {
-        List<MessageHistoryDTO> messageHistoryDTOList=new ArrayList<MessageHistoryDTO>();
+        List<MessageHistoryDTO> messageHistoryDTOList = new ArrayList<MessageHistoryDTO>();
         try {
-            List<MessageHistory> messageHistoryList=messageHistoryRepository.getAllUsersMessages();
-            for(MessageHistory messageHistory: messageHistoryList){
+            List<MessageHistory> messageHistoryList = messageHistoryRepository.getAllUsersMessages();
+            for (MessageHistory messageHistory : messageHistoryList) {
                 messageHistoryDTOList.add(new MessageHistoryDTO()
                         .setMessageUser(messageHistory.getMessageUser())
                         .setName(messageHistory.getUser().getNickName())
-//                .setId(messageHistory.getMessageId())
+                        .setId(messageHistory.getMessageId())
                         .setDate(messageHistory.getDate()));
             }
             //sort collection by date
@@ -67,8 +66,8 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
                     return o1.getDate().toString().compareTo(o2.getDate().toString());
                 }
             });
-        }catch (Exception e){
-            LOGGER.error("{}",e.toString(),e);
+        } catch (Exception e) {
+            LOGGER.error("{}", e.toString(), e);
         }
         return messageHistoryDTOList;
     }
@@ -83,29 +82,29 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
         messageHistory.setMessageUser(messageHistoryDTO.getMessageUser());
         messageHistory.setDate(messageHistoryDTO.getDate());
 
-        try{
+        try {
             messageHistoryRepository.add(messageHistory);
-        }catch (Exception e){
-            LOGGER.error("{}",e.toString(),e);
+        } catch (Exception e) {
+            LOGGER.error("{}", e.toString(), e);
             return null;
         }
         MessageHistoryDTO messageHistoryDTOReturn = new MessageHistoryDTO();
-        messageHistoryDTOReturn.setDate(messageHistory.getDate()).setMessageUser(messageHistory.getMessageUser()).setName(name);
+        messageHistoryDTOReturn.setDate(messageHistory.getDate()).setMessageUser(messageHistory.getMessageUser()).setName(name).setId(messageHistory.getMessageId());
         return messageHistoryDTOReturn;
     }
 
-//    @Override
-//    public MessageHistoryDTO addMessage(MessageHistoryDTO messageHistoryDTO) {
-//        try{
-//            MessageHistory messageHistory=new MessageHistory();
-//            messageHistory.setMessageId(messageHistoryDTO.getId());
-//            messageHistory.setMessageUser(messageHistoryDTO.getMessageUser());
-//            messageHistory.setDate(messageHistoryDTO.getDate());
-//            messageHistory.setUser(messageHistoryDTO.getUser());
-//        }catch (Exception e){
-//            LOGGER.error("{}",e.toString(),e);
-//        }
-//
-//        return null;
-//    }
+    @Override
+    public MessageHistoryDTO delete(MessageHistoryDTO messageHistoryDTO) {
+        Integer id=messageHistoryDTO.getId();
+        try {
+            MessageHistory messageHistory=new MessageHistory();
+            messageHistory.setMessageId(id);
+            System.err.println("WWWWWWWWWWWWWWWWWWWWWWWWW-------------------------------------  " + messageHistory.getMessageId());
+            messageHistoryRepository.delete(messageHistory);
+        }catch (Exception e){
+            System.err.println("EEEEEEEEEEEERRRRRRRRRRRRRRRRRRRROOOOOOOOOOOOORRRRRRRRRRR-------------------------------------  "+id);
+            return null;
+        }
+        return messageHistoryDTO.setId(id);
+    }
 }

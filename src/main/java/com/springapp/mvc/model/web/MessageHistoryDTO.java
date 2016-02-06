@@ -22,11 +22,12 @@ import java.util.Date;
 public class MessageHistoryDTO {
 
 //    @JsonProperty
-    private Integer messageId;
+//    private Integer messageId;
 
 //    @JsonProperty("name")
     private User user;
 
+    @JsonProperty("id")
     private Integer id;
 
     private String name;
@@ -37,13 +38,13 @@ public class MessageHistoryDTO {
     @JsonProperty("datatime")
     private Date date;
 
-    public Integer getMessageId() {
-        return messageId;
-    }
-
-    public void setMessageId(Integer messageId) {
-        this.messageId = messageId;
-    }
+//    public Integer getMessageId() {
+//        return messageId;
+//    }
+//
+//    public void setMessageId(Integer messageId) {
+//        this.messageId = messageId;
+//    }
 
     public String getName() {
         return name;
@@ -55,11 +56,11 @@ public class MessageHistoryDTO {
     }
 
     public Integer getId() {
-        return messageId;
+        return id;
     }
 
     public MessageHistoryDTO setId(Integer id) {
-        this.messageId = id;
+        this.id = id;
         return this;
     }
 

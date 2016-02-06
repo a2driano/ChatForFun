@@ -1,0 +1,162 @@
+.container{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0%;
+}
+#central{
+    width: 100%;
+    height: 100%;
+    padding: 0%;
+    margin: 0px;
+    background-image: url(../img/background-300x300__blue.jpg);
+    background-repeat: repeat;
+    background-color: #424242;
+}
+#centralContainer{
+    margin: auto;
+    min-width: 42%;
+    width: 42%;
+    height: 100%;
+    background-color: #8b91b8;
+    background-image: url(../img/back_noise.png);
+    background-repeat: repeat;
+    box-shadow: 0 40px 0 rgba(20, 20, 20, 0.83);
+}
+
+
+#dropMessage{
+    position: absolute;
+    /*right: 5%;*/
+    margin: 2%;
+    margin-left: 5%;
+    width: 160px;
+    height: 50px;
+    font-size: 1.3em;
+    font-family: sans-serif;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+    background-color: rgb(198, 59, 113);
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: rgba(255, 170, 194, 0.76);
+
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+}
+
+#dropMessage:hover{
+    position: absolute;
+    cursor: pointer;
+    margin: 2%;
+    margin-left: 4.5%;
+    width: 170px;
+    height: 50px;
+    font-size: 16pt;
+    font-family: sans-serif;
+    color: white;
+    line-height: 47px;
+    text-align: center;
+    background-color: orange;
+    border: 2px solid;
+    border-color: #e1e1e1;
+    border-radius: 10px;
+
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+}
+.ref{
+    text-decoration: none;
+}
+
+
+/*CHAT*/
+.chat{
+    position: relative;
+    overflow-y: auto;
+    margin: 5%;
+    margin-top: 0%;
+    margin-bottom: 2%;
+    width: 90%;
+    height: 89%;
+    background-color: white;
+    /*border-radius: 1%;*/
+}
+#answerZone{
+    position: absolute;
+    bottom: 0%;
+    width: 42%;
+    height: 11%;
+    background-color: rgba(0, 0, 0, 0.24);
+}
+.textWindow{
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    height: 50%;
+
+}
+.textForm{
+    width: 60%;
+    height: 150%;
+    border-radius: 1%;
+    background-color: #e1e1e1;
+    resize: none;
+}
+
+
+/*CHAT-WINDOW*/
+.messageBlock{
+    padding: 1%;
+    position: relative;
+    margin: 2.5%;
+    width: 90%;
+    height: auto;
+    background-color: rgba(218, 222, 255, 0.79);
+    border-radius: 10px;
+}
+.messageName{
+    font-size: 12pt;
+    font-family: sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    color: #7101ff;
+}
+.messageDate{
+    position: absolute;
+    right: 2%;
+    font-size: 10pt;
+    font-family: sans-serif;
+    font-style: italic;
+    color: #6c6c6c;
+}
+.messageText{
+    /*position: absolute;*/
+    /*top: 50%;*/
+    font-size: 11pt;
+    font-family: sans-serif;
+}
+.delete{
+    position: absolute;
+    right: -5%;
+    top: 0%;
+    width: 25px;
+    height: 25px;
+    color: white;
+    line-height: 25px;
+    text-align: center;
+    background-color: rgba(255, 15, 91, 0.79);
+    border-radius: 100%;
+}
+.delete:hover{
+    background-color: rgba(95, 19, 255, 0.79);
+}
+
+
+
+
+

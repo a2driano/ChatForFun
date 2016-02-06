@@ -92,6 +92,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/loginerror").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/registrationerr").permitAll()
+                .antMatchers("/service_page").permitAll()
                 .antMatchers("/save").permitAll()
                 .antMatchers("/chat").access("hasRole('USER')")
                 .anyRequest().authenticated()

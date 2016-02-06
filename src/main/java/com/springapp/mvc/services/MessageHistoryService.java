@@ -33,4 +33,11 @@ public interface MessageHistoryService {
      */
     MessageHistoryDTO addMessage(MessageHistoryDTO messageHistoryDTO);
 
+    /**
+     * This method delete message where id=messageid
+     * @param messageHistoryDTO
+     * @return
+     */
+    MessageHistoryDTO delete(MessageHistoryDTO messageHistoryDTO);
+
 }
