@@ -6,11 +6,10 @@
  */
 $(document).ready(function () {
     onStart();
-    //addEvents();
+    addEvents();
 });
 
 var onStart = function () {
-
     $.ajax({
         url: $hostRoot + "getallmessages",
         type: 'get',
@@ -18,7 +17,7 @@ var onStart = function () {
         contentType: 'application/json',
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
-                var index=data[i].id;
+                var index = data[i].id;
                 var name = data[i].name;
                 var today = new Date();
                 var todaydd = today.getDate();
@@ -58,7 +57,7 @@ var onStart = function () {
                 }
 
                 var textForm = data[i].textForm;
-                $('.chat').append('<div class="messageBlock" index="'+index+'"><span class="messageName">' + name +
+                $('.chat').append('<div class="messageBlock" index="' + index + '"><span class="messageName">' + name +
                     '</span><span class="messageDate">' + time +
                     '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
 
@@ -73,6 +72,32 @@ var onStart = function () {
     });
 };
 
+
+var addEvents = function () {
+    $(".chat").on('click', ".delete", function () {
+        var data = {
+            id: $(this).parent().attr('index')
+        };
+        console.log(data);
+        $.ajax({
+            url: $hostRoot + "delete_message",
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function (messageHistoryDTO) {
+                if (messageHistoryDTO != null) {
+                    var index = messageHistoryDTO.id;
+                    console.log(index);
+                    $('.messageBlock').filter('[index="' + index + '"]').hide(200).remove(200);
+                }
+            },
+            error: function (error) {
+                console.log("ERROR---NO DATA RETURN");
+            }
+        });
+    });
+};
 
 function AjaxFormRequest() {
     var data = {
@@ -89,7 +114,7 @@ function AjaxFormRequest() {
             if (messageHistoryDTO != null) {
                 $(".textForm").val('');
                 document.getElementById('cform').focus();
-                var index=messageHistoryDTO.id;
+                var index = messageHistoryDTO.id;
                 var today = new Date();
                 var todaydd = today.getDate();
                 var todaymm = today.getMonth() + 1;
@@ -127,7 +152,7 @@ function AjaxFormRequest() {
                 }
                 var name = messageHistoryDTO.name;
                 var textForm = messageHistoryDTO.textForm;
-                $('.chat').append('<div class="messageBlock" index="'+index+'"><span class="messageName">' + name +
+                $('.chat').append('<div class="messageBlock" index="' + index + '"><span class="messageName">' + name +
                     '</span><span class="messageDate">' + time +
                     '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
 

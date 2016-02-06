@@ -141,6 +141,7 @@
     font-family: sans-serif;
 }
 .delete{
+    cursor: pointer;
     position: absolute;
     right: -5%;
     top: 0%;
