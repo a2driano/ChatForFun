@@ -42,6 +42,7 @@
                        placeholder="ВВЕДИТЕ ПАРОЛЬ">
                 <input type="submit" class="buttonForm" id="submit">
             </form>
+            <div id="basementTextlogin">Copyright a2driano ©, 2016.</div>
         </div>
     </div>
 </div>

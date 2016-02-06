@@ -106,6 +106,7 @@ var onStart = function () {
 };
 
 function AjaxFormRequest() {
+    //inspection empty textarea or not
     var textarea = document.getElementById('cform').value;
     if (textarea != '') {
         var data = {

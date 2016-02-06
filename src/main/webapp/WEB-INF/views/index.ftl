@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="bottomImage">
-                <p id="basementText">Copyright a2driano ©, 2016.</p>
+                <div id="basementText">Copyright a2driano ©, 2016.</div>
             </div>
         </div>
     </div>
