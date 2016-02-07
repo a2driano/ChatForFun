@@ -34,7 +34,7 @@
             <div id="centralMenu">
                 <div class="buttonContainer">
                     <a class=ref href="chat">
-                    <div type="submit" id="enterConfirm" class="buttonStart">Войти</div>
+                    <div type="submit" id="enterConfirm" class="buttonStart">Войти в аккаунт</div>
                     </a>
                 </div>
                 <div class="buttonContainer">

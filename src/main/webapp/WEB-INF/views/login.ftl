@@ -32,7 +32,6 @@
                     <div class="logoTypesImage" id="image_4"></div>
                     <div class="logoTypesImage" id="image_5"></div>
                     <div class="logoTypesImage" id="image_6"></div>
-                <#--<div class="logoInside"></div>-->
                 </div>
             </a>
         <#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>
