@@ -9,8 +9,7 @@
     <script type="text/javascript" src="/js/lib/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="/js/lib/jquery.countdown.min.js"></script>
     <script type="text/javascript" src="/js/onstart_chat.js"></script>
-    <#--<script type="text/javascript" src="/js/function.js"></script>-->
-<#--<link rel="shortcut icon" href="/img/favicon.png" type="image/png">-->
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/png">
     <script type="text/javascript">
         var $applicationRoot = '/';
         var $host = document.location.protocol + '//' + document.location.host;
@@ -33,7 +32,7 @@
             </a>
 
             <div class="chat" id="chatScroll">
-                <#--<div class="messageBlock"><span class="messageName"></span><span class="messageDate"></span><br><span class="messageText"></span></div>-->
+            <#--<div class="messageBlock"><span class="messageName"></span><span class="messageDate"></span><br><span class="messageText"></span></div>-->
 
                 <#--<div class="messageBlock">-->
                     <#--<span class="messageName">Andrew</span>-->
@@ -43,16 +42,18 @@
                 <#--</div>-->
             </div>
             <div id="answerZone">
-                <div class="textWindow">
-                    <textarea id="cform" class="textForm" name="textForm" cols="30" rows="7" maxlength="350"></textarea>
+                <div id="formtext">
+                    <textarea id="cform" class="textForm" name="textForm" cols="30" rows="5" maxlength="350"></textarea>
+                </div>
+                <div id="buttondrop">
                     <button type="button" id="dropMessage" onclick="AjaxFormRequest()">Отправить</button>
                 </div>
-                <div id="basement">
-                    <p id="basementText">Copyright a2driano ©, 2016.</p>
-                    <a class=ref href="/logout">
-                        <button type="button" id="logout">Выйти из чата</button>
-                    </a>
-                </div>
+            </div>
+            <div id="basement">
+                <div id="basementText">Copyright a2driano ©, 2016.</div>
+                <a class=ref href="/logout">
+                    <button type="button" id="logout">Выйти из чата</button>
+                </a>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@
     <script type="text/javascript" src="/js/lib/jquery.countdown.min.js"></script>
     <script type="text/javascript" src="/js/onstart.js"></script>
 <#--<script type="text/javascript" src="/js/function.js"></script>-->
-<#--<link rel="shortcut icon" href="/img/favicon.png" type="image/png">-->
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/png">
     <script type="text/javascript">
         var $applicationRoot = '/';
         var $host = document.location.protocol + '//' + document.location.host;

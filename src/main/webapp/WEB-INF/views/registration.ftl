@@ -13,7 +13,7 @@
     <script type="text/javascript" src="/js/lib/jquery.countdown.min.js"></script>
     <script type="text/javascript" src="/js/onstart.js"></script>
     <script type="text/javascript" src="/js/function.js"></script>
-<#--<link rel="shortcut icon" href="/img/favicon.png" type="image/png">-->
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/png">
     <script type="text/javascript">
         var $applicationRoot = '/';
         var $host = document.location.protocol + '//' + document.location.host;
@@ -43,7 +43,7 @@
         <#--</form>-->
 
         <#--<#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>-->
-            <#--<div class="responceFail">Этот логин уже занят, выберите другой</div>-->
+        <#--<div class="responceFail">Этот логин уже занят, выберите другой</div>-->
         <#--</#if>-->
             <form class="cabinetFormText" id="userDTO" action="save" method="post">
                 <input class="formText" name="name" type="text" maxlength="25" size="40" required

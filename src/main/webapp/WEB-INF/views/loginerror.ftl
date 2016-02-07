@@ -13,7 +13,7 @@
     <script type="text/javascript" src="/js/lib/jquery.countdown.min.js"></script>
     <script type="text/javascript" src="/js/onstart.js"></script>
 <#--<script type="text/javascript" src="/js/function.js"></script>-->
-<#--<link rel="shortcut icon" href="/img/favicon.png" type="image/png">-->
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/png">
     <script type="text/javascript">
         var $applicationRoot = '/';
         var $host = document.location.protocol + '//' + document.location.host;
@@ -34,6 +34,7 @@
                     <div class="logoTypesImage" id="image_6"></div>
                 </div>
             </a>
+
             <div class="responceFail">Неправильный логин или пароль</div>
             <form class="cabinetFormText" id="formRegistr" action="/j_spring_security_check" method="post">
                 <input class="formText" name="j_username" type="text" maxlength="25" size="40" required
