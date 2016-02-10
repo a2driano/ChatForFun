@@ -40,8 +40,12 @@ setInterval(
     }, interval
 );
 
+
+var stompClient = null;
 //load messages from server on start page
 var onStart = function () {
+
+    connect();
 
     $.ajax({
         url: $hostRoot + "getallmessages",
@@ -106,22 +110,12 @@ var onStart = function () {
 };
 //Drop message functional
 
-var stompClient = null;
-
-function setConnected(connected) {
-    document.getElementById('connect').disabled = connected;
-    document.getElementById('disconnect').disabled = !connected;
-    document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
-    document.getElementById('response').innerHTML = '';
-}
-
 function connect() {
-    var socket = new SockJS('messageadd');
+    var socket = new SockJS('/messageadd');
     stompClient = Stomp.over(socket);
-    stompClient.connect({}, function(frame) {
-        //setConnected(true);
+    stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
-        stompClient.subscribe('topic/messagenew', function(addMessage){
+        stompClient.subscribe('/topic/messagenew', function (addMessage) {
             showMessage(JSON.parse(addMessage.body).content);
         });
     });
@@ -133,10 +127,6 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-//function sendName() {
-//    var name = document.getElementById('name').value;
-//    stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
-//}
 
 function showMessage(messageHistoryDTO) {
     //var response = document.getElementById('response');
@@ -196,13 +186,12 @@ function showMessage(messageHistoryDTO) {
     }
 }
 
-function SendMessage(){
+function SendMessage() {
     var textarea = document.getElementById('cform').value;
-    //var time= new Date()
-    //console.log(textarea);
-    //console.log(time);
+    var time = new Date();
+    console.log(stompClient);
     if (textarea != '') {
-        stompClient.send("/app/messageadd", {}, JSON.stringify({ 'messageUser': textarea , 'datatime': new Date()}));
+        stompClient.send("/app/messageadd", {}, JSON.stringify({'messageUser': textarea, 'datatime': time}));
     } else {
         console.log('empty textarea, need text');
     }

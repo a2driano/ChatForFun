@@ -34,10 +34,10 @@ public class MessageController {
 
     @MessageMapping("/messageadd")
     @SendTo("/topic/messagenew")
-    public MessageHistoryDTO addMessage(@RequestBody MessageHistoryDTO messageHistoryDTO){
+    public MessageHistoryDTO addMessage(@RequestBody MessageHistoryDTO messageHistory){
         System.err.println("MESSAGE IS delivered-------MESSAGE IS delivered-------MESSAGE IS delivered-------MESSAGE IS delivered-------");
-        MessageHistoryDTO messageHistoryDTOReturn=messageHistoryService.addMessage(messageHistoryDTO);
-        return messageHistoryDTOReturn;
+        MessageHistoryDTO messageHistoryDTO=messageHistoryService.addMessage(messageHistory);
+        return messageHistoryDTO;
     }
 
 //    @RequestMapping(value = "/messageadd", method = RequestMethod.POST)
