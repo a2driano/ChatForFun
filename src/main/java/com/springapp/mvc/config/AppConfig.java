@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Import;
         "com.springapp.mvc.services",
         "com.springapp.mvc.repositories"
 })
-@Import({WebMvcConfig.class, PersistenceConfig.class, SecurityConfig.class})
+@Import({WebMvcConfig.class, PersistenceConfig.class, SecurityConfig.class, WebSocketConfig.class})
 public class AppConfig {
 
 }

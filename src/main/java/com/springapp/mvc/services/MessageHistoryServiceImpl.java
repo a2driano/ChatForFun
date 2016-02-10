@@ -81,6 +81,7 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
         messageHistory.setUser(userRepository.getByName(name));
         messageHistory.setMessageUser(messageHistoryDTO.getMessageUser());
         messageHistory.setDate(messageHistoryDTO.getDate());
+        System.err.println(name+"+++----------------------+++ "+messageHistory.getMessageUser());
 
         try {
             messageHistoryRepository.add(messageHistory);

@@ -104,7 +104,7 @@
 .buttonContainer{
     display: inline-block;
     width: 100%;
-    height: 15%;
+    height: 12%;
 }
 #enterConfirm{
     border-color: rgba(255, 170, 194, 0);
@@ -145,9 +145,9 @@
     position: relative;
     margin: auto;
     margin-top: 45px;
-    width: 360px;
+    width: 350px;
     height: 70px;
-    font-size: 19pt;
+    font-size: 18pt;
     font-family: sans-serif;
     color: white;
     line-height: 70px;

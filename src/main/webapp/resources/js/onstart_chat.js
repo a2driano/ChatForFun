@@ -40,7 +40,7 @@ setInterval(
     }, interval
 );
 
-
+//load messages from server on start page
 var onStart = function () {
 
     $.ajax({
@@ -104,6 +104,109 @@ var onStart = function () {
         }
     });
 };
+//Drop message functional
+
+var stompClient = null;
+
+function setConnected(connected) {
+    document.getElementById('connect').disabled = connected;
+    document.getElementById('disconnect').disabled = !connected;
+    document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
+    document.getElementById('response').innerHTML = '';
+}
+
+function connect() {
+    var socket = new SockJS('messageadd');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function(frame) {
+        //setConnected(true);
+        console.log('Connected: ' + frame);
+        stompClient.subscribe('topic/messagenew', function(addMessage){
+            showMessage(JSON.parse(addMessage.body).content);
+        });
+    });
+}
+
+function disconnect() {
+    stompClient.disconnect();
+    //setConnected(false);
+    console.log("Disconnected");
+}
+
+//function sendName() {
+//    var name = document.getElementById('name').value;
+//    stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
+//}
+
+function showMessage(messageHistoryDTO) {
+    //var response = document.getElementById('response');
+    //var p = document.createElement('p');
+    //p.style.wordWrap = 'break-word';
+    //p.appendChild(document.createTextNode(message));
+    //response.appendChild(p);
+    if (messageHistoryDTO != null) {
+        $(".textForm").val('');
+        document.getElementById('cform').focus();
+        var today = new Date();
+        var todaydd = today.getDate();
+        var todaymm = today.getMonth() + 1;
+        var todayyyyy = today.getFullYear();
+        if (todaydd < 10) {
+            todaydd = '0' + todaydd
+        }
+        if (todaymm < 10) {
+            todaymm = '0' + todaymm
+        }
+
+        var datatime = new Date(messageHistoryDTO.datatime);
+        var dd = datatime.getDate();
+        var mm = datatime.getMonth() + 1;
+        var yyyy = datatime.getFullYear();
+        var hh = datatime.getHours();
+        var min = datatime.getMinutes();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        if (hh < 10) {
+            hh = '0' + hh;
+        }
+        if (min < 10) {
+            min = '0' + min;
+        }
+
+        if ((todaydd + todaymm + todayyyyy) == (dd + mm + yyyy)) {
+            var time = hh + ':' + min;
+        } else {
+            var time = dd + '/' + mm + '/' + yyyy;
+        }
+        var name = messageHistoryDTO.name;
+        var textForm = messageHistoryDTO.textForm;
+        $('.chat').append('<div class="messageBlock"><span class="messageName">' + name +
+            '</span><span class="messageDate">' + time +
+            '</span><br><span class="messageText">' + textForm + '</span></div>');
+
+        //scroll chat window in bottom
+        var objDiv = document.getElementById("chatScroll");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    } else {
+        console.log("EMPTY DATA");
+    }
+}
+
+function SendMessage(){
+    var textarea = document.getElementById('cform').value;
+    //var time= new Date()
+    //console.log(textarea);
+    //console.log(time);
+    if (textarea != '') {
+        stompClient.send("/app/messageadd", {}, JSON.stringify({ 'messageUser': textarea , 'datatime': new Date()}));
+    } else {
+        console.log('empty textarea, need text');
+    }
+}
 
 function AjaxFormRequest() {
     //inspection empty textarea or not

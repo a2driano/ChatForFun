@@ -9,6 +9,10 @@
     <script type="text/javascript" src="/js/lib/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="/js/lib/jquery.countdown.min.js"></script>
     <script type="text/javascript" src="/js/onstart_chat.js"></script>
+
+    <script src="/js/lib/sockjs-0.3.4.js"></script>
+    <script src="/js/lib/stomp.js"></script>
+
     <link rel="shortcut icon" href="/img/favicon.png" type="image/png">
     <script type="text/javascript">
         var $applicationRoot = '/';
@@ -46,9 +50,17 @@
                     <textarea id="cform" class="textForm" name="textForm" cols="30" rows="5" maxlength="350"></textarea>
                 </div>
                 <div id="buttondrop">
-                    <button type="button" id="dropMessage" onclick="AjaxFormRequest()">Отправить</button>
+                    <button type="button" id="dropMessage" onclick="SendMessage()">Отправить</button>
                 </div>
             </div>
+            <#--<div id="answerZone">-->
+                <#--<div id="formtext">-->
+                    <#--<textarea id="cform" class="textForm" name="textForm" cols="30" rows="5" maxlength="350"></textarea>-->
+                <#--</div>-->
+                <#--<div id="buttondrop">-->
+                    <#--<button type="button" id="dropMessage" onclick="AjaxFormRequest()">Отправить</button>-->
+                <#--</div>-->
+            <#--</div>-->
             <div id="basement">
                 <div id="basementText">Copyright a2driano ©, 2016.</div>
                 <a class=ref href="/logout">

@@ -3,6 +3,7 @@ package com.springapp.mvc.config;
 import com.springapp.mvc.services.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,6 +25,7 @@ import java.util.List;
  */
 @EnableWebMvc
 @Configuration
+//@Import({ WebSocketConfig.class })
 class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Bean
