@@ -10,7 +10,7 @@ $(document).ready(function () {
 });
 
 //change images on background
-var total_pics_num = 6; // колличество изображений
+var total_pics_num = 6; // count of images
 var interval = 700;    // задержка между изображениями
 var time_out = 4;       // задержка смены изображений
 var i = 0;
@@ -191,7 +191,8 @@ function SendMessage() {
     var time = new Date();
     console.log(stompClient);
     if (textarea != '') {
-        stompClient.send("/app/messageadd", {}, JSON.stringify({'messageUser': textarea, 'datatime': time}));
+        stompClient.send("/app/messageadd", {}, JSON.stringify({'textForm': textarea, 'datatime': time}));
+        //stompClient.send("/app/messageadd", {}, JSON.stringify({'messageUser': textarea, 'datatime': time, 'user':null, 'id': null, 'name': null}));
     } else {
         console.log('empty textarea, need text');
     }

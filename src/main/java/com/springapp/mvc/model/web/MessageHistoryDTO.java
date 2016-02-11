@@ -1,6 +1,7 @@
 package com.springapp.mvc.model.web;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.springapp.mvc.model.entity.User;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -19,7 +21,8 @@ import java.util.Date;
  */
 @JsonAutoDetect
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-public class MessageHistoryDTO {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class MessageHistoryDTO implements Serializable {
 
 //    @JsonProperty
 //    private Integer messageId;

@@ -74,9 +74,10 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
 
     @Override
     public MessageHistoryDTO addMessage(MessageHistoryDTO messageHistoryDTO) {
-
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
+//        String name = auth.getName();
+        String name = "ddfgdfg";
+        System.err.println(name+"-----------------------------");
         MessageHistory messageHistory = new MessageHistory();
         messageHistory.setUser(userRepository.getByName(name));
         messageHistory.setMessageUser(messageHistoryDTO.getMessageUser());

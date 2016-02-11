@@ -5,6 +5,7 @@ import com.springapp.mvc.services.MessageHistoryService;
 import com.springapp.mvc.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,8 +35,9 @@ public class MessageController {
 
     @MessageMapping("/messageadd")
     @SendTo("/topic/messagenew")
-    public MessageHistoryDTO addMessage(@RequestBody MessageHistoryDTO messageHistory){
-        System.err.println("MESSAGE IS delivered-------MESSAGE IS delivered-------MESSAGE IS delivered-------MESSAGE IS delivered-------");
+    public MessageHistoryDTO addMessage(@Payload MessageHistoryDTO messageHistory) throws Exception{
+//        System.err.println("MESSAGE IS delivered-------MESSAGE IS delivered-------MESSAGE IS delivered-------MESSAGE IS delivered-------");
+        System.err.println(messageHistory.getMessageUser()+"      MESSAGE IS delivered-------MESSAGE IS delivered-------"+messageHistory.getDate());
         MessageHistoryDTO messageHistoryDTO=messageHistoryService.addMessage(messageHistory);
         return messageHistoryDTO;
     }
