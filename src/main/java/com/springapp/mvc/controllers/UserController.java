@@ -69,12 +69,6 @@ public class UserController {
         return name;
     }
 
-//    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-//    @ResponseBody
-//    public UserResponce addUser(@RequestBody UserDTO userDTO) {
-//        return userService.addUser(userDTO);
-//    }
-
     @RequestMapping(value = "/confirmUser", method = RequestMethod.POST)
     @ResponseBody
     public UserResponce confirmUser(@RequestBody UserDTO userDTO) {
