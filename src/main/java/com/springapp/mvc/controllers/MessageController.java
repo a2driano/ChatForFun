@@ -37,7 +37,7 @@ public class MessageController {
     @SendTo("/topic/messagenew")
     public MessageHistoryDTO addMessage(@Payload MessageHistoryDTO messageHistory) throws Exception{
 //        System.err.println("MESSAGE IS delivered-------MESSAGE IS delivered-------MESSAGE IS delivered-------MESSAGE IS delivered-------");
-        System.err.println(messageHistory.getMessageUser()+"      MESSAGE IS delivered-------MESSAGE IS delivered-------"+messageHistory.getDate());
+//        System.err.println(messageHistory.getMessageUser()+"      MESSAGE IS delivered-------MESSAGE IS delivered-------"+messageHistory.getDate());
         MessageHistoryDTO messageHistoryDTO=messageHistoryService.addMessage(messageHistory);
         return messageHistoryDTO;
     }

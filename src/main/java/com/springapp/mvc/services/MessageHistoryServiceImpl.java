@@ -74,15 +74,15 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
 
     @Override
     public MessageHistoryDTO addMessage(MessageHistoryDTO messageHistoryDTO) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //        String name = auth.getName();
-        String name = "ddfgdfg";
-        System.err.println(name+"-----------------------------");
+//        String name = "ddfgdfg";
+//        System.err.println(name+"-----------------------------");
         MessageHistory messageHistory = new MessageHistory();
-        messageHistory.setUser(userRepository.getByName(name));
+        messageHistory.setUser(userRepository.getByName(messageHistoryDTO.getName()));
         messageHistory.setMessageUser(messageHistoryDTO.getMessageUser());
         messageHistory.setDate(messageHistoryDTO.getDate());
-        System.err.println(name+"+++----------------------+++ "+messageHistory.getMessageUser());
+//        System.err.println(name+"+++----------------------+++ "+messageHistory.getMessageUser());
 
         try {
             messageHistoryRepository.add(messageHistory);
@@ -91,7 +91,7 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
             return null;
         }
         MessageHistoryDTO messageHistoryDTOReturn = new MessageHistoryDTO();
-        messageHistoryDTOReturn.setDate(messageHistory.getDate()).setMessageUser(messageHistory.getMessageUser()).setName(name).setId(messageHistory.getMessageId());
+        messageHistoryDTOReturn.setDate(messageHistory.getDate()).setMessageUser(messageHistory.getMessageUser()).setName(messageHistoryDTO.getName()).setId(messageHistory.getMessageId());
         return messageHistoryDTOReturn;
     }
 

@@ -8,6 +8,8 @@ import com.springapp.mvc.model.web.UserResponceStatus;
 import com.springapp.mvc.services.MessageHistoryService;
 import com.springapp.mvc.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -56,6 +58,15 @@ public class UserController {
     public String addUser(@RequestBody UserDTO userDTO) {
         userService.addUser(userDTO);
         return "/";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getName", method = RequestMethod.GET)
+    public String getName(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        System.err.println(name);
+        return name;
     }
 
 //    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
