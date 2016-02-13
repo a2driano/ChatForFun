@@ -28,14 +28,8 @@ public class UserServiceImpl implements UserService {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
-//    @Autowired
-//    private MessageHistoryRepository messageHistoryRepository;
-
     @Autowired
     private UserRepository userRepository;
-
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDTO getUserByName(String nickname){
@@ -54,55 +48,13 @@ public class UserServiceImpl implements UserService {
         user.setUserRole(UserRole.USER);
         try{
             userRepository.add(user);
-//            return "Регистрация прошла успешно";
         }
-//        catch (ConstraintViolationException e){
-//            LOGGER.error("{}",e.toString(),e);
-//            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL);
-////            return "Данное имя уже используется";
-//        }
         catch (Exception e){
             LOGGER.error("{}",e.toString(),e);
             return null;
         }
         return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS).setUserDTO(userDTO);
     }
-
-//    try{
-//        user=userRepository.getByUser(userDTO.getNickName(),userDTO.getPasswordUser());
-//        return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
-//    }catch (EmptyResultDataAccessException e){
-//        LOGGER.error("{}", e.toString(), e);
-//        userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
-//        return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
-//                .setUserDTO(userDTO)
-//                .setMessage("chat.ftl");
-////                    .setMessage("Регистрация прошла успешно! Вы вошли под ником: " + userDTO.getNickName());
-//    }
-
-
-//    @Override
-//    public UserResponce create(UserDTO userDTO) {
-//        UserResponce userResponce=new UserResponce();
-//        User user = new User();
-//        user.setNickName(userDTO.getNickName());
-//        user.setPasswordUser(userDTO.getPasswordUser());
-//        user.setUserRole(UserRole.USER);
-//        try{
-//            userRepository.add(user);
-////            return "Регистрация прошла успешно";
-//        }catch (ConstraintViolationException e){
-//            LOGGER.error("{}",e.toString(),e);
-//            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL);
-////            return "Данное имя уже используется";
-//        }
-//        catch (Exception e){
-//            LOGGER.error("{}",e.toString(),e);
-//            return null;
-//        }
-//        return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS).setUserDTO(userDTO);
-//    }
-
 
     @Override
     public List<UserDTO> getAll() {
@@ -206,35 +158,11 @@ public class UserServiceImpl implements UserService {
             return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
                     .setUserDTO(userDTO)
                     .setMessage("chat.ftl");
-//                    .setMessage("Регистрация прошла успешно! Вы вошли под ником: " + userDTO.getNickName());
         } catch (Exception e) {
             LOGGER.error("{}", e.toString(), e);
             return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
         }
     }
-
-//    @Override
-//    public UserResponce addUser(UserDTO userDTO) {
-//        UserResponce userResponce=new UserResponce();
-//        User user=new User();
-//        //name and password must be not null
-//        if((userDTO.getNickName())==""||(userDTO.getPasswordUser())==""){
-//            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить все поля! Повторите пожалуйста!");
-//        }
-//        try{
-//            if(userRepository.isPresent(userDTO.getNickName())){
-//                return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
-//            }else {
-//                userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
-//                return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
-//                        .setUserDTO(userDTO)
-//                        .setMessage("Регистрация прошла успешно! Вы вошли под ником: "+userDTO.getNickName());
-//            }
-//        }catch (Exception e){
-//            LOGGER.error("{}", e.toString(), e);
-//            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
-//        }
-//    }
 
     @Override
     public UserDTO deleteUser(Integer id) {
