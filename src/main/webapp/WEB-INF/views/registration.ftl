@@ -34,17 +34,6 @@
                     <div class="logoTypesImage" id="image_6"></div>
                 </div>
             </a>
-        <#--<form class="cabinetFormText" id="userDTO">-->
-        <#--<input class="formText" id="name" name="name" type="text" maxlength="25" size="40" required-->
-        <#--placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">-->
-        <#--<input class="formText" id="password" name="password" type="password" maxlength="25" size="40" required-->
-        <#--placeholder="ВВЕДИТЕ ПАРОЛЬ">-->
-        <#--<input type="submit" class="buttonForm" id="submit" onclick="registration_func()">-->
-        <#--</form>-->
-
-        <#--<#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>-->
-        <#--<div class="responceFail">Этот логин уже занят, выберите другой</div>-->
-        <#--</#if>-->
             <form class="cabinetFormText" id="userDTO" action="save" method="post">
                 <input class="formText" name="name" type="text" maxlength="25" size="40" required
                        placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ" required pattern="^[a-zA-Zа-яіїєґ0-9,А-ЯІЇЄҐ][а-яіїєґ,А-ЯІЇЄҐa-zA-Z0-9-_\.]{2,20}$">

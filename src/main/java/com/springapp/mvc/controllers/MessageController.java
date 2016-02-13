@@ -36,19 +36,9 @@ public class MessageController {
     @MessageMapping("/messageadd")
     @SendTo("/topic/messagenew")
     public MessageHistoryDTO addMessage(@Payload MessageHistoryDTO messageHistory) throws Exception{
-//        System.err.println("MESSAGE IS delivered-------MESSAGE IS delivered-------MESSAGE IS delivered-------MESSAGE IS delivered-------");
-//        System.err.println(messageHistory.getMessageUser()+"      MESSAGE IS delivered-------MESSAGE IS delivered-------"+messageHistory.getDate());
         MessageHistoryDTO messageHistoryDTO=messageHistoryService.addMessage(messageHistory);
         return messageHistoryDTO;
     }
-
-//    @RequestMapping(value = "/messageadd", method = RequestMethod.POST)
-//    @ResponseBody
-//    public MessageHistoryDTO addMessage(@RequestBody MessageHistoryDTO messageHistoryDTO){
-//
-//        MessageHistoryDTO messageHistoryDTOReturn=messageHistoryService.addMessage(messageHistoryDTO);
-//        return messageHistoryDTOReturn;
-//    }
 
     @RequestMapping(value = "/getallmessages", method = RequestMethod.GET)
     @ResponseBody

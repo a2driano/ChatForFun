@@ -21,16 +21,6 @@
     <div id="central">
         <div id="centralContainer">
             <div class="chat" id="chatScroll">
-            <#--<div class="messageBlock"><span class="messageName"></span><span class="messageDate"></span><br><span class="messageText"></span><div class="delete">X</div></div>-->
-
-                <#--<div class="messageBlock">-->
-                    <#--<span class="messageName">Andrew</span>-->
-                    <#--<span class="messageDate">2016-01-28 16:43:30.013</span>-->
-                    <#--<br>-->
-                    <#--<span class="messageText">Класс Date предназначен для работы с текущими датой и временем и ... Date, а не java.sql.Date. У класса есть два конструктора: Date() Date(long ... возвращает массив объектов класса Locale</span>-->
-                    <#--<div class="delete">X</div>-->
-                <#--</div>-->
-
             </div>
             <div id="answerZone">
                 <div class="textWindow">

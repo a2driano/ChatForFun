@@ -7,8 +7,27 @@
 $(document).ready(function () {
     onStart();
     addEvents();
+    getName();
 });
-
+var name;
+//name of user
+function getName(){
+    $.ajax({
+        url: $hostRoot + "getName",
+        type: 'get',
+        dataType: 'json',
+        contentType: 'application/json',
+        //data: JSON.stringify(data),
+        success: function (name_user) {
+            if (JSON.parse.name != null) {
+                name = name_user;
+            }
+        },
+        error: function (error) {
+            console.log("ERROR---NO NAME RETURN");
+        }
+    });
+};
 var onStart = function () {
     $.ajax({
         url: $hostRoot + "getallmessages",
@@ -18,7 +37,7 @@ var onStart = function () {
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
                 var index = data[i].id;
-                var name = data[i].name;
+                var nameuser = data[i].name;
                 var today = new Date();
                 var todaydd = today.getDate();
                 var todaymm = today.getMonth() + 1;
@@ -57,10 +76,15 @@ var onStart = function () {
                 }
 
                 var textForm = data[i].textForm;
-                $('.chat').append('<div class="messageBlock" index="' + index + '"><span class="messageName">' + name +
-                    '</span><span class="messageDate">' + time +
-                    '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
-
+                if(name===nameuser){
+                    $('.chat').append('<div class="messageBlockPrincipal" index="'+index+'"><span class="messageName">' + nameuser +
+                        '</span><span class="messageDate">' + time +
+                        '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
+                }else{
+                    $('.chat').append('<div class="messageBlock" index="'+index+'"><span class="messageName">' + nameuser +
+                        '</span><span class="messageDate">' + time +
+                        '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
+                }
             }
             //scroll chat window in bottom
             var objDiv = document.getElementById("chatScroll");
@@ -76,7 +100,8 @@ var onStart = function () {
 var addEvents = function () {
     $(".chat").on('click', ".delete", function () {
         var data = {
-            id: $(this).parent().attr('index')
+            id: $(this).parent().attr('index'),
+            name:$(this).siblings('.messageName').text()
         };
         console.log(data);
         $.ajax({
@@ -88,8 +113,12 @@ var addEvents = function () {
             success: function (messageHistoryDTO) {
                 if (messageHistoryDTO != null) {
                     var index = messageHistoryDTO.id;
-                    console.log(index);
-                    $('.messageBlock').filter('[index="' + index + '"]').hide(200).remove(200);
+                    var nameuser=messageHistoryDTO.name;
+                    if(name===nameuser){
+                        $('.messageBlockPrincipal').filter('[index="' + index + '"]').hide(200).remove(200);
+                    }else{
+                        $('.messageBlock').filter('[index="' + index + '"]').hide(200).remove(200);
+                    }
                 }
             },
             error: function (error) {
@@ -102,10 +131,12 @@ var addEvents = function () {
 function AjaxFormRequest() {
     var data = {
         textForm: $(".textForm").val(),
-        datatime: new Date()
+        datatime: new Date(),
+        name:"admin"
     };
+    console.log(data);
     $.ajax({
-        url: $hostRoot + "messageadd",
+        url: $hostRoot + "messageAddAdmin",
         type: 'post',
         dataType: 'json',
         contentType: 'application/json',
@@ -150,11 +181,17 @@ function AjaxFormRequest() {
                 } else {
                     var time = dd + '/' + mm + '/' + yyyy;
                 }
-                var name = messageHistoryDTO.name;
+                var nameuser = messageHistoryDTO.name;
                 var textForm = messageHistoryDTO.textForm;
-                $('.chat').append('<div class="messageBlock" index="' + index + '"><span class="messageName">' + name +
-                    '</span><span class="messageDate">' + time +
-                    '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
+                if(name===nameuser){
+                    $('.chat').append('<div class="messageBlockPrincipal" index="'+index+'"><span class="messageName">' + nameuser +
+                        '</span><span class="messageDate">' + time +
+                        '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
+                }else{
+                    $('.chat').append('<div class="messageBlock" index="'+index+'"><span class="messageName">' + nameuser +
+                        '</span><span class="messageDate">' + time +
+                        '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
+                }
 
                 //scroll chat window in bottom
                 var objDiv = document.getElementById("chatScroll");

@@ -74,16 +74,10 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
 
     @Override
     public MessageHistoryDTO addMessage(MessageHistoryDTO messageHistoryDTO) {
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        String name = auth.getName();
-//        String name = "ddfgdfg";
-//        System.err.println(name+"-----------------------------");
         MessageHistory messageHistory = new MessageHistory();
         messageHistory.setUser(userRepository.getByName(messageHistoryDTO.getName()));
         messageHistory.setMessageUser(messageHistoryDTO.getMessageUser());
         messageHistory.setDate(messageHistoryDTO.getDate());
-//        System.err.println(name+"+++----------------------+++ "+messageHistory.getMessageUser());
-
         try {
             messageHistoryRepository.add(messageHistory);
         } catch (Exception e) {
@@ -98,6 +92,7 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
     @Override
     public MessageHistoryDTO delete(MessageHistoryDTO messageHistoryDTO) {
         Integer id=messageHistoryDTO.getId();
+        String name=messageHistoryDTO.getName();
         try {
             MessageHistory messageHistory=new MessageHistory();
             messageHistory.setMessageId(id);
@@ -105,6 +100,6 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
         }catch (Exception e){
             return null;
         }
-        return messageHistoryDTO.setId(id);
+        return messageHistoryDTO.setId(id).setName(name);
     }
 }

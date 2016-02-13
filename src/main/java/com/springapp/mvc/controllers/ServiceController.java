@@ -31,5 +31,12 @@ public class ServiceController {
         MessageHistoryDTO messageHistoryDTOReturn=messageHistoryService.delete(messageHistoryDTO);
         return messageHistoryDTOReturn;
     }
+
+    @RequestMapping(value = "/messageAddAdmin", method = RequestMethod.POST)
+    @ResponseBody
+    public MessageHistoryDTO addMessage(@RequestBody MessageHistoryDTO messageHistoryDTO){
+        MessageHistoryDTO messageHistoryDTOReturn=messageHistoryService.addMessage(messageHistoryDTO);
+        return messageHistoryDTOReturn;
+    }
 }
 

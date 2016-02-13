@@ -116,27 +116,43 @@
     margin: 2.5%;
     width: 90%;
     height: auto;
-    background-color: rgba(218, 222, 255, 0.79);
+    /*background-color: rgba(218, 222, 255, 0.89);*/
+    background: linear-gradient(to top, rgba(165, 216, 254, 0.7), rgba(130, 180, 255, 0.31));
     border-radius: 10px;
+    border-top-left-radius: 0px;
+}
+
+.messageBlockPrincipal{
+    padding: 1%;
+    position: relative;
+    margin: 2.5%;
+    /*margin-right: 2.5%;*/
+    margin-left:7.5%;
+    width: 85%;
+    height: auto;
+    background: linear-gradient(to top, rgba(213, 156, 254, 0.7), rgba(219, 163, 255, 0.55));
+    /*background: linear-gradient(to top, rgba(165, 216, 254, 1), rgba(130, 180, 255, 0.54));*/
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+
 }
 .messageName{
     font-size: 12pt;
     font-family: sans-serif;
-    font-style: italic;
+    /*font-style: italic;*/
     font-weight: bold;
+    text-decoration: underline;
     color: #7101ff;
 }
 .messageDate{
     position: absolute;
     right: 2%;
-    font-size: 10pt;
+    font-size: 8pt;
     font-family: sans-serif;
-    font-style: italic;
+    /*font-style: italic;*/
     color: #6c6c6c;
 }
 .messageText{
-    /*position: absolute;*/
-    /*top: 50%;*/
     font-size: 11pt;
     font-family: sans-serif;
 }

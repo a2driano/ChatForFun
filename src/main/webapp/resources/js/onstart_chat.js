@@ -5,6 +5,8 @@
  * @since 05.01.2016
  */
 $(document).ready(function () {
+    connect();
+    getName();
     onStart();
     //addEvents();
 });
@@ -65,8 +67,8 @@ var stompClient = null;
 //load messages from server on start page
 var onStart = function () {
 
-    connect();
-    getName();
+    //connect();
+    //getName();
 
     $.ajax({
         url: $hostRoot + "getallmessages",
@@ -75,7 +77,7 @@ var onStart = function () {
         contentType: 'application/json',
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
-                var name = data[i].name;
+                var nameuser = data[i].name;
 
                 var today = new Date();
                 var todaydd = today.getDate();
@@ -115,9 +117,15 @@ var onStart = function () {
                 }
 
                 var textForm = data[i].textForm;
-                $('.chat').append('<div class="messageBlock"><span class="messageName">' + name +
-                    '</span><span class="messageDate">' + time +
-                    '</span><br><span class="messageText">' + textForm + '</span></div>');
+                if(name===nameuser){
+                    $('.chat').append('<div class="messageBlockPrincipal"><span class="messageName">' + nameuser +
+                        '</span><span class="messageDate">' + time +
+                        '</span><br><span class="messageText">' + textForm + '</span></div>');
+                }else{
+                    $('.chat').append('<div class="messageBlock"><span class="messageName">' + nameuser +
+                        '</span><span class="messageDate">' + time +
+                        '</span><br><span class="messageText">' + textForm + '</span></div>');
+                }
 
             }
             //scroll chat window in bottom
@@ -186,11 +194,17 @@ function showMessage(messageHistoryDTO) {
         } else {
             var time = dd + '/' + mm + '/' + yyyy;
         }
-        var name = messageHistoryDTO.name;
+        var nameuser = messageHistoryDTO.name;
         var textForm = messageHistoryDTO.textForm;
-        $('.chat').append('<div class="messageBlock"><span class="messageName">' + name +
-            '</span><span class="messageDate">' + time +
-            '</span><br><span class="messageText">' + textForm + '</span></div>');
+        if(name===nameuser){
+            $('.chat').append('<div class="messageBlockPrincipal"><span class="messageName">' + nameuser +
+                '</span><span class="messageDate">' + time +
+                '</span><br><span class="messageText">' + textForm + '</span></div>');
+        }else{
+            $('.chat').append('<div class="messageBlock"><span class="messageName">' + nameuser +
+                '</span><span class="messageDate">' + time +
+                '</span><br><span class="messageText">' + textForm + '</span></div>');
+        }
 
         //scroll chat window in bottom
         var objDiv = document.getElementById("chatScroll");
@@ -210,82 +224,6 @@ function SendMessage() {
         console.log('empty textarea, need text');
     }
 }
-
-function AjaxFormRequest() {
-    //inspection empty textarea or not
-    var textarea = document.getElementById('cform').value;
-    if (textarea != '') {
-        var data = {
-            textForm: $(".textForm").val(),
-            datatime: new Date()
-        };
-        $.ajax({
-            url: $hostRoot + "messageadd",
-            type: 'post',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify(data),
-            success: function (messageHistoryDTO) {
-                if (messageHistoryDTO != null) {
-                    $(".textForm").val('');
-                    document.getElementById('cform').focus();
-                    var today = new Date();
-                    var todaydd = today.getDate();
-                    var todaymm = today.getMonth() + 1;
-                    var todayyyyy = today.getFullYear();
-                    if (todaydd < 10) {
-                        todaydd = '0' + todaydd
-                    }
-                    if (todaymm < 10) {
-                        todaymm = '0' + todaymm
-                    }
-
-                    var datatime = new Date(messageHistoryDTO.datatime);
-                    var dd = datatime.getDate();
-                    var mm = datatime.getMonth() + 1;
-                    var yyyy = datatime.getFullYear();
-                    var hh = datatime.getHours();
-                    var min = datatime.getMinutes();
-                    if (dd < 10) {
-                        dd = '0' + dd;
-                    }
-                    if (mm < 10) {
-                        mm = '0' + mm;
-                    }
-                    if (hh < 10) {
-                        hh = '0' + hh;
-                    }
-                    if (min < 10) {
-                        min = '0' + min;
-                    }
-
-                    if ((todaydd + todaymm + todayyyyy) == (dd + mm + yyyy)) {
-                        var time = hh + ':' + min;
-                    } else {
-                        var time = dd + '/' + mm + '/' + yyyy;
-                    }
-                    var name = messageHistoryDTO.name;
-                    var textForm = messageHistoryDTO.textForm;
-                    $('.chat').append('<div class="messageBlock"><span class="messageName">' + name +
-                        '</span><span class="messageDate">' + time +
-                        '</span><br><span class="messageText">' + textForm + '</span></div>');
-
-                    //scroll chat window in bottom
-                    var objDiv = document.getElementById("chatScroll");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                } else {
-                    console.log("EMPTY DATA");
-                }
-            },
-            error: function (error) {
-                console.log("ERROR");
-            }
-        });
-    } else {
-        console.log('empty textarea, need text');
-    }
-};
-
 
 
 
