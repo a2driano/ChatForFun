@@ -39,8 +39,9 @@ public class UserDTO implements Serializable {
         return userRole;
     }
 
-    public void setUserRole(UserRole userRole) {
+    public UserDTO setUserRole(UserRole userRole) {
         this.userRole = userRole;
+        return null;
     }
 
     private Boolean online;
