@@ -23,7 +23,8 @@ import java.util.List;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class UserDTO implements Serializable {
 
-    public UserDTO(){}
+    public UserDTO() {
+    }
 
     private Integer id;
 

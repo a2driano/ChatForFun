@@ -29,10 +29,9 @@ import java.util.List;
 class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Bean
-    public UserDetailsService getUserDetailsService(){
+    public UserDetailsService getUserDetailsService() {
         return new UserDetailsServiceImpl();
     }
-
 
     @Bean
     public FreeMarkerViewResolver viewResolver() {
@@ -40,8 +39,6 @@ class WebMvcConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("");
         viewResolver.setSuffix(".ftl");
         viewResolver.setContentType("text/html;charset=UTF-8");
-//        viewResolver.setExposeRequestAttributes(true);
-//        viewResolver.setExposeSessionAttributes(true);
         return viewResolver;
     }
 

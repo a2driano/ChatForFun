@@ -15,6 +15,7 @@ public interface MessageHistoryService {
 
     /**
      * This methods return all messages of user by his id
+     *
      * @param id
      * @return
      */
@@ -22,12 +23,14 @@ public interface MessageHistoryService {
 
     /**
      * This methods return all messages all users
+     *
      * @return
      */
     List<MessageHistoryDTO> getAllUsersMessages();
 
     /**
      * This methods add amessage of user
+     *
      * @param messageHistoryDTO
      * @return
      */
@@ -35,6 +38,7 @@ public interface MessageHistoryService {
 
     /**
      * This method delete message where id=messageid
+     *
      * @param messageHistoryDTO
      * @return
      */

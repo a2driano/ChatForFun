@@ -37,15 +37,8 @@ public class HelloController {
         return "login";
     }
 
-
     @RequestMapping(value = "/chat")
     public String chat() {
         return "chat";
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/del", method = RequestMethod.GET)
-    public UserDTO deleteUser(@RequestParam int id) {
-        return userService.deleteUser(id);
     }
 }

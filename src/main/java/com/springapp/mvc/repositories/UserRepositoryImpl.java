@@ -25,7 +25,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public String getNameUserById(Integer id) {
-        return (String)entityManager.createNamedQuery("getNameUserById").setParameter("id", id).getSingleResult();
+        return (String) entityManager.createNamedQuery("getNameUserById").setParameter("id", id).getSingleResult();
     }
 
     @Override
@@ -35,7 +35,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User getByName(String nickName) {
-        return (User)entityManager.createNamedQuery("getUserByName").setParameter("nickName", nickName).getSingleResult();
+        return (User) entityManager.createNamedQuery("getUserByName").setParameter("nickName", nickName).getSingleResult();
     }
 
     @Override
@@ -44,20 +44,11 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User getById (Integer id) {
+    public User getById(Integer id) {
         return (User) entityManager.
                 createNamedQuery("getById").
                 setParameter("id", id).
                 getSingleResult();
-    }
-
-    @Override
-    public Boolean isPresent(String nickName) {
-        return (Long)entityManager.createNamedQuery("userNameIsPresent").setParameter("nickName", nickName).getSingleResult()>0;
-    }
-    @Override
-    public Boolean isPresentConfirm(String nickName, String passwordUser) {
-        return (Long)entityManager.createNamedQuery("userNameAndPasswordIsPresent").setParameter("nickName", nickName).setParameter("passwordUser", passwordUser).getSingleResult()>0;
     }
 
     @Override
@@ -68,12 +59,6 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void add(User user) {
         entityManager.persist(user);
-    }
-
-    @Override
-    public User save(User user) {
-        entityManager.persist(user);
-        return (User)entityManager.createNamedQuery("getUserByName").setParameter("nickName", user.getNickName()).getSingleResult();
     }
 
     @Override

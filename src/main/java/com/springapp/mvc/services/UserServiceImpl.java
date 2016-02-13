@@ -32,25 +32,29 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public UserDTO getUserByName(String nickname){
-        UserDTO userDTO=new UserDTO();
-        User user=userRepository.getByName(nickname);
-        userDTO.setNickName(user.getNickName()).setId(user.getId());
+    public UserDTO getUserByName(String nickname) {
+        UserDTO userDTO = new UserDTO();
+        try {
+            User user = userRepository.getByName(nickname);
+            userDTO.setNickName(user.getNickName()).setId(user.getId());
+        } catch (Exception e) {
+            LOGGER.error("{}", e.toString(), e);
+            return null;
+        }
         return userDTO;
     }
 
     @Override
     public UserResponce create(UserDTO userDTO) {
-        UserResponce userResponce=new UserResponce();
+        UserResponce userResponce = new UserResponce();
         User user = new User();
         user.setNickName(userDTO.getNickName());
         user.setPasswordUser(new BCryptPasswordEncoder(12).encode(userDTO.getPasswordUser()));
         user.setUserRole(UserRole.USER);
-        try{
+        try {
             userRepository.add(user);
-        }
-        catch (Exception e){
-            LOGGER.error("{}",e.toString(),e);
+        } catch (Exception e) {
+            LOGGER.error("{}", e.toString(), e);
             return null;
         }
         return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS).setUserDTO(userDTO);
@@ -69,17 +73,17 @@ public class UserServiceImpl implements UserService {
                                 .setOnline(user.getOnline())
                 );
             }
-        }    catch (Exception e){
-            LOGGER.error("{}",e.toString(),e);
+        } catch (Exception e) {
+            LOGGER.error("{}", e.toString(), e);
         }
         return userDTOList;
     }
 
     @Override
     public List<UserDTO> getByOnline() {
-        List<UserDTO> userDTOList=new ArrayList<UserDTO>();
-        try{
-            for(User user:userRepository.getByOnline()){
+        List<UserDTO> userDTOList = new ArrayList<UserDTO>();
+        try {
+            for (User user : userRepository.getByOnline()) {
                 userDTOList.add(new UserDTO()
                         .setId(user.getId())
                         .setNickName(user.getNickName())
@@ -87,105 +91,34 @@ public class UserServiceImpl implements UserService {
                         .setOnline(user.getOnline()));
             }
 
-        }catch (Exception e){
-            LOGGER.error("{}",e.toString(),e);
+        } catch (Exception e) {
+            LOGGER.error("{}", e.toString(), e);
         }
 
         return userDTOList;
     }
 
     @Override
-    public UserResponce confirmUser(UserDTO userDTO) {
-        UserResponce userResponce=new UserResponce();
-        User user=new User();
-        //name and password must be not null
-        if((userDTO.getNickName())==""||(userDTO.getPasswordUser())==""){
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить все поля! Повторите пожалуйста!");
-        }
-        try{
-            user=userRepository.getByUser(userDTO.getNickName(),userDTO.getPasswordUser());
-            return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
-                    .setUserDTO(userDTO)
-                    .setMessage(user.getNickName()+", Вы вошли в свой аккаунт");
-        }catch (EmptyResultDataAccessException e){
-            LOGGER.error("{}", e.toString(), e);
-
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Неверный логин или пароль");
-        } catch (Exception e) {
-            LOGGER.error("{}", e.toString(), e);
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
-        }
-    }
-
-    //update this class
-    @Override
-    public UserResponce enterUser(UserDTO userDTO) {
-        UserResponce userResponce=new UserResponce();
-        User user=new User();
-        //name and password must be not null
-        if((userDTO.getNickName())==""){
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить поле!");
-        }
-        try{
-            userRepository.getByName(userDTO.getNickName());
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
-        }catch (EmptyResultDataAccessException e){
-            LOGGER.error("{}", e.toString(), e);
-            userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
-            return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
-                    .setUserDTO(userDTO)
-                    .setMessage("Вы вошли под ником: " + userDTO.getNickName());
-        } catch (Exception e) {
-            LOGGER.error("{}", e.toString(), e);
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
-        }
-    }
-
-    @Override
-    public UserResponce addUser(UserDTO userDTO){
-        UserResponce userResponce=new UserResponce();
-        User user=new User();
-        //name and password must be not null
-        if((userDTO.getNickName())==""||(userDTO.getPasswordUser())==""){
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Необходимо заполнить все поля! Повторите пожалуйста!");
-        }
-        try{
-            user=userRepository.getByUser(userDTO.getNickName(),userDTO.getPasswordUser());
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Этот логин уже занят, выберите другой");
-        }catch (EmptyResultDataAccessException e){
-            LOGGER.error("{}", e.toString(), e);
-            userRepository.add(user.setNickName(userDTO.getNickName()).setPasswordUser(userDTO.getPasswordUser()));
-            return userResponce.setUserResponceStatus(UserResponceStatus.SUCCESS)
-                    .setUserDTO(userDTO)
-                    .setMessage("chat.ftl");
-        } catch (Exception e) {
-            LOGGER.error("{}", e.toString(), e);
-            return userResponce.setUserResponceStatus(UserResponceStatus.FAIL).setMessage("Нет соединения с базой данных");
-        }
-    }
-
-    @Override
-    public UserDTO deleteUser(Integer id) {
-        try{
-            User user=new User().setId(id);
+    public void deleteUser(Integer id) {
+        try {
+            User user = new User().setId(id);
             userRepository.delete(user);
-        }catch (Exception e){
-            LOGGER.error("{}",e.toString(),e);
+        } catch (Exception e) {
+            LOGGER.error("{}", e.toString(), e);
         }
-        return null;
     }
 
     @Override
     public UserDTO updateUser(UserDTO userDTO) {
-        try{
-            User user=new User();
+        try {
+            User user = new User();
             user.setId(userDTO.getId());
             user.setNickName(userDTO.getNickName());
             user.setPasswordUser(userDTO.getPasswordUser());
             user.setOnline(true);
             userRepository.update(user);
-        }catch (Exception e){
-            LOGGER.error("{}",e.toString(),e);
+        } catch (Exception e) {
+            LOGGER.error("{}", e.toString(), e);
         }
         return null;
     }

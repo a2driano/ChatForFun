@@ -14,26 +14,25 @@ import java.util.List;
 public interface UserService {
 
 
+    /**
+     * return user by his name
+     *
+     * @param nickname
+     * @return
+     */
     UserDTO getUserByName(String nickname);
 
     /**
-     * This methods returns a user by nickname
+     * Create new user
      *
      * @param userDTO
      * @return
      */
-    UserResponce enterUser(UserDTO userDTO);
+
+    UserResponce create(UserDTO userDTO);
 
     /**
-     * This methods returns a user by nickname and password
-     *
-     * @param userDTO
-     * @return
-     */
-    UserResponce confirmUser(UserDTO userDTO);
-
-    /**
-     * This methods returns all users in DB
+     * get all user from DB
      *
      * @return
      */
@@ -47,20 +46,11 @@ public interface UserService {
     List<UserDTO> getByOnline();
 
     /**
-     * This methods add user into DB
-     *
-     * @param userDTO
-     * @return
-     */
-    UserResponce addUser(UserDTO userDTO);
-
-    /**
      * This methods delete user into DB
      *
-     * @param id
      * @return
      */
-    UserDTO deleteUser(Integer id);
+    void deleteUser(Integer id);
 
     /**
      * This methods update user in DB
@@ -69,8 +59,4 @@ public interface UserService {
      * @return
      */
     UserDTO updateUser(UserDTO userDTO);
-
-    //    String create(UserDTO userDTO);
-//    User create(UserDTO userDTO);
-    UserResponce create(UserDTO userDTO);
 }

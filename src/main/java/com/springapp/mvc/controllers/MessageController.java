@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.xml.crypto.Data;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -35,16 +36,16 @@ public class MessageController {
 
     @MessageMapping("/messageadd")
     @SendTo("/topic/messagenew")
-    public MessageHistoryDTO addMessage(@Payload MessageHistoryDTO messageHistory) throws Exception{
-        MessageHistoryDTO messageHistoryDTO=messageHistoryService.addMessage(messageHistory);
+    public MessageHistoryDTO addMessage(@Payload MessageHistoryDTO messageHistory) throws Exception {
+        MessageHistoryDTO messageHistoryDTO = messageHistoryService.addMessage(messageHistory);
         return messageHistoryDTO;
     }
 
     @RequestMapping(value = "/getallmessages", method = RequestMethod.GET)
     @ResponseBody
-    public List<MessageHistoryDTO> list(){
-        List<MessageHistoryDTO> list=new ArrayList<MessageHistoryDTO>();
-        list=messageHistoryService.getAllUsersMessages();
+    public List<MessageHistoryDTO> list() {
+        List<MessageHistoryDTO> list = new ArrayList<MessageHistoryDTO>();
+        list = messageHistoryService.getAllUsersMessages();
         return list;
     }
 }

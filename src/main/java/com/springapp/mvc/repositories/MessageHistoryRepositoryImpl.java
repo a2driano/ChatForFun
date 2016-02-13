@@ -20,7 +20,7 @@ import java.util.List;
 public class MessageHistoryRepositoryImpl implements MessageHistoryRepository {
     @Override
     public MessageHistory getMessageById(Integer Id) {
-        return (MessageHistory)entityManager.createNamedQuery("getMessageById").setParameter("messageId", Id).getSingleResult();
+        return (MessageHistory) entityManager.createNamedQuery("getMessageById").setParameter("messageId", Id).getSingleResult();
     }
 
     @PersistenceContext

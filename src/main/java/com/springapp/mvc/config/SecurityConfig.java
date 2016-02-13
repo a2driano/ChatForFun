@@ -1,15 +1,11 @@
 package com.springapp.mvc.config;
 
 
-import com.springapp.mvc.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -17,10 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
-import java.security.AuthProvider;
 
 /**
  * @version 1.0
@@ -32,21 +24,11 @@ import java.security.AuthProvider;
 @EnableWebMvcSecurity
 @ComponentScan
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-
     @Autowired
     AuthenticationProvider authenticationProvider;
     @Qualifier("getUserDetailsService")
     @Autowired
     private UserDetailsService userDetailsService;
-//    @Autowired
-//    private UserDetailsServiceImpl userDetailsService;
-
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication().withUser("3").password("1").roles("ADMIN");
-//    }
-
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -54,12 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder(12));
     }
-
-
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.authenticationProvider(authenticationProvider);
-//    }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -96,20 +72,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);
     }
-
-
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.authenticationProvider(authenticationProvider)
-//                        .inMemoryAuthentication()
-//                .withUser("user").password("password").roles("USER").and()
-//                .withUser("admin").password("password").roles("USER", "ADMIN");
-//    }
-// @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.authenticationProvider(authenticationProvider)
-//                        .inMemoryAuthentication()
-//                .withUser("user").password("password").roles("USER").and()
-//                .withUser("admin").password("password").roles("USER", "ADMIN");
-//    }
 }

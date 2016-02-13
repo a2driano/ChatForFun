@@ -13,16 +13,48 @@ import java.util.List;
  */
 public interface MessageHistoryRepository {
 
+    /**
+     * return all messages by concrete user
+     *
+     * @param Id
+     * @return
+     */
     List<MessageHistory> getUserMessagesById(Integer Id);
 
+    /**
+     * return all messages
+     *
+     * @return
+     */
     List<MessageHistory> getAllUsersMessages();
 
+    /**
+     * return message by concrete user
+     *
+     * @param Id
+     * @return
+     */
     MessageHistory getMessageById(Integer Id);
 
+    /**
+     * add message
+     *
+     * @param messageHistory
+     */
     void add(MessageHistory messageHistory);
 
+    /**
+     * delete message
+     *
+     * @param messageHistory
+     */
     void delete(MessageHistory messageHistory);
 
+    /**
+     * update message
+     *
+     * @param messageHistory
+     */
     void update(MessageHistory messageHistory);
 
 }

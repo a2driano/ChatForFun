@@ -75,10 +75,10 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
     @Override
     public MessageHistoryDTO addMessage(MessageHistoryDTO messageHistoryDTO) {
         MessageHistory messageHistory = new MessageHistory();
-        messageHistory.setUser(userRepository.getByName(messageHistoryDTO.getName()));
-        messageHistory.setMessageUser(messageHistoryDTO.getMessageUser());
-        messageHistory.setDate(messageHistoryDTO.getDate());
         try {
+            messageHistory.setUser(userRepository.getByName(messageHistoryDTO.getName()));
+            messageHistory.setMessageUser(messageHistoryDTO.getMessageUser());
+            messageHistory.setDate(messageHistoryDTO.getDate());
             messageHistoryRepository.add(messageHistory);
         } catch (Exception e) {
             LOGGER.error("{}", e.toString(), e);
@@ -91,13 +91,13 @@ public class MessageHistoryServiceImpl implements MessageHistoryService {
 
     @Override
     public MessageHistoryDTO delete(MessageHistoryDTO messageHistoryDTO) {
-        Integer id=messageHistoryDTO.getId();
-        String name=messageHistoryDTO.getName();
+        Integer id = messageHistoryDTO.getId();
+        String name = messageHistoryDTO.getName();
         try {
-            MessageHistory messageHistory=new MessageHistory();
+            MessageHistory messageHistory = new MessageHistory();
             messageHistory.setMessageId(id);
             messageHistoryRepository.delete(messageHistory);
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
         return messageHistoryDTO.setId(id).setName(name);

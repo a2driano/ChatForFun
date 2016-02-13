@@ -71,7 +71,6 @@ public class PersistenceConfig implements TransactionManagementConfigurer {
             dataSource = (DataSource) jndi.lookup("java:comp/env/jdbc/mydb");
         } catch (NamingException e) {
             System.out.println(e);
-//            logger.error("NamingException for java:comp/env/jdbc/yourname", e);
         }
         return dataSource;
     }

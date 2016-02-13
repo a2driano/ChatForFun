@@ -37,7 +37,6 @@ public class UserController {
     public String getName() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
-        System.err.println(name);
         return name;
     }
 
@@ -63,5 +62,10 @@ public class UserController {
             modelAndView.setViewName("redirect:/chat");
         }
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/del", method = RequestMethod.GET)
+    public void deleteUser(@RequestParam int id) {
+        userService.deleteUser(id);
     }
 }

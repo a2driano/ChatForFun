@@ -24,10 +24,6 @@ import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MessageHistoryDTO implements Serializable {
 
-//    @JsonProperty
-//    private Integer messageId;
-
-//    @JsonProperty("name")
     private User user;
 
     @JsonProperty("id")
@@ -40,14 +36,6 @@ public class MessageHistoryDTO implements Serializable {
 
     @JsonProperty("datatime")
     private Date date;
-
-//    public Integer getMessageId() {
-//        return messageId;
-//    }
-//
-//    public void setMessageId(Integer messageId) {
-//        this.messageId = messageId;
-//    }
 
     public String getName() {
         return name;

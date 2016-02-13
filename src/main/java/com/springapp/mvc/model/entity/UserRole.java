@@ -18,5 +18,6 @@ public enum UserRole {
     USER(),
     ADMIN();
 
-    UserRole(){}
+    UserRole() {
+    }
 }

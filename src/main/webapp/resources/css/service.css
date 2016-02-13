@@ -1,10 +1,11 @@
-.container{
+.container {
     width: 100%;
     height: 100%;
     margin: 0px;
     padding: 0%;
 }
-#central{
+
+#central {
     width: 100%;
     height: 100%;
     padding: 0%;
@@ -13,7 +14,8 @@
     background-repeat: repeat;
     background-color: #424242;
 }
-#centralContainer{
+
+#centralContainer {
     margin: auto;
     min-width: 42%;
     width: 42%;
@@ -24,8 +26,7 @@
     box-shadow: 0 40px 0 rgba(20, 20, 20, 0.83);
 }
 
-
-#dropMessage{
+#dropMessage {
     position: absolute;
     /*right: 5%;*/
     margin: 2%;
@@ -47,7 +48,7 @@
     -webkit-transition: all 0.4s ease-out;
 }
 
-#dropMessage:hover{
+#dropMessage:hover {
     position: absolute;
     cursor: pointer;
     margin: 2%;
@@ -68,13 +69,13 @@
     -o-transition: all 0.4s ease-out;
     -webkit-transition: all 0.4s ease-out;
 }
-.ref{
+
+.ref {
     text-decoration: none;
 }
 
-
 /*CHAT*/
-.chat{
+.chat {
     position: relative;
     overflow-y: auto;
     margin: 5%;
@@ -85,14 +86,16 @@
     background-color: white;
     /*border-radius: 1%;*/
 }
-#answerZone{
+
+#answerZone {
     position: absolute;
     bottom: 0%;
     width: 42%;
     height: 11%;
     background-color: rgba(0, 0, 0, 0.24);
 }
-.textWindow{
+
+.textWindow {
     margin-top: 2%;
     margin-left: 5%;
     margin-right: 5%;
@@ -100,7 +103,8 @@
     height: 50%;
 
 }
-.textForm{
+
+.textForm {
     width: 60%;
     height: 150%;
     border-radius: 1%;
@@ -108,9 +112,8 @@
     resize: none;
 }
 
-
 /*CHAT-WINDOW*/
-.messageBlock{
+.messageBlock {
     padding: 1%;
     position: relative;
     margin: 2.5%;
@@ -122,12 +125,12 @@
     border-top-left-radius: 0px;
 }
 
-.messageBlockPrincipal{
+.messageBlockPrincipal {
     padding: 1%;
     position: relative;
     margin: 2.5%;
     /*margin-right: 2.5%;*/
-    margin-left:7.5%;
+    margin-left: 7.5%;
     width: 85%;
     height: auto;
     background: linear-gradient(to top, rgba(213, 156, 254, 0.7), rgba(219, 163, 255, 0.55));
@@ -136,7 +139,8 @@
     border-top-left-radius: 0px;
 
 }
-.messageName{
+
+.messageName {
     font-size: 12pt;
     font-family: sans-serif;
     /*font-style: italic;*/
@@ -144,7 +148,8 @@
     text-decoration: underline;
     color: #7101ff;
 }
-.messageDate{
+
+.messageDate {
     position: absolute;
     right: 2%;
     font-size: 8pt;
@@ -152,11 +157,13 @@
     /*font-style: italic;*/
     color: #6c6c6c;
 }
-.messageText{
+
+.messageText {
     font-size: 11pt;
     font-family: sans-serif;
 }
-.delete{
+
+.delete {
     cursor: pointer;
     position: absolute;
     right: -5%;
@@ -169,7 +176,8 @@
     background-color: rgba(255, 15, 91, 0.79);
     border-radius: 100%;
 }
-.delete:hover{
+
+.delete:hover {
     background-color: rgba(95, 19, 255, 0.79);
 }
 

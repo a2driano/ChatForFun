@@ -11,29 +11,73 @@ import java.util.List;
  * @project: ChatForFun
  * @since 05.01.2016
  */
-public interface UserRepository{
+public interface UserRepository {
 
+    /**
+     * return name concrete user
+     *
+     * @param id
+     * @return
+     */
     Object getNameUserById(Integer id);
 
+    /**
+     * return user by name and password
+     *
+     * @param nickName
+     * @param password
+     * @return
+     */
     User getByUser(String nickName, String password);
 
+    /**
+     * return user by name
+     *
+     * @param nickName
+     * @return
+     */
     User getByName(String nickName);
 
+    /**
+     * return all users
+     *
+     * @return
+     */
     List getAll();
 
-    User getById (Integer id);
+    /**
+     * return user by id
+     *
+     * @param id
+     * @return
+     */
+    User getById(Integer id);
 
-    Boolean isPresent(String nickName);
-
-    Boolean isPresentConfirm(String nickName, String passwordUser);
-
+    /**
+     * delete user
+     *
+     * @param user
+     */
     void delete(User user);
 
+    /**
+     * add user
+     *
+     * @param user
+     */
     void add(User user);
 
-    User save(User user);
-
+    /**
+     * update user
+     *
+     * @param user
+     */
     void update(User user);
 
+    /**
+     * ger users hwo online
+     *
+     * @return
+     */
     List<User> getByOnline();
 }

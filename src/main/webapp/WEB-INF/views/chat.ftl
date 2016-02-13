@@ -9,7 +9,6 @@
     <script type="text/javascript" src="/js/lib/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="/js/lib/jquery.countdown.min.js"></script>
     <script type="text/javascript" src="/js/onstart_chat.js"></script>
-
     <script src="/js/lib/sockjs-0.3.4.js"></script>
     <script src="/js/lib/stomp.js"></script>
 

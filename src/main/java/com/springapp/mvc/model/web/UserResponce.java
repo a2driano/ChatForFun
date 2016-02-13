@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 @JsonAutoDetect
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-public class UserResponce implements Serializable{
+public class UserResponce implements Serializable {
 
     @JsonProperty("status")
     private UserResponceStatus userResponceStatus;
