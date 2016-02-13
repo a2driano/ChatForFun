@@ -39,7 +39,7 @@
         </#if>
             <form class="cabinetFormText" id="formRegistr" action="/j_spring_security_check" method="post">
                 <input class="formText" name="j_username" type="text" maxlength="25" size="40" required
-                       placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ">
+                       placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ" required pattern="^[a-zA-Zа-яіїєґ0-9,А-ЯІЇЄҐ][а-яіїєґ,А-ЯІЇЄҐa-zA-Z0-9-_\.]{2,20}$">
                 <input class="formText" name="j_password" type="password" maxlength="25" size="40" required
                        placeholder="ВВЕДИТЕ ПАРОЛЬ">
                 <input type="submit" class="buttonForm" id="submit">
