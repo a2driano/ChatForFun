@@ -46,7 +46,7 @@
             <div id="basement">
                 <div id="basementText">Copyright a2driano ©, 2016.</div>
                 <a class=ref href="/logout">
-                    <button type="button" id="logout">Выйти из чата</button>
+                    <button type="button" id="logout" onclick="disconnect()">Выйти из чата</button>
                 </a>
             </div>
         </div>
