@@ -9,6 +9,8 @@
     <script type="text/javascript" src="/js/lib/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="/js/lib/jquery.countdown.min.js"></script>
     <script type="text/javascript" src="/js/onstart_service.js"></script>
+    <script src="/js/lib/sockjs-0.3.4.js"></script>
+    <script src="/js/lib/stomp.js"></script>
     <link rel="shortcut icon" href="/img/favicon.png" type="image/png">
     <script type="text/javascript">
         var $applicationRoot = '/';
@@ -25,7 +27,7 @@
             <div id="answerZone">
                 <div class="textWindow">
                     <textarea id="cform" class="textForm" name="textForm" cols="30" rows="7" maxlength="350"></textarea>
-                    <button type="button" id="dropMessage" onclick="AjaxFormRequest()">Отправить</button>
+                    <button type="button" id="dropMessage" onclick="SendMessage()">Отправить</button>
                 </div>
             </div>
         </div>

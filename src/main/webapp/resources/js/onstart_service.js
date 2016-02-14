@@ -6,11 +6,11 @@
  */
 $(document).ready(function () {
     onStart();
-    addEvents();
     getName();
+    addEvents();
 });
-var name;
 //name of user
+var name;
 function getName(){
     $.ajax({
         url: $hostRoot + "getName",
@@ -28,7 +28,11 @@ function getName(){
         }
     });
 };
+
+var stompClient = null;
+//load messages from server on start page
 var onStart = function () {
+    connect();
     $.ajax({
         url: $hostRoot + "getallmessages",
         type: 'get',
@@ -36,8 +40,9 @@ var onStart = function () {
         contentType: 'application/json',
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
-                var index = data[i].id;
                 var nameuser = data[i].name;
+                var index = data[i].id;
+
                 var today = new Date();
                 var todaydd = today.getDate();
                 var todaymm = today.getMonth() + 1;
@@ -85,6 +90,7 @@ var onStart = function () {
                         '</span><span class="messageDate">' + time +
                         '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
                 }
+
             }
             //scroll chat window in bottom
             var objDiv = document.getElementById("chatScroll");
@@ -95,7 +101,93 @@ var onStart = function () {
         }
     });
 };
+//Drop message functional
+function connect() {
+    var socket = new SockJS('/messageadd');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+        stompClient.subscribe('/topic/messagenew', function (messageHistoryDTO) {
+            showMessage(JSON.parse(messageHistoryDTO.body));
+        });
+    });
+}
 
+function disconnect() {
+    stompClient.disconnect();
+    console.log("Disconnected");
+}
+
+
+function showMessage(messageHistoryDTO) {
+
+    if (messageHistoryDTO != null) {
+        $(".textForm").val('');
+        document.getElementById('cform').focus();
+        var today = new Date();
+        var todaydd = today.getDate();
+        var todaymm = today.getMonth() + 1;
+        var todayyyyy = today.getFullYear();
+        if (todaydd < 10) {
+            todaydd = '0' + todaydd
+        }
+        if (todaymm < 10) {
+            todaymm = '0' + todaymm
+        }
+
+        var datatime = new Date(messageHistoryDTO.datatime);
+        var dd = datatime.getDate();
+        var mm = datatime.getMonth() + 1;
+        var yyyy = datatime.getFullYear();
+        var hh = datatime.getHours();
+        var min = datatime.getMinutes();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        if (hh < 10) {
+            hh = '0' + hh;
+        }
+        if (min < 10) {
+            min = '0' + min;
+        }
+
+        if ((todaydd + todaymm + todayyyyy) == (dd + mm + yyyy)) {
+            var time = hh + ':' + min;
+        } else {
+            var time = dd + '/' + mm + '/' + yyyy;
+        }
+        var nameuser = messageHistoryDTO.name;
+        var textForm = messageHistoryDTO.textForm;
+        if(name===nameuser){
+            $('.chat').append('<div class="messageBlockPrincipal" index="'+index+'"><span class="messageName">' + nameuser +
+                '</span><span class="messageDate">' + time +
+                '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
+        }else{
+            $('.chat').append('<div class="messageBlock" index="'+index+'"><span class="messageName">' + nameuser +
+                '</span><span class="messageDate">' + time +
+                '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
+        }
+
+        //scroll chat window in bottom
+        var objDiv = document.getElementById("chatScroll");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    } else {
+        console.log("EMPTY DATA");
+    }
+}
+
+function SendMessage() {
+    var textarea = document.getElementById('cform').value;
+    var time = new Date();
+    console.log(stompClient);
+    if (textarea != '') {
+        stompClient.send("/app/messageadd", {}, JSON.stringify({'textForm': textarea, 'datatime': time, 'name': name}));
+    } else {
+        console.log('empty textarea, need text');
+    }
+}
 
 var addEvents = function () {
     $(".chat").on('click', ".delete", function () {
@@ -127,85 +219,6 @@ var addEvents = function () {
         });
     });
 };
-
-function AjaxFormRequest() {
-    var data = {
-        textForm: $(".textForm").val(),
-        datatime: new Date(),
-        name:"admin"
-    };
-    console.log(data);
-    $.ajax({
-        url: $hostRoot + "messageAddAdmin",
-        type: 'post',
-        dataType: 'json',
-        contentType: 'application/json',
-        data: JSON.stringify(data),
-        success: function (messageHistoryDTO) {
-            if (messageHistoryDTO != null) {
-                $(".textForm").val('');
-                document.getElementById('cform').focus();
-                var index = messageHistoryDTO.id;
-                var today = new Date();
-                var todaydd = today.getDate();
-                var todaymm = today.getMonth() + 1;
-                var todayyyyy = today.getFullYear();
-                if (todaydd < 10) {
-                    todaydd = '0' + todaydd
-                }
-                if (todaymm < 10) {
-                    todaymm = '0' + todaymm
-                }
-
-                var datatime = new Date(messageHistoryDTO.datatime);
-                var dd = datatime.getDate();
-                var mm = datatime.getMonth() + 1;
-                var yyyy = datatime.getFullYear();
-                var hh = datatime.getHours();
-                var min = datatime.getMinutes();
-                if (dd < 10) {
-                    dd = '0' + dd;
-                }
-                if (mm < 10) {
-                    mm = '0' + mm;
-                }
-                if (hh < 10) {
-                    hh = '0' + hh;
-                }
-                if (min < 10) {
-                    min = '0' + min;
-                }
-
-                if ((todaydd + todaymm + todayyyyy) == (dd + mm + yyyy)) {
-                    var time = hh + ':' + min;
-                } else {
-                    var time = dd + '/' + mm + '/' + yyyy;
-                }
-                var nameuser = messageHistoryDTO.name;
-                var textForm = messageHistoryDTO.textForm;
-                if(name===nameuser){
-                    $('.chat').append('<div class="messageBlockPrincipal" index="'+index+'"><span class="messageName">' + nameuser +
-                        '</span><span class="messageDate">' + time +
-                        '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
-                }else{
-                    $('.chat').append('<div class="messageBlock" index="'+index+'"><span class="messageName">' + nameuser +
-                        '</span><span class="messageDate">' + time +
-                        '</span><br><span class="messageText">' + textForm + '</span><div class="delete">X</div></div>');
-                }
-
-                //scroll chat window in bottom
-                var objDiv = document.getElementById("chatScroll");
-                objDiv.scrollTop = objDiv.scrollHeight;
-            } else {
-                console.log("EMPTY DATA");
-            }
-        },
-        error: function (error) {
-            console.log("ERROR");
-        }
-    });
-};
-
 
 
 
