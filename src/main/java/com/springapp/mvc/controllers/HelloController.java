@@ -18,10 +18,6 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class HelloController {
 
-
-    @Autowired
-    private UserService userService;
-
     @RequestMapping(value = "/")
     public String index() {
         return "index";

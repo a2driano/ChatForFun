@@ -2,23 +2,15 @@ package com.springapp.mvc.controllers;
 
 import com.springapp.mvc.model.web.MessageHistoryDTO;
 import com.springapp.mvc.services.MessageHistoryService;
-import com.springapp.mvc.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.xml.crypto.Data;
-import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,8 +21,7 @@ import java.util.List;
  */
 @Controller
 public class MessageController {
-    @Autowired
-    UserService userService;
+
     @Autowired
     private MessageHistoryService messageHistoryService;
 

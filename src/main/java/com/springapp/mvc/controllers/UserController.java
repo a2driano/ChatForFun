@@ -32,6 +32,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    //return user name in context of SecurityContextHolder
     @ResponseBody
     @RequestMapping(value = "/getName", method = RequestMethod.GET)
     public String getName() {
@@ -40,6 +41,7 @@ public class UserController {
         return name;
     }
 
+    //registration new user to db and autologin in chat page(on success registration)
     @ResponseBody
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView handleUserCreateForm(HttpServletRequest request) {
@@ -64,6 +66,7 @@ public class UserController {
         return modelAndView;
     }
 
+    //del user
     @RequestMapping(value = "/del", method = RequestMethod.GET)
     public void deleteUser(@RequestParam int id) {
         userService.deleteUser(id);
