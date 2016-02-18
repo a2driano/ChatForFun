@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,10 +45,12 @@ public class UserController {
     //registration new user to db and autologin in chat page(on success registration)
     @ResponseBody
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ModelAndView handleUserCreateForm(HttpServletRequest request) {
+    public ModelAndView handleUserCreateForm(HttpServletRequest request) throws UnsupportedEncodingException {
         ModelAndView modelAndView = new ModelAndView();
         UserDTO userDTO = new UserDTO();
+        request.setCharacterEncoding("utf-8");
         userDTO.setNickName(request.getParameter("name")).setPasswordUser(request.getParameter("password"));
+        System.err.println(request.getParameter("name")+"  ------   "+request.getParameter("password"));
         UserResponce userResponce = userService.create(userDTO);
         if (userResponce == null) {
             modelAndView.setViewName("/registrationerr");

@@ -33,7 +33,7 @@
                     <div class="logoTypesImage" id="image_6"></div>
                 </div>
             </a>
-            <form class="cabinetFormText" id="userDTO" action="save" method="post">
+            <form class="cabinetFormText" id="userDTO" action="save" method="post" accept-charset="UTF-8">
                 <input class="formText" name="name" type="text" maxlength="25" size="40" required
                        placeholder="ВВЕДИТЕ СВОЙ ЛОГИН / ИМЯ" required pattern="^[a-zA-Zа-яіїєґ0-9,А-ЯІЇЄҐ][а-яіїєґ,А-ЯІЇЄҐa-zA-Z0-9-_\.]{2,20}$">
                 <input class="formText" name="password" type="password" maxlength="25" size="40" required
